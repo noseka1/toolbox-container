@@ -7,9 +7,12 @@ RUN dnf install \
   gdb \
   git \
   highlight \
+  httpd \
+  haproxy \
   iotop \
   iproute \
   lsof \
+  man-db \
   net-tools \
   patch \
   socat \
@@ -30,6 +33,16 @@ RUN dnf install \
   --assumeyes \
   --enablerepo ansible-2-for-rhel-8-x86_64-rpms \
   ansible
+
+RUN dnf install \
+  --assumeyes \
+  --enablerepo rhel-8-for-x86_64-highavailability-rpms \
+  awscli
+
+RUN curl --location \
+  --output /usr/local/bin/nooba \
+  https://github.com/noobaa/noobaa-operator/releases/download/v2.0.10/noobaa-linux-v2.0.10 && \
+  chmod 755 /usr/local/bin/nooba
 
 RUN mkdir /home/toolbox && \
   chgrp 0 /home/toolbox && \
