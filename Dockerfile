@@ -49,3 +49,5 @@ RUN mkdir /home/toolbox && \
   chmod 775 /home/toolbox
 
 WORKDIR /home/toolbox
+
+CMD [ "/usr/bin/sleep", "infinity" ]
