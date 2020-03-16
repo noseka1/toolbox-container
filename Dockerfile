@@ -11,6 +11,7 @@ RUN dnf install \
   haproxy \
   iotop \
   iproute \
+  iputils \
   lsof \
   man-db \
   net-tools \
