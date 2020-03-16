@@ -1,2 +1,1 @@
-# openshift-toolbox
-OpenShift Toolbox Container
+# OpenShift Toolbox Container Image
