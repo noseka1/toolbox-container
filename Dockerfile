@@ -40,9 +40,9 @@ RUN dnf install \
   awscli
 
 RUN curl --location \
-  --output /usr/local/bin/nooba \
+  --output /usr/local/bin/noobaa \
   https://github.com/noobaa/noobaa-operator/releases/download/v2.0.10/noobaa-linux-v2.0.10 && \
-  chmod 755 /usr/local/bin/nooba
+  chmod 755 /usr/local/bin/noobaa
 
 RUN mkdir /home/toolbox && \
   chgrp 0 /home/toolbox && \
