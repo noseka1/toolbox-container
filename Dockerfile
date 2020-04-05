@@ -15,6 +15,7 @@ RUN dnf install \
   lsof \
   man-db \
   net-tools \
+  nmap-ncat \
   patch \
   socat \
   strace \
