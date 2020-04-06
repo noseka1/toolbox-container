@@ -46,3 +46,11 @@ $ oc patch deployment openshift-toolbox \
     --type json \
     --patch '[{"op": "add", "path": "/spec/template/spec/containers/0/securityContext", "value": { "privileged": true }}]'
 ```
+
+## Example workloads
+
+Run Apache server:
+
+```
+$ apachectl -D FOREGROUND
+```
