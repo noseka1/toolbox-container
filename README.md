@@ -54,3 +54,9 @@ Run Apache server:
 ```
 $ apachectl -D FOREGROUND
 ```
+
+Run Python SimpleHTTPServer:
+
+```
+$ python3 -m http.server
+```
