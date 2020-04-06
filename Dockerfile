@@ -17,6 +17,8 @@ RUN dnf install \
   net-tools \
   nmap-ncat \
   patch \
+  procps-ng \
+  psmisc \
   socat \
   strace \
   tcpdump \
