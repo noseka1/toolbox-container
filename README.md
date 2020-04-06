@@ -29,3 +29,20 @@ Connect to the *openshift-toolbox* container:
 ```
 $ oc rsh openshift-toolbox-<hash>
 ```
+
+## Run as privileged
+
+```
+$ oc create serviceaccount openshift-toolbox
+```
+```
+$ oc adm policy add-scc-to-user privileged -z openshift-toolbox
+```
+```
+$ oc patch deployment openshift-toolbox \
+    --type json \
+    --patch '[{"op": "add", "path": "/spec/template/spec/serviceAccountName", "value": "openshift-toolbox"}]'
+$ oc patch deployment openshift-toolbox \
+    --type json \
+    --patch '[{"op": "add", "path": "/spec/template/spec/containers/0/securityContext", "value": { "privileged": true }}]'
+```
