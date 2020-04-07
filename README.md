@@ -47,6 +47,12 @@ $ oc patch deployment openshift-toolbox \
     --patch '[{"op": "add", "path": "/spec/template/spec/containers/0/securityContext", "value": { "privileged": true }}]'
 ```
 
+## Attach a persistent volume
+
+```
+$ oc set volume deployment/openshift-toolbox --add --claim-size 50G --mount-path /home/toolbox
+```
+
 ## Example workloads
 
 Run Apache server:
