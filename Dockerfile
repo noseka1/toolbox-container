@@ -9,6 +9,7 @@ RUN dnf install \
   highlight \
   httpd \
   haproxy \
+  hostname \
   iotop \
   iproute \
   iputils \
