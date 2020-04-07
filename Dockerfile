@@ -49,6 +49,14 @@ RUN curl --location \
   https://github.com/noobaa/noobaa-operator/releases/download/v2.0.10/noobaa-linux-v2.0.10 && \
   chmod 755 /usr/local/bin/noobaa
 
+RUN dnf install \
+  --assumeyes \
+  ruby-devel \
+  gem \
+  redhat-rpm-config \
+  make && \
+  gem install fluentd --version 1.10.1
+
 RUN mkdir /home/toolbox && \
   chgrp 0 /home/toolbox && \
   chmod 775 /home/toolbox
