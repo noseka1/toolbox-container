@@ -53,7 +53,12 @@ $ oc patch deployment openshift-toolbox \
 ## Attach a persistent volume
 
 ```
-$ oc set volume deployment/openshift-toolbox --add --claim-size 50G --mount-path /home/toolbox
+$ oc set volume \
+    deployment/openshift-toolbox \
+    --add \
+    --claim-name openshift-toolbox \
+    --claim-size 50G \
+    --mount-path /home/toolbox
 ```
 
 ## Example workloads
