@@ -57,6 +57,12 @@ RUN dnf install \
   make && \
   gem install fluentd --version 1.10.1
 
+RUN dnf install \
+  --assumeyes \
+  --enablerepo rhocp-4.3-for-rhel-8-x86_64-rpms \
+  python3-gunicorn && \
+  pip3 install httpbin==0.7.0
+
 RUN mkdir /home/toolbox && \
   chgrp 0 /home/toolbox && \
   chmod 775 /home/toolbox
