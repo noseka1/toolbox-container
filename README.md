@@ -78,7 +78,7 @@ $ python3 -m http.server
 Run httpbin:
 
 ```
-$ gunicorn-3 --bind 0.0.0.0:80 httpbin:app
+$ gunicorn-3 --bind 0.0.0.0:80 --access-logfile - httpbin:app
 ```
 
 ```
@@ -86,5 +86,5 @@ $ openssl req -newkey rsa:2048 -nodes -keyout httpbin.key -x509 -out httpbin.crt
 ```
 
 ```
-$ gunicorn-3 --bind 0.0.0.0:443 --keyfile httpbin.key --certfile httpbin.crt  httpbin:app
+$ gunicorn-3 --bind 0.0.0.0:443 --access-logfile - --keyfile httpbin.key --certfile httpbin.crt  httpbin:app
 ```
