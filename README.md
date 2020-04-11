@@ -42,6 +42,9 @@ $ oc adm policy add-scc-to-user privileged -z openshift-toolbox
 $ oc patch deployment openshift-toolbox \
     --type json \
     --patch '[{"op": "add", "path": "/spec/template/spec/serviceAccountName", "value": "openshift-toolbox"}]'
+```
+
+```
 $ oc patch deployment openshift-toolbox \
     --type json \
     --patch '[{"op": "add", "path": "/spec/template/spec/containers/0/securityContext", "value": { "privileged": true }}]'
