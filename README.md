@@ -67,6 +67,14 @@ $ oc set volume \
     --mount-path /home/toolbox
 ```
 
+## Run on a specific node
+
+```
+$ oc patch deployment openshift-toolbox \
+    --type json \
+    --patch '[{"op": "add", "path": "/spec/template/spec/nodeName", "value": "ip-10-0-143-77.us-west-2.compute.internal"}]'
+```
+
 ## Example workloads
 
 Run Apache server:
