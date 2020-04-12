@@ -63,6 +63,12 @@ RUN dnf install \
   python3-gunicorn && \
   pip3 install httpbin==0.7.0
 
+# install etcd client
+RUN wget https://github.com/etcd-io/etcd/releases/download/v3.4.7/etcd-v3.4.7-linux-amd64.tar.gz && \
+  tar xfz etcd-v3.4.7-linux-amd64.tar.gz && \
+  cp etcd-v3.4.7-linux-amd64/etcdctl /usr/local/bin && \
+  rm -rf etcd-v3.4.7-linux-amd64*
+
 RUN mkdir /home/toolbox && \
   chgrp 0 /home/toolbox && \
   chmod 775 /home/toolbox
