@@ -30,13 +30,13 @@ Connect to the *openshift-toolbox* container:
 $ oc rsh openshift-toolbox-<hash>
 ```
 
-## Run as privileged
+## Run as privileged container
 
 ```
 $ oc create serviceaccount openshift-toolbox
 ```
 ```
-$ oc adm policy add-scc-to-user privileged -z openshift-toolbox
+$ oc adm policy add-scc-to-user privileged --serviceaccount openshift-toolbox
 ```
 ```
 $ oc patch deployment openshift-toolbox \
@@ -48,6 +48,12 @@ $ oc patch deployment openshift-toolbox \
 $ oc patch deployment openshift-toolbox \
     --type json \
     --patch '[{"op": "add", "path": "/spec/template/spec/containers/0/securityContext", "value": { "privileged": true }}]'
+```
+
+## Provide cluster-admin access
+
+```
+$ oc adm policy add-cluster-role-to-user cluster-admin --serviceaccount openshift-toolbox
 ```
 
 ## Attach a persistent volume
