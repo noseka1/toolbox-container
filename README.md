@@ -12,6 +12,8 @@ Upload the built image to a container registry:
 $ podman push openshift-toolbox <registry_path>/openshift-toolbox
 ```
 
+## Deploying openshift-toolbox
+
 Deploy the *openshift-toolbox* on the cluster:
 
 ```
