@@ -3,6 +3,7 @@ FROM registry.redhat.io/ubi8/ubi
 RUN dnf install \
   --assumeyes \
   bind-utils \
+  bzip2 \
   curl \
   gdb \
   git \
@@ -13,6 +14,7 @@ RUN dnf install \
   iotop \
   iproute \
   iputils \
+  jq \
   lsof \
   man-db \
   net-tools \
