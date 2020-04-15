@@ -32,7 +32,9 @@ Connect to the *openshift-toolbox* container:
 $ oc rsh openshift-toolbox-<hash>
 ```
 
-## Run as privileged container
+## Configuring openshift-toolbox
+
+### Run as privileged container
 
 ```
 $ oc create serviceaccount openshift-toolbox
@@ -52,29 +54,42 @@ $ oc patch deployment openshift-toolbox \
     --patch '[{"op": "add", "path": "/spec/template/spec/containers/0/securityContext", "value": { "privileged": true }}]'
 ```
 
-## Provide cluster-admin access
+### Allow cluster-admin access to OpenShift
 
 ```
 $ oc adm policy add-cluster-role-to-user cluster-admin --serviceaccount openshift-toolbox
 ```
 
-## Attach a persistent volume
-
-```
-$ oc set volume \
-    deployment/openshift-toolbox \
-    --add \
-    --claim-name openshift-toolbox \
-    --claim-size 50G \
-    --mount-path /home/toolbox
-```
-
-## Run on a specific node
+### Run on a specific node
 
 ```
 $ oc patch deployment openshift-toolbox \
     --type json \
     --patch '[{"op": "add", "path": "/spec/template/spec/nodeName", "value": "ip-10-0-143-77.us-west-2.compute.internal"}]'
+```
+
+### Mount node's root on /rootfs
+
+```
+$ oc set volume \
+    deployment/openshift-toolbox \
+    --add \
+    --name rootfs \
+    --type hostPath \
+    --path / \
+    --mount-path /rootfs
+```
+
+### Attach a persistent volume
+
+```
+$ oc set volume \
+    deployment/openshift-toolbox \
+    --add \
+    --type persistentVolumeClaim \
+    --claim-name openshift-toolbox \
+    --claim-size 50G \
+    --mount-path /home/toolbox
 ```
 
 ## Example workloads
