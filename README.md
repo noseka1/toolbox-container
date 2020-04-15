@@ -54,10 +54,24 @@ $ oc patch deployment openshift-toolbox \
     --patch '[{"op": "add", "path": "/spec/template/spec/containers/0/securityContext", "value": { "privileged": true }}]'
 ```
 
-### Allow cluster-admin access to OpenShift
+### Share namespaces with the underlying node
 
 ```
-$ oc adm policy add-cluster-role-to-user cluster-admin --serviceaccount openshift-toolbox
+$ oc patch deployment openshift-toolbox \
+    --type json \
+    --patch '[{"op": "replace", "path": "/spec/template/spec/hostNetwork", "value": true}]'
+```
+
+```
+$ oc patch deployment openshift-toolbox \
+    --type json \
+    --patch '[{"op": "replace", "path": "/spec/template/spec/hostPID", "value": true}]'
+```
+
+```
+$ oc patch deployment openshift-toolbox \
+    --type json \
+    --patch '[{"op": "replace", "path": "/spec/template/spec/hostIPC", "value": true}]'
 ```
 
 ### Run on a specific node
@@ -68,7 +82,7 @@ $ oc patch deployment openshift-toolbox \
     --patch '[{"op": "add", "path": "/spec/template/spec/nodeName", "value": "ip-10-0-143-77.us-west-2.compute.internal"}]'
 ```
 
-### Mount node's root on /rootfs
+### Mount underlying node's root on /rootfs
 
 ```
 $ oc set volume \
@@ -78,6 +92,12 @@ $ oc set volume \
     --type hostPath \
     --path / \
     --mount-path /rootfs
+```
+
+### Allow cluster-admin access to OpenShift
+
+```
+$ oc adm policy add-cluster-role-to-user cluster-admin --serviceaccount openshift-toolbox
 ```
 
 ### Attach a persistent volume
