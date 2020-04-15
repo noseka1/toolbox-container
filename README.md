@@ -82,7 +82,7 @@ $ oc patch deployment openshift-toolbox \
     --patch '[{"op": "add", "path": "/spec/template/spec/nodeName", "value": "ip-10-0-143-77.us-west-2.compute.internal"}]'
 ```
 
-### Mount underlying node's root on /rootfs
+### Mount the root of the underlying node on /rootfs
 
 ```
 $ oc set volume \
