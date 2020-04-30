@@ -1,15 +1,21 @@
 # OpenShift Toolbox Container Image
 
-Build this container image on a RHEL 8 machine that is subscribed to required YUM repositories:
+Build the basec container image:
 
 ```
-$ podman build --tag openshift-toolbox .
+$ podman build --target basic --tag openshift-toolbox:basic .
+```
+
+Alternatively, build the full version of the container image:
+
+```
+$ podman build --target full --tag openshift-toolbox:full .
 ```
 
 Upload the built image to a container registry:
 
 ```
-$ podman push openshift-toolbox <registry_path>/openshift-toolbox
+$ podman push openshift-toolbox:basic <registry_path>/openshift-toolbox
 ```
 
 ## Deploying openshift-toolbox
