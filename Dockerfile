@@ -23,6 +23,7 @@ RUN dnf install \
   patch \
   procps-ng \
   psmisc \
+  python3-gunicorn \
   python3-httpbin \
   socat \
   strace \
@@ -57,7 +58,11 @@ RUN mkdir /home/toolbox && \
 
 WORKDIR /home/toolbox
 
-CMD [ "/bin/bash" ]
+CMD [ "/usr/bin/sleep", "infinity" ]
+
+#########################
+#      STAGE  FULL      #
+#########################
 
 FROM basic as full
 
@@ -89,6 +94,21 @@ RUN curl --location \
   https://github.com/operator-framework/operator-sdk/releases/download/v0.17.0/operator-sdk-v0.17.0-x86_64-linux-gnu && \
   chmod 755 /usr/local/bin/operator-sdk
 
+# install odo
+RUN curl --location \
+  --output /usr/local/bin/odo \
+  https://mirror.openshift.com/pub/openshift-v4/clients/odo/latest/odo-linux-amd64 && \
+  chmod 755 /usr/local/bin/odo
+
+# install kn (serverless client)
+RUN curl --location \
+  --output /usr/local/bin/kn \
+  https://mirror.openshift.com/pub/openshift-v4/clients/serverless/latest/kn-linux-amd64-0.13.2.tar.gz && \
+  chmod 755 /usr/local/bin/kn
+
+# install Tekton CLI
+RUN rpm --install https://github.com/tektoncd/cli/releases/download/v0.9.0/tektoncd-cli-0.9.0_Linux-64bit.rpm
+
 # install stern
 RUN curl --location \
   --output /usr/local/bin/stern \
@@ -104,3 +124,6 @@ RUN curl --location \
   --output /usr/local/bin/kubectx \
   https://github.com/ahmetb/kubectx/releases/download/v0.9.0/kubectx && \
   chmod 755 /usr/local/bin/kubectx
+
+# install fortio
+RUN rpm --install https://github.com/fortio/fortio/releases/download/v1.3.1/fortio-1.3.1-1.x86_64.rpm
