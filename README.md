@@ -1,6 +1,6 @@
 # OpenShift Toolbox Container Image
 
-Build the basec container image:
+Build the basic container image:
 
 ```
 $ podman build --target basic --tag openshift-toolbox:basic .
@@ -15,7 +15,7 @@ $ podman build --target full --tag openshift-toolbox:full .
 Upload the built image to a container registry:
 
 ```
-$ podman push openshift-toolbox:basic <registry_path>/openshift-toolbox
+$ podman push openshift-toolbox:basic <registry_path>/openshift-toolbox:basic
 ```
 
 ## Deploying openshift-toolbox
@@ -23,7 +23,7 @@ $ podman push openshift-toolbox:basic <registry_path>/openshift-toolbox
 Deploy the *openshift-toolbox* on the cluster:
 
 ```
-$ oc create deployment openshift-toolbox --image <registry_path>/openshift-toolbox
+$ oc create deployment openshift-toolbox --image <registry_path>/openshift-toolbox:basic
 ```
 
 Find out the pod name from the output of:
