@@ -2,6 +2,7 @@ FROM fedora:latest as basic
 
 RUN dnf install \
   --assumeyes \
+  --setopt install_weak_deps=False \
   bind-utils \
   bzip2 \
   curl \
@@ -29,7 +30,8 @@ RUN dnf install \
   strace \
   tcpdump \
   vim \
-  wget
+  wget \
+  wireshark-cli
 
 # install oc and kubectl
 RUN curl --location \
@@ -45,11 +47,13 @@ RUN wget https://github.com/etcd-io/etcd/releases/download/v3.4.7/etcd-v3.4.7-li
 # install fluentd
 RUN dnf install \
   --assumeyes \
+  --setopt install_weak_deps=False \
   ruby-devel \
   gcc \
   gem \
   redhat-rpm-config \
   make && \
+  gem install json --version 2.3.0 && \
   gem install fluentd --version 1.10.1
 
 RUN mkdir /home/toolbox && \
@@ -68,6 +72,7 @@ FROM basic as full
 
 RUN dnf install \
   --assumeyes \
+  --setopt install_weak_deps=False \
   ansible \
   awscli \
   buildah \
@@ -75,6 +80,12 @@ RUN dnf install \
   podman \
   skopeo \
   tmux
+
+# install s2i
+RUN curl --location \
+  https://github.com/openshift/source-to-image/releases/download/v1.3.0/source-to-image-v1.3.0-eed2850f-linux-amd64.tar.gz | \
+  tar xvfz - --directory /usr/local/bin && \
+  chmod 755 /usr/local/bin/s2i
 
 # install noobaa
 RUN curl --location \
@@ -94,6 +105,12 @@ RUN curl --location \
   https://github.com/operator-framework/operator-sdk/releases/download/v0.17.0/operator-sdk-v0.17.0-x86_64-linux-gnu && \
   chmod 755 /usr/local/bin/operator-sdk
 
+# install kustomize
+RUN curl --location \
+  --output /usr/local/bin/kustomize \
+  https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv3.2.2/kustomize_kustomize.v3.2.2_linux_amd64 && \
+  chmod 755 /usr/local/bin/kustomize
+
 # install odo
 RUN curl --location \
   --output /usr/local/bin/odo \
@@ -102,8 +119,8 @@ RUN curl --location \
 
 # install kn (serverless client)
 RUN curl --location \
-  --output /usr/local/bin/kn \
-  https://mirror.openshift.com/pub/openshift-v4/clients/serverless/latest/kn-linux-amd64-0.13.2.tar.gz && \
+  https://mirror.openshift.com/pub/openshift-v4/clients/serverless/latest/kn-linux-amd64-0.13.2.tar.gz | \
+  tar xvfz - --directory /usr/local/bin && \
   chmod 755 /usr/local/bin/kn
 
 # install Tekton CLI
@@ -127,3 +144,14 @@ RUN curl --location \
 
 # install fortio
 RUN rpm --install https://github.com/fortio/fortio/releases/download/v1.3.1/fortio-1.3.1-1.x86_64.rpm
+
+# install lazygit
+RUN curl --location \
+  https://github.com/jesseduffield/lazygit/releases/download/v0.20.2/lazygit_0.20.2_Linux_x86_64.tar.gz | \
+  tar xvfz - --directory /usr/local/bin && \
+  chmod 755 /usr/local/bin/lazygit
+
+# install gitmux
+RUN curl --location \
+  https://github.com/arl/gitmux/releases/download/v0.5.0/gitmux_0.5.0_linux_amd64.tar.gz | \
+  tar xvfz - --directory /usr/local/bin
