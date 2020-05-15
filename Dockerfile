@@ -6,6 +6,7 @@ RUN dnf install \
   bind-utils \
   bzip2 \
   curl \
+  dnsmasq \
   gdb \
   git \
   highlight \
