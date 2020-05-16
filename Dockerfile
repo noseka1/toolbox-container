@@ -1,5 +1,8 @@
 FROM fedora:latest as basic
 
+ARG OPENSHIFT_TOOLBOX_COMMIT=unspecified
+ENV OPENSHIFT_TOOLBOX_COMMIT $OPENSHIFT_TOOLBOX_COMMIT
+
 RUN dnf install \
   --assumeyes \
   --setopt install_weak_deps=False \
