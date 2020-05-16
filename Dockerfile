@@ -64,9 +64,12 @@ RUN curl --location \
   https://github.com/gcla/termshark/releases/download/v2.1.1/termshark_2.1.1_linux_x64.tar.gz | \
   tar xvfz - --strip-components=1 --directory /usr/local/bin termshark_2.1.1_linux_x64/termshark
 
-RUN mkdir /home/toolbox && \
+RUN adduser toolbox --groups wheel && \
   chgrp 0 /home/toolbox && \
   chmod 775 /home/toolbox
+
+# allow sudo without password
+RUN echo '%wheel ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 
 WORKDIR /home/toolbox
 
