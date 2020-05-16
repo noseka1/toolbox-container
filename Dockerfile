@@ -14,7 +14,9 @@ RUN dnf install \
   haproxy \
   hostname \
   htop \
+  iftop \
   iotop \
+  iperf \
   iproute \
   iputils \
   jq \
@@ -56,6 +58,11 @@ RUN dnf install \
   make && \
   gem install json --version 2.3.0 && \
   gem install fluentd --version 1.10.1
+
+# install termshark
+RUN curl --location \
+  https://github.com/gcla/termshark/releases/download/v2.1.1/termshark_2.1.1_linux_x64.tar.gz | \
+  tar xvfz - --strip-components=1 --directory /usr/local/bin termshark_2.1.1_linux_x64/termshark
 
 RUN mkdir /home/toolbox && \
   chgrp 0 /home/toolbox && \
