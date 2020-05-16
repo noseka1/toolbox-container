@@ -64,6 +64,9 @@ RUN curl --location \
   https://github.com/gcla/termshark/releases/download/v2.1.1/termshark_2.1.1_linux_x64.tar.gz | \
   tar xvfz - --strip-components=1 --directory /usr/local/bin termshark_2.1.1_linux_x64/termshark
 
+# add start script
+COPY start.sh /usr/local/bin
+
 RUN adduser toolbox --groups wheel && \
   chgrp 0 /home/toolbox && \
   chmod 775 /home/toolbox
@@ -73,7 +76,7 @@ RUN echo '%wheel ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 
 WORKDIR /home/toolbox
 
-CMD [ "/usr/bin/sleep", "infinity" ]
+CMD [ "/usr/local/bin/start.sh" ]
 
 #########################
 #      STAGE  FULL      #
