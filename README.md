@@ -3,13 +3,21 @@
 Build the basic container image:
 
 ```
-$ podman build --target basic --tag openshift-toolbox:basic .
+$ podman build \
+  --build-arg OPENSHIFT_TOOLBOX_COMMIT=$(git rev-parse HEAD) \
+  --target basic \
+  --tag openshift-toolbox:basic \
+  .
 ```
 
 Alternatively, build the full version of the container image:
 
 ```
-$ podman build --target full --tag openshift-toolbox:full .
+$ podman build \
+  --build-arg OPENSHIFT_TOOLBOX_COMMIT=$(git rev-parse HEAD) \
+  --target full \
+  --tag openshift-toolbox:full \
+  .
 ```
 
 Upload the built image to a container registry:
