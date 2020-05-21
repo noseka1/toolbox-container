@@ -35,6 +35,7 @@ RUN dnf install \
   socat \
   strace \
   tcpdump \
+  telnet \
   vim \
   wget \
   wireshark-cli
