@@ -2,7 +2,10 @@
 
 OpenShift Toolbox is a container image that includes popular tools for building and troubleshooting containerized applications. It can also be used for troubleshooting issues with OpenShift/Kubernetes clusters.
 
-[Building OpenShift Toolbox](#building-openshift-toolbox)
+Before the image can be used, it must be built. Refer to [Building OpenShift Toolbox](#building-openshift-toolbox) section for instructions on how to build the image.
+
+Sample use cases are described in the sections:
+ * [Deploying OpenShift Toolbox to OpenShift cluster](#deploying-openshift-toolbox-to-openshift-cluster)
 
 ## Building OpenShift Toolbox
 
@@ -34,7 +37,9 @@ Upload the built image to a container registry:
 $ podman push openshift-toolbox:basic <registry_path>/openshift-toolbox:basic
 ```
 
-## Deploying openshift-toolbox
+## Deploying OpenShift Toolbox to OpenShift cluster
+
+### Deploying openshift-toolbox
 
 Deploy the *openshift-toolbox* on the cluster:
 
@@ -54,9 +59,9 @@ Connect to the *openshift-toolbox* container:
 $ oc rsh openshift-toolbox-<hash>
 ```
 
-## Configuring openshift-toolbox
+### Configuring openshift-toolbox
 
-### Run as privileged container
+#### Run as privileged container
 
 ```
 $ oc create serviceaccount openshift-toolbox
@@ -76,7 +81,7 @@ $ oc patch deployment openshift-toolbox \
     --patch '[{"op": "add", "path": "/spec/template/spec/containers/0/securityContext", "value": { "privileged": true }}]'
 ```
 
-### Share namespaces with the underlying node
+#### Share namespaces with the underlying node
 
 ```
 $ oc patch deployment openshift-toolbox \
@@ -96,7 +101,7 @@ $ oc patch deployment openshift-toolbox \
     --patch '[{"op": "replace", "path": "/spec/template/spec/hostIPC", "value": true}]'
 ```
 
-### Run on a specific node
+#### Run on a specific node
 
 ```
 $ oc patch deployment openshift-toolbox \
@@ -104,7 +109,7 @@ $ oc patch deployment openshift-toolbox \
     --patch '[{"op": "add", "path": "/spec/template/spec/nodeName", "value": "ip-10-0-143-77.us-west-2.compute.internal"}]'
 ```
 
-### Mount the root of the underlying node on /rootfs
+#### Mount the root of the underlying node on /rootfs
 
 ```
 $ oc set volume \
@@ -116,13 +121,13 @@ $ oc set volume \
     --mount-path /rootfs
 ```
 
-### Allow cluster-admin access to OpenShift
-
+#### Allow cluster-admin access to OpenShift
+building-openshift-toolbox
 ```
 $ oc adm policy add-cluster-role-to-user cluster-admin --serviceaccount openshift-toolbox
 ```
 
-### Attach a persistent volume
+#### Attach a persistent volume
 
 ```
 $ oc set volume \
@@ -134,7 +139,7 @@ $ oc set volume \
     --mount-path /home/toolbox
 ```
 
-## Example workloads
+### Example workloads
 
 Run Apache server:
 
