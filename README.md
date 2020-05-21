@@ -4,7 +4,7 @@ OpenShift Toolbox is a container image that includes popular tools for building 
 
 Before the image can be used, it must be built. Refer to [Building OpenShift Toolbox](#building-openshift-toolbox) section for instructions on how to build the image.
 
-Sample use cases are described in the sections:
+For more information on how to use the image, refer to sections:
 
  * [Using OpenShift Toolbox as development machine on Windows](#using-openshift-toolbox-as-a-development-machine-on-windows)
  * [Deploying OpenShift Toolbox to OpenShift cluster](#deploying-openshift-toolbox-to-openshift-cluster)
