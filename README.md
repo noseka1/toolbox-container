@@ -53,7 +53,7 @@ $ docker volume create toolbox-home-anosek
 Pull and start the toolbox container:
 
 ```
-$ docker run --network host --name toolbox --mount source=toolbox-home-anosek,target=/home/anosek <registry_path>/openshift-toolbox:full 
+$ docker run --detach --network host --name toolbox --mount source=toolbox-home-anosek,target=/home/anosek <registry_path>/openshift-toolbox:full 
 ```
 
 Start a terminal session within the container:
