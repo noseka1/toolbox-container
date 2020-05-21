@@ -42,7 +42,7 @@ $ podman push openshift-toolbox:basic <registry_path>/openshift-toolbox:basic
 
 You may encounter situations where you were handed over a corporate laptop that runs Windows. Also, you were given rather restricted permissions for what you can run on this laptop. If the laptop allows you to run Docker, you can use OpenShift Toolbox to spin up a developer environment.
 
-In the following examples, replace the username `anosek` with your own username.
+In the following code examples, replace the username `anosek` with your own username.
 
 First, create a persistent volume that will be used to back your home directory:
 
