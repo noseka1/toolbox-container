@@ -6,7 +6,7 @@ Before the image can be used, it must be built. Refer to [Building OpenShift Too
 
 Sample use cases are described in the sections:
 
- * [Using OpenShift Toolbox as development machine on Windows]
+ * [Using OpenShift Toolbox as development machine on Windows](#using-openshift-toolbox-as-a-development-machine-on-windows)
  * [Deploying OpenShift Toolbox to OpenShift cluster](#deploying-openshift-toolbox-to-openshift-cluster)
 
 ## Building OpenShift Toolbox
