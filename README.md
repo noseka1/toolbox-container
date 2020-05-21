@@ -5,6 +5,8 @@ OpenShift Toolbox is a container image that includes popular tools for building 
 Before the image can be used, it must be built. Refer to [Building OpenShift Toolbox](#building-openshift-toolbox) section for instructions on how to build the image.
 
 Sample use cases are described in the sections:
+
+ * [Using OpenShift Toolbox as development machine on Windows]
  * [Deploying OpenShift Toolbox to OpenShift cluster](#deploying-openshift-toolbox-to-openshift-cluster)
 
 ## Building OpenShift Toolbox
@@ -36,6 +38,43 @@ Upload the built image to a container registry:
 ```
 $ podman push openshift-toolbox:basic <registry_path>/openshift-toolbox:basic
 ```
+## Using OpenShift Toolbox as a development machine on Windows
+
+You may encounter situations where you were handed over a corporate laptop that runs Windows and you were given rather restricted permissions to what you can run on this laptop. If the laptop allows you to run Docker, you can use OpenShift Toolbox to spin up a developer environment.
+
+In the following examples, replace the username `anosek` with your own username.
+
+First, create a persistent volume that will be used to back your home directory:
+
+```
+$ docker volume create toolbox-home-anosek
+```
+
+Pull and start the toolbox container:
+
+```
+$ docker run --network host --name toolbox --mount source=toolbox-home-anosek,target=/home/anosek <registry_path>/openshift-toolbox:full 
+```
+
+Start a terminal session within the container:
+
+```
+$ docker exec -ti --detach-keys ctrl-e,e toolbox /bin/bash
+```
+
+The above command remaps the detach keys to ctrl-e. The default ctrl-p key combination conflicts with the terminal controls.
+
+Within the container, you can create your user and switch to it:
+
+```
+$ adduser anosek -G wheel
+$ su - anosek
+```
+
+Now you are all set. You can run `tmux` within the container to obtain additional shell windows. Alternatively, you can run the `docker exec -ti ...` command as you did before to start a new shell session.
+
+Note that if the you restart the container, you will need to issue the `adduser ...` command again. The user information is stored in the `/etc` directory which is not backed by a volume.
+
 
 ## Deploying OpenShift Toolbox to OpenShift cluster
 
