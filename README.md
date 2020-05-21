@@ -6,7 +6,7 @@ Before the image can be used, it must be built. Refer to [Building OpenShift Too
 
 For more information on how to use the image, refer to sections:
 
- * [Using OpenShift Toolbox as development machine on Windows](#using-openshift-toolbox-as-a-development-machine-on-windows)
+ * [Using OpenShift Toolbox for development on Windows](#using-openshift-toolbox-for-development-on-windows)
  * [Deploying OpenShift Toolbox to OpenShift cluster](#deploying-openshift-toolbox-to-openshift-cluster)
 
 ## Building OpenShift Toolbox
@@ -38,7 +38,7 @@ Upload the built image to a container registry:
 ```
 $ podman push openshift-toolbox:basic <registry_path>/openshift-toolbox:basic
 ```
-## Using OpenShift Toolbox as a development machine on Windows
+## Using OpenShift Toolbox for development on Windows
 
 You may encounter situations where you were handed over a corporate laptop that runs Windows and you were given rather restricted permissions to what you can run on this laptop. If the laptop allows you to run Docker, you can use OpenShift Toolbox to spin up a developer environment.
 
