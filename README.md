@@ -73,7 +73,7 @@ $ su - anosek
 
 Now you are all set. You can run `tmux` within the container to obtain additional shell windows. Alternatively, you can run the `docker exec -ti ...` command as you did before to start an additional shell session.
 
-Note that if the you restart the container, you will need to issue the `adduser ...` command again. The user information is stored in the `/etc` directory which is not backed by a volume.
+Note that if you restart the container, you will need to issue the `adduser ...` command again. The user information is stored in the `/etc` directory which is not backed by a volume.
 
 
 ## Deploying OpenShift Toolbox to OpenShift cluster
