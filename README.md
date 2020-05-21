@@ -1,5 +1,8 @@
 # OpenShift Toolbox Container Image
 
+OpenShift Toolbox is a container image that includes popular tools for building and troubleshooting containerized applications. It can also be used for troubleshooting issues with OpenShift/Kubernetes clusters.
+
+
 Build the basic container image:
 
 ```
