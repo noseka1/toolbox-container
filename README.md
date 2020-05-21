@@ -61,7 +61,7 @@ $ oc rsh openshift-toolbox-<hash>
 
 ### Configuring openshift-toolbox
 
-#### Run as privileged container
+#### Running as privileged container
 
 ```
 $ oc create serviceaccount openshift-toolbox
@@ -81,7 +81,7 @@ $ oc patch deployment openshift-toolbox \
     --patch '[{"op": "add", "path": "/spec/template/spec/containers/0/securityContext", "value": { "privileged": true }}]'
 ```
 
-#### Share namespaces with the underlying node
+#### Enabling access to the underlying node by sharing namespaces
 
 ```
 $ oc patch deployment openshift-toolbox \
@@ -101,7 +101,7 @@ $ oc patch deployment openshift-toolbox \
     --patch '[{"op": "replace", "path": "/spec/template/spec/hostIPC", "value": true}]'
 ```
 
-#### Run on a specific node
+#### Scheduling the toolbox to run on a specific node
 
 ```
 $ oc patch deployment openshift-toolbox \
@@ -109,7 +109,7 @@ $ oc patch deployment openshift-toolbox \
     --patch '[{"op": "add", "path": "/spec/template/spec/nodeName", "value": "ip-10-0-143-77.us-west-2.compute.internal"}]'
 ```
 
-#### Mount the root of the underlying node on /rootfs
+#### Mounting the root of the underlying node on /rootfs
 
 ```
 $ oc set volume \
@@ -121,13 +121,13 @@ $ oc set volume \
     --mount-path /rootfs
 ```
 
-#### Allow cluster-admin access to OpenShift
+#### Allowing cluster-admin access to OpenShift from within the toolbox
 building-openshift-toolbox
 ```
 $ oc adm policy add-cluster-role-to-user cluster-admin --serviceaccount openshift-toolbox
 ```
 
-#### Attach a persistent volume
+#### Attaching a persistent volume
 
 ```
 $ oc set volume \
