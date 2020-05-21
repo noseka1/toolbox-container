@@ -40,7 +40,7 @@ $ podman push openshift-toolbox:basic <registry_path>/openshift-toolbox:basic
 ```
 ## Using OpenShift Toolbox for development on Windows
 
-You may encounter situations where you were handed over a corporate laptop that runs Windows and you were given rather restricted permissions to what you can run on this laptop. If the laptop allows you to run Docker, you can use OpenShift Toolbox to spin up a developer environment.
+You may encounter situations where you were handed over a corporate laptop that runs Windows. Also, you were given rather restricted permissions for what you can run on this laptop. If the laptop allows you to run Docker, you can use OpenShift Toolbox to spin up a developer environment.
 
 In the following examples, replace the username `anosek` with your own username.
 
