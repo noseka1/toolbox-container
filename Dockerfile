@@ -173,3 +173,15 @@ RUN curl --location \
 RUN curl --location \
   https://github.com/arl/gitmux/releases/download/v0.5.0/gitmux_0.5.0_linux_amd64.tar.gz | \
   tar xvfz - --directory /usr/local/bin
+
+# install dive
+RUN dnf install \
+  --assumeyes \
+  --setopt install_weak_deps=False \
+  https://github.com/wagoodman/dive/releases/download/v0.9.2/dive_0.9.2_linux_amd64.rpm
+
+# install argocd
+RUN curl --location \
+  --output /usr/local/bin/argocd \
+  https://github.com/argoproj/argo-cd/releases/download/v1.5.5/argocd-linux-amd64 && \
+  chmod 755 /usr/local/bin/argocd
