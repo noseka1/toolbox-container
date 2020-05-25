@@ -97,6 +97,7 @@ RUN dnf install \
   fzf \
   podman \
   skopeo \
+  the_silver_searcher \
   tmux
 
 # install s2i
