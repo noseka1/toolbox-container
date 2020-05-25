@@ -142,7 +142,7 @@ RUN curl --location \
   tar xvfz - --directory /usr/local/bin && \
   chmod 755 /usr/local/bin/kn
 
-# install Tekton CLI
+# install tekton cli
 RUN rpm --install https://github.com/tektoncd/cli/releases/download/v0.9.0/tektoncd-cli-0.9.0_Linux-64bit.rpm
 
 # install stern
