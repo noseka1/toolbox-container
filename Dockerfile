@@ -12,7 +12,6 @@ RUN dnf install \
   dnsmasq \
   gdb \
   git \
-  highlight \
   httpd \
   haproxy \
   hostname \
@@ -32,6 +31,7 @@ RUN dnf install \
   psmisc \
   python3-gunicorn \
   python3-httpbin \
+  python3-pygments \
   socat \
   strace \
   tcpdump \
