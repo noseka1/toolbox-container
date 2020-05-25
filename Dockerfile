@@ -186,3 +186,9 @@ RUN curl --location \
   --output /usr/local/bin/argocd \
   https://github.com/argoproj/argo-cd/releases/download/v1.5.5/argocd-linux-amd64 && \
   chmod 755 /usr/local/bin/argocd
+
+# install pet
+RUN dnf install \
+  --assumeyes \
+  --setopt install_weak_deps=False \
+  https://github.com/knqyf263/pet/releases/download/v0.3.6/pet_0.3.6_linux_amd64.rpm
