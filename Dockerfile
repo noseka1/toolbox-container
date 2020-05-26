@@ -96,6 +96,7 @@ RUN dnf install \
   buildah \
   fzf \
   podman \
+  runc \
   skopeo \
   the_silver_searcher \
   tmux
