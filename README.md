@@ -59,10 +59,10 @@ $ docker run --detach --network host --name toolbox --mount source=toolbox-home-
 Start a terminal session within the container:
 
 ```
-$ docker exec -ti --detach-keys ctrl-e,e toolbox /bin/bash
+$ docker exec -ti --detach-keys ctrl-@,@ toolbox /bin/bash
 ```
 
-The above command remaps the detach keys to ctrl-e. The default ctrl-p key combination conflicts with the terminal controls.
+The above command remaps the detach keys to ctrl-@. The default ctrl-p key combination conflicts with the terminal controls.
 
 Within the container, you can create your user and switch to it:
 
