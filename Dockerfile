@@ -195,3 +195,8 @@ RUN dnf install \
   --assumeyes \
   --setopt install_weak_deps=False \
   https://github.com/knqyf263/pet/releases/download/v0.3.6/pet_0.3.6_linux_amd64.rpm
+
+# install rbac-lookup
+RUN curl --location \
+  https://github.com/FairwindsOps/rbac-lookup/releases/download/v0.5.0/rbac-lookup_0.5.0_Linux_x86_64.tar.gz | \
+  tar xvfz - --directory /usr/local/bin
