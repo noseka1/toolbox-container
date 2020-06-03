@@ -129,8 +129,8 @@ RUN curl --location \
 
 # install kustomize
 RUN curl --location \
-  --output /usr/local/bin/kustomize \
-  https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv3.2.2/kustomize_kustomize.v3.2.2_linux_amd64 && \
+  https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv3.6.1/kustomize_v3.6.1_linux_amd64.tar.gz | \
+  tar xvfz - --directory /usr/local/bin && \
   chmod 755 /usr/local/bin/kustomize
 
 # install odo
