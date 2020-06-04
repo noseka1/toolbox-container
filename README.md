@@ -102,6 +102,9 @@ $ podman exec -ti --detach-keys ctrl-@,@ toolbox /bin/bash
 
 ```
 $ adduser anosek -G wheel
+$ shopt -s dotglob
+$ cp -a /etc/skel/* /home/anosek
+$ shopt -u dotglob
 $ chown -R anosek.anosek ~anosek
 $ su - anosek
 ```
