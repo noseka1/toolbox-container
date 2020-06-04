@@ -7,6 +7,7 @@ Before the image can be used, it must be built. Refer to [Building OpenShift Too
 For more information on how to use the image, refer to sections:
 
  * [Using OpenShift Toolbox for development on Windows](#using-openshift-toolbox-for-development-on-windows)
+ * [Using OpenShift Toolbox for development on Linux](#using-openshift-toolbox-for-development-on-linux)
  * [Deploying OpenShift Toolbox to OpenShift cluster](#deploying-openshift-toolbox-to-openshift-cluster)
 
 ## Building OpenShift Toolbox
@@ -81,6 +82,34 @@ $ docker start toolbox
 
 Note that if you delete and recreate the container, you will need to issue the `adduser ...` command again. The user information is stored in the `/etc` directory which is not backed by a volume.
 
+## Using OpenShift Toolbox for development on Linux
+
+Previous section showed how to create a development container on Windows. This section shows the same use case but this time using Linux. Note that no root privileges are required to run the commands in this section.
+
+In the following code examples, replace the username `anosek` with your own username.
+
+```
+$ podman volume create toolbox-home-anosek
+```
+
+```
+$ podman run --detach --name toolbox --mount type=volume,src=toolbox-home-anosek,target=/home/anosek <registry_path>/openshift-toolbox:full 
+```
+
+```
+$ podman exec -ti --detach-keys ctrl-@,@ toolbox /bin/bash
+```
+
+```
+$ adduser anosek -G wheel
+$ su - anosek
+```
+
+If you restart the Linux machine, the container will stop. You can start it by issuing:
+
+```
+$ podman start toolbox
+```
 
 ## Deploying OpenShift Toolbox to OpenShift cluster
 
