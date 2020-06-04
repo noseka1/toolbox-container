@@ -102,6 +102,7 @@ $ podman exec -ti --detach-keys ctrl-@,@ toolbox /bin/bash
 
 ```
 $ adduser anosek -G wheel
+$ chown -R anosek.anosek ~anosek
 $ su - anosek
 ```
 
