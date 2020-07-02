@@ -9,6 +9,7 @@ RUN dnf install \
   bind-utils \
   bzip2 \
   curl \
+  diffutils \
   dnsmasq \
   gdb \
   git \
