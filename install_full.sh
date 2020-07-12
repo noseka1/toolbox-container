@@ -110,3 +110,8 @@ dnf install \
 curl --location \
   https://github.com/FairwindsOps/rbac-lookup/releases/download/v0.6.0/rbac-lookup_0.6.0_Linux_x86_64.tar.gz | \
   tar xvfz - --directory /usr/local/bin
+
+# install kubectl-tree
+curl --location \
+  https://github.com/ahmetb/kubectl-tree/releases/download/v0.4.0/kubectl-tree_v0.4.0_linux_amd64.tar.gz | \
+  tar xvfz - --directory /usr/local/bin
