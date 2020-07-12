@@ -10,7 +10,7 @@ For more information on how to use the image, refer to sections:
  * [Using OpenShift Toolbox for development on Linux](#using-openshift-toolbox-for-development-on-linux)
  * [Deploying OpenShift Toolbox to OpenShift cluster](#deploying-openshift-toolbox-to-openshift-cluster)
 
-## Building OpenShift Toolbox
+## Building OpenShift Toolbox Container Image
 
 OpenShift Toolbox comes in two sizes: basic and full. See the Dockerfile for the list of included tools in each of the sizes.
 
