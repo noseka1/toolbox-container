@@ -22,7 +22,7 @@ curl --location \
 # install noobaa
 curl --location \
   --output /usr/local/bin/noobaa \
-  https://github.com/noobaa/noobaa-operator/releases/download/v2.1.1/noobaa-linux-v2.1.1 && \
+  https://github.com/noobaa/noobaa-operator/releases/download/v2.2.0/noobaa-linux-v2.2.0 && \
   chmod 755 /usr/local/bin/noobaa
 
 # install helm
@@ -34,7 +34,7 @@ curl --location \
 # install operator sdk
 curl --location \
   --output /usr/local/bin/operator-sdk \
-  https://github.com/operator-framework/operator-sdk/releases/download/v0.17.0/operator-sdk-v0.17.0-x86_64-linux-gnu && \
+  https://github.com/operator-framework/operator-sdk/releases/download/v0.19.0/operator-sdk-v0.19.0-x86_64-linux-gnu && \
   chmod 755 /usr/local/bin/operator-sdk
 
 # install kustomize
@@ -51,12 +51,12 @@ curl --location \
 
 # install kn (serverless client)
 curl --location \
-  https://mirror.openshift.com/pub/openshift-v4/clients/serverless/latest/kn-linux-amd64-0.13.2.tar.gz | \
+  https://mirror.openshift.com/pub/openshift-v4/clients/serverless/latest/kn-linux-amd64-0.15.2.tar.gz | \
   tar xvfz - --directory /usr/local/bin && \
   chmod 755 /usr/local/bin/kn
 
 # install tekton cli
-rpm --install https://github.com/tektoncd/cli/releases/download/v0.9.0/tektoncd-cli-0.9.0_Linux-64bit.rpm
+rpm --install https://github.com/tektoncd/cli/releases/download/v0.10.0/tektoncd-cli-0.10.0_Linux-64bit.rpm
 
 # install stern
 curl --location \
@@ -67,25 +67,25 @@ curl --location \
 # install kubens and kubectx
 curl --location \
   --output /usr/local/bin/kubens \
-  https://github.com/ahmetb/kubectx/releases/download/v0.9.0/kubens && \
+  https://github.com/ahmetb/kubectx/releases/download/v0.9.1/kubens && \
   chmod 755 /usr/local/bin/kubens && \
   curl --location \
   --output /usr/local/bin/kubectx \
-  https://github.com/ahmetb/kubectx/releases/download/v0.9.0/kubectx && \
+  https://github.com/ahmetb/kubectx/releases/download/v0.9.1/kubectx && \
   chmod 755 /usr/local/bin/kubectx
 
 # install fortio
-rpm --install https://github.com/fortio/fortio/releases/download/v1.3.1/fortio-1.3.1-1.x86_64.rpm
+rpm --install https://github.com/fortio/fortio/releases/download/v1.4.2/fortio-1.4.2-1.x86_64.rpm
 
 # install lazygit
 curl --location \
-  https://github.com/jesseduffield/lazygit/releases/download/v0.20.2/lazygit_0.20.2_Linux_x86_64.tar.gz | \
+  https://github.com/jesseduffield/lazygit/releases/download/v0.20.6/lazygit_0.20.6_Linux_x86_64.tar.gz | \
   tar xvfz - --directory /usr/local/bin && \
   chmod 755 /usr/local/bin/lazygit
 
 # install gitmux
 curl --location \
-  https://github.com/arl/gitmux/releases/download/v0.5.0/gitmux_0.5.0_linux_amd64.tar.gz | \
+  https://github.com/arl/gitmux/releases/download/v0.6.0/gitmux_0.6.0_linux_amd64.tar.gz | \
   tar xvfz - --directory /usr/local/bin
 
 # install dive
@@ -97,7 +97,7 @@ dnf install \
 # install argocd
 curl --location \
   --output /usr/local/bin/argocd \
-  https://github.com/argoproj/argo-cd/releases/download/v1.5.5/argocd-linux-amd64 && \
+  https://github.com/argoproj/argo-cd/releases/download/v1.6.1/argocd-linux-amd64 && \
   chmod 755 /usr/local/bin/argocd
 
 # install pet
@@ -108,5 +108,5 @@ dnf install \
 
 # install rbac-lookup
 curl --location \
-  https://github.com/FairwindsOps/rbac-lookup/releases/download/v0.5.0/rbac-lookup_0.5.0_Linux_x86_64.tar.gz | \
+  https://github.com/FairwindsOps/rbac-lookup/releases/download/v0.6.0/rbac-lookup_0.6.0_Linux_x86_64.tar.gz | \
   tar xvfz - --directory /usr/local/bin
