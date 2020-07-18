@@ -17,7 +17,8 @@ dnf install \
 curl --location \
   https://github.com/openshift/source-to-image/releases/download/v1.3.0/source-to-image-v1.3.0-eed2850f-linux-amd64.tar.gz | \
   tar xvfz - --directory /usr/local/bin && \
-  chmod 755 /usr/local/bin/s2i
+  chmod 755 /usr/local/bin/s2i \
+  chmod 755 /usr/local/bin
 
 # install noobaa
 curl --location \
