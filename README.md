@@ -233,9 +233,13 @@ $ python3 -m http.server
 
 ### Run httpbin
 
+Serve plain HTTP:
+
 ```
 $ gunicorn-3 --bind 0.0.0.0:80 --access-logfile - httpbin:app
 ```
+
+Serve HTTPS:
 
 ```
 $ openssl req -newkey rsa:2048 -nodes -keyout httpbin.key -x509 -out httpbin.crt
@@ -271,10 +275,13 @@ $ /usr/sbin/rpc.nfsd -G 10 -N 2 -V 3
 ```
 $ /usr/sbin/rpc.statd --no-notify
 ```
+Configure local directories to export through NFS:
 
 ```
 $ echo '/home/toolbox *(rw,async,no_root_squash)' > /etc/exports.d/toolbox.exports
 ```
+
+Check that the exports are available:
 
 ```
 $ showmount -e
