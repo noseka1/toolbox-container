@@ -217,21 +217,21 @@ $ oc set volume \
     --mount-path /home/toolbox
 ```
 
-### Example workloads
+## Example workloads
 
-Run Apache server:
+### Run Apache server
 
 ```
 $ apachectl -D FOREGROUND
 ```
 
-Run Python SimpleHTTPServer:
+### Run Python SimpleHTTPServer
 
 ```
 $ python3 -m http.server
 ```
 
-Run httpbin:
+### Run httpbin
 
 ```
 $ gunicorn-3 --bind 0.0.0.0:80 --access-logfile - httpbin:app
@@ -244,3 +244,41 @@ $ openssl req -newkey rsa:2048 -nodes -keyout httpbin.key -x509 -out httpbin.crt
 ```
 $ gunicorn-3 --bind 0.0.0.0:443 --access-logfile - --keyfile httpbin.key --certfile httpbin.crt  httpbin:app
 ```
+
+### Run NFS server
+
+```
+$ dnf install nfs-utils -y
+```
+
+```
+$ /usr/sbin/rpcbind -w
+```
+
+```
+$ mount -t nfsd nfds /proc/fs/nfsd
+```
+Disable NFSv2 and enable NFSv3:
+
+```
+$ /usr/sbin/rpc.mountd -N 2 -V 3
+```
+
+```
+$ /usr/sbin/rpc.nfsd -G 10 -N 2 -V 3
+```
+
+```
+$ /usr/sbin/rpc.statd --no-notify
+```
+
+```
+$ echo '/home/toolbox *(rw,async,no_root_squash)' > /etc/exports.d/toolbox.exports
+```
+
+```
+$ showmount -e
+Export list for openshift-toolbox-7c7dc58758-pwkfw:
+/home/toolbox *
+```
+
