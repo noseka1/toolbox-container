@@ -200,7 +200,7 @@ $ oc set volume \
 ```
 
 #### Allowing cluster-admin access to OpenShift from within the toolbox
-building-openshift-toolbox
+
 ```
 $ oc adm policy add-cluster-role-to-user cluster-admin --serviceaccount openshift-toolbox
 ```
