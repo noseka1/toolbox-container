@@ -158,7 +158,31 @@ $ oc patch deployment openshift-toolbox \
     --type json \
     --patch '[{"op": "add", "path": "/spec/template/spec/containers/0/securityContext", "value": { "privileged": true }}]'
 ```
+#### Attaching a persistent volume
 
+```
+$ oc set volume \
+    deployment/openshift-toolbox \
+    --add \
+    --type persistentVolumeClaim \
+    --claim-name openshift-toolbox \
+    --claim-size 50G \
+    --mount-path /home/toolbox
+```
+
+#### Allowing cluster-admin access to OpenShift from within the toolbox
+
+```
+$ oc adm policy add-cluster-role-to-user cluster-admin --serviceaccount openshift-toolbox
+```
+
+#### Scheduling the toolbox to run on a specific node
+
+```
+$ oc patch deployment openshift-toolbox \
+    --type json \
+    --patch '[{"op": "add", "path": "/spec/template/spec/nodeName", "value": "ip-10-0-143-77.us-west-2.compute.internal"}]'
+```
 #### Enabling access to the underlying node by sharing namespaces
 
 ```
@@ -179,14 +203,6 @@ $ oc patch deployment openshift-toolbox \
     --patch '[{"op": "replace", "path": "/spec/template/spec/hostIPC", "value": true}]'
 ```
 
-#### Scheduling the toolbox to run on a specific node
-
-```
-$ oc patch deployment openshift-toolbox \
-    --type json \
-    --patch '[{"op": "add", "path": "/spec/template/spec/nodeName", "value": "ip-10-0-143-77.us-west-2.compute.internal"}]'
-```
-
 #### Mounting the root of the underlying node on /rootfs
 
 ```
@@ -197,24 +213,6 @@ $ oc set volume \
     --type hostPath \
     --path / \
     --mount-path /rootfs
-```
-
-#### Allowing cluster-admin access to OpenShift from within the toolbox
-
-```
-$ oc adm policy add-cluster-role-to-user cluster-admin --serviceaccount openshift-toolbox
-```
-
-#### Attaching a persistent volume
-
-```
-$ oc set volume \
-    deployment/openshift-toolbox \
-    --add \
-    --type persistentVolumeClaim \
-    --claim-name openshift-toolbox \
-    --claim-size 50G \
-    --mount-path /home/toolbox
 ```
 
 ## Example workloads
