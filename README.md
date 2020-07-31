@@ -290,3 +290,8 @@ Export list for openshift-toolbox-7c7dc58758-pwkfw:
 /home/toolbox *
 ```
 
+Create the respective service:
+
+```
+$ oc expose deploy openshift-toolbox --port 2049
+```
