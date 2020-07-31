@@ -278,6 +278,9 @@ Configure local directories to export through NFS:
 ```
 $ echo '/home/toolbox *(rw,async,no_root_squash)' > /etc/exports.d/toolbox.exports
 ```
+```
+$ exportfs -a
+```
 
 Check that the exports are available:
 
