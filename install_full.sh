@@ -8,6 +8,8 @@ dnf install \
   buildah \
   fzf \
   podman \
+  python3-kubernetes \
+  python3-openshift \
   runc \
   skopeo \
   the_silver_searcher \
