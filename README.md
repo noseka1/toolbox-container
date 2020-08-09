@@ -289,3 +289,11 @@ $ showmount -e
 Export list for openshift-toolbox-7c7dc58758-pwkfw:
 /home/toolbox *
 ```
+
+### Run hey
+
+Load test a service:
+
+```
+$ hey -c 50 -z 10s <service_url>
+```
