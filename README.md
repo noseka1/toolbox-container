@@ -37,7 +37,7 @@ $ podman build \
 Upload the built image to a container registry:
 
 ```
-$ podman push openshift-toolbox:basic <registry_path>/openshift-toolbox:basic
+$ podman push openshift-toolbox:basic quay.io/noseka1/openshift-toolbox:basic
 ```
 ## Using OpenShift Toolbox for development on Windows
 
@@ -54,7 +54,7 @@ $ docker volume create toolbox-home-anosek
 Pull and start the toolbox container:
 
 ```
-$ docker run --detach --network host --name toolbox --mount source=toolbox-home-anosek,target=/home/anosek <registry_path>/openshift-toolbox:full 
+$ docker run --detach --network host --name toolbox --mount source=toolbox-home-anosek,target=/home/anosek quay.io/noseka1/openshift-toolbox:full 
 ```
 
 Start a terminal session within the container:
@@ -93,7 +93,7 @@ $ podman volume create toolbox-home-anosek
 ```
 
 ```
-$ podman run --detach --name toolbox --mount type=volume,src=toolbox-home-anosek,target=/home/anosek <registry_path>/openshift-toolbox:full 
+$ podman run --detach --name toolbox --mount type=volume,src=toolbox-home-anosek,target=/home/anosek quay.io/noseka1/openshift-toolbox:full 
 ```
 
 ```
@@ -122,7 +122,7 @@ $ podman start toolbox
 Deploy the *openshift-toolbox* on the cluster:
 
 ```
-$ oc create deployment openshift-toolbox --image <registry_path>/openshift-toolbox:basic
+$ oc create deployment openshift-toolbox --image quay.io/noseka1/openshift-toolbox:basic
 ```
 
 Find out the pod name from the output of:
