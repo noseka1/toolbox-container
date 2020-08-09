@@ -124,3 +124,9 @@ curl --location \
   https://github.com/corneliusweig/ketall/releases/download/v1.3.2/ketall-amd64-linux.tar.gz | \
   tar xvfz - --directory /usr/local/bin &&
   mv /usr/local/bin/ketall-amd64-linux /usr/local/bin/kubectl-get_all
+
+# install hey
+curl --location \
+  --output /usr/local/bin/hey \
+  https://storage.googleapis.com/hey-release/hey_linux_amd64 && \
+  chmod 755 /usr/local/bin/hey
