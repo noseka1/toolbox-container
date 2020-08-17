@@ -203,16 +203,16 @@ $ oc patch deployment openshift-toolbox \
     --patch '[{"op": "replace", "path": "/spec/template/spec/hostIPC", "value": true}]'
 ```
 
-#### Mounting the root of the underlying node on /rootfs
+#### Mounting the root of the underlying node on /host
 
 ```
 $ oc set volume \
     deployment/openshift-toolbox \
     --add \
-    --name rootfs \
+    --name host \
     --type hostPath \
     --path / \
-    --mount-path /rootfs
+    --mount-path /host
 ```
 
 ## Example workloads
