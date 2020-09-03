@@ -25,7 +25,7 @@ curl --location \
 # install noobaa
 curl --location \
   --output /usr/local/bin/noobaa \
-  https://github.com/noobaa/noobaa-operator/releases/download/v2.2.0/noobaa-linux-v2.2.0 && \
+  https://github.com/noobaa/noobaa-operator/releases/download/v2.3.0/noobaa-linux-v2.3.0 && \
   chmod 755 /usr/local/bin/noobaa
 
 # install helm
@@ -37,12 +37,12 @@ curl --location \
 # install operator sdk
 curl --location \
   --output /usr/local/bin/operator-sdk \
-  https://github.com/operator-framework/operator-sdk/releases/download/v0.19.0/operator-sdk-v0.19.0-x86_64-linux-gnu && \
+  https://github.com/operator-framework/operator-sdk/releases/download/v0.19.3/operator-sdk-v0.19.3-x86_64-linux-gnu && \
   chmod 755 /usr/local/bin/operator-sdk
 
 # install kustomize
 curl --location \
-  https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv3.8.0/kustomize_v3.8.0_linux_amd64.tar.gz | \
+  https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv3.8.2/kustomize_v3.8.2_linux_amd64.tar.gz | \
   tar xvfz - --directory /usr/local/bin && \
   chmod 755 /usr/local/bin/kustomize
 
@@ -59,7 +59,7 @@ curl --location \
   chmod 755 /usr/local/bin/kn
 
 # install tekton cli
-rpm --install https://github.com/tektoncd/cli/releases/download/v0.10.0/tektoncd-cli-0.10.0_Linux-64bit.rpm
+rpm --install https://github.com/tektoncd/cli/releases/download/v0.12.0/tektoncd-cli-0.12.0_Linux-64bit.rpm
 
 # install stern
 curl --location \
@@ -78,17 +78,17 @@ curl --location \
   chmod 755 /usr/local/bin/kubectx
 
 # install fortio
-rpm --install https://github.com/fortio/fortio/releases/download/v1.4.2/fortio-1.4.2-1.x86_64.rpm
+rpm --install https://github.com/fortio/fortio/releases/download/v1.6.8/fortio-1.6.8-1.x86_64.rpm
 
 # install lazygit
 curl --location \
-  https://github.com/jesseduffield/lazygit/releases/download/v0.20.6/lazygit_0.20.6_Linux_x86_64.tar.gz | \
+  https://github.com/jesseduffield/lazygit/releases/download/v0.22.1/lazygit_0.22.1_Linux_x86_64.tar.gz | \
   tar xvfz - --directory /usr/local/bin && \
   chmod 755 /usr/local/bin/lazygit
 
 # install gitmux
 curl --location \
-  https://github.com/arl/gitmux/releases/download/v0.6.0/gitmux_0.6.0_linux_amd64.tar.gz | \
+  https://github.com/arl/gitmux/releases/download/v0.7.4/gitmux_0.7.4_linux_amd64.tar.gz | \
   tar xvfz - --directory /usr/local/bin
 
 # install dive
@@ -100,7 +100,7 @@ dnf install \
 # install argocd
 curl --location \
   --output /usr/local/bin/argocd \
-  https://github.com/argoproj/argo-cd/releases/download/v1.6.1/argocd-linux-amd64 && \
+  https://github.com/argoproj/argo-cd/releases/download/v1.7.3/argocd-linux-amd64 && \
   chmod 755 /usr/local/bin/argocd
 
 # install pet

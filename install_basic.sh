@@ -46,10 +46,10 @@ curl --location \
   oc completion bash > /etc/bash_completion.d/oc
 
 # install etcd client
-wget https://github.com/etcd-io/etcd/releases/download/v3.4.9/etcd-v3.4.9-linux-amd64.tar.gz && \
-  tar xfz etcd-v3.4.9-linux-amd64.tar.gz --no-same-owner && \
-  cp etcd-v3.4.9-linux-amd64/etcdctl /usr/local/bin && \
-  rm -rf etcd-v3.4.9-linux-amd64*
+wget https://github.com/etcd-io/etcd/releases/download/v3.4.12/etcd-v3.4.12-linux-amd64.tar.gz && \
+  tar xfz etcd-v3.4.12-linux-amd64.tar.gz --no-same-owner && \
+  cp etcd-v3.4.12-linux-amd64/etcdctl /usr/local/bin && \
+  rm -rf etcd-v3.4.12-linux-amd64*
 
 # install fluentd
 dnf install \
