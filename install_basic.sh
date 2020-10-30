@@ -8,6 +8,7 @@ dnf install \
   curl \
   diffutils \
   dnsmasq \
+  fd-find \
   gdb \
   git \
   httpd \
