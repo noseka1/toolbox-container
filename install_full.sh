@@ -7,6 +7,7 @@ dnf install \
   awscli \
   buildah \
   fzf \
+  golang \
   podman \
   python3-kubernetes \
   python3-openshift \
@@ -14,6 +15,10 @@ dnf install \
   skopeo \
   the_silver_searcher \
   tmux
+
+# install delve (Golang debugger)
+go get github.com/go-delve/delve/cmd/dlv
+ln /root/go/bin/dlv /usr/local/bin
 
 # install s2i
 curl --location \
