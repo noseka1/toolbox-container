@@ -46,24 +46,6 @@ curl --location \
   kubectl completion bash > /etc/bash_completion.d/kubectl && \
   oc completion bash > /etc/bash_completion.d/oc
 
-# install etcd client
-wget https://github.com/etcd-io/etcd/releases/download/v3.4.12/etcd-v3.4.12-linux-amd64.tar.gz && \
-  tar xfz etcd-v3.4.12-linux-amd64.tar.gz --no-same-owner && \
-  cp etcd-v3.4.12-linux-amd64/etcdctl /usr/local/bin && \
-  rm -rf etcd-v3.4.12-linux-amd64*
-
-# install fluentd
-dnf install \
-  --assumeyes \
-  --setopt install_weak_deps=False \
-  ruby-devel \
-  gcc \
-  gem \
-  redhat-rpm-config \
-  make && \
-  gem install json --version 2.3.0 && \
-  gem install fluentd --version 1.10.1
-
 # install termshark
 curl --location \
   https://github.com/gcla/termshark/releases/download/v2.1.1/termshark_2.1.1_linux_x64.tar.gz | \

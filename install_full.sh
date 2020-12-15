@@ -16,6 +16,24 @@ dnf install \
   the_silver_searcher \
   tmux
 
+# install etcd client
+wget https://github.com/etcd-io/etcd/releases/download/v3.4.12/etcd-v3.4.12-linux-amd64.tar.gz && \
+  tar xfz etcd-v3.4.12-linux-amd64.tar.gz --no-same-owner && \
+  cp etcd-v3.4.12-linux-amd64/etcdctl /usr/local/bin && \
+  rm -rf etcd-v3.4.12-linux-amd64*
+
+# install fluentd
+dnf install \
+  --assumeyes \
+  --setopt install_weak_deps=False \
+  ruby-devel \
+  gcc \
+  gem \
+  redhat-rpm-config \
+  make && \
+  gem install json --version 2.3.0 && \
+  gem install fluentd --version 1.10.1
+
 # install delve (Golang debugger)
 go get github.com/go-delve/delve/cmd/dlv
 ln /root/go/bin/dlv /usr/local/bin
