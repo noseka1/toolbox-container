@@ -59,7 +59,7 @@ curl --location \
 
 # install kn (serverless client)
 curl --location \
-  https://mirror.openshift.com/pub/openshift-v4/clients/serverless/latest/kn-linux-amd64-0.15.2.tar.gz | \
+  https://mirror.openshift.com/pub/openshift-v4/clients/serverless/latest/kn-linux-amd64-0.17.3.tar.gz | \
   tar xvfz - --directory /usr/local/bin && \
   chmod 755 /usr/local/bin/kn
 
