@@ -2,7 +2,7 @@
 
 OpenShift Toolbox is a container image that includes popular tools for building and troubleshooting containerized applications. It can also be used for troubleshooting issues with OpenShift/Kubernetes clusters.
 
-Before the image can be used, it must be built. Refer to [Building OpenShift Toolbox](#building-openshift-toolbox) section for instructions on how to build the image.
+Before the image can be used, it must be built. Refer to [Building OpenShift Toolbox](#building-openshift-toolbox-container-image) section for instructions on how to build the image.
 
 For more information on how to use the image, refer to sections:
 
