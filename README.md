@@ -8,6 +8,7 @@ For more information on how to use the image, refer to sections:
 
  * [Using OpenShift Toolbox for development on Windows](#using-openshift-toolbox-for-development-on-windows)
  * [Using OpenShift Toolbox for development on Linux](#using-openshift-toolbox-for-development-on-linux)
+ * [Initializing OpenShift Toolbox for development](#initializing-openShift-toolbox-for-development)
  * [Deploying OpenShift Toolbox to OpenShift cluster](#deploying-openshift-toolbox-to-openshift-cluster)
 
 ## Building OpenShift Toolbox container image
@@ -100,6 +101,16 @@ $ podman run --detach --name toolbox --mount type=volume,src=toolbox-home-anosek
 $ podman exec -ti --detach-keys ctrl-@,@ toolbox /bin/bash
 ```
 
+If you restart the Linux machine, the container will stop. You can start it by issuing:
+
+```
+$ podman start toolbox
+```
+
+## Initializing OpenShift Toolbox for development
+
+When attached to the toolbox container, you can create your Linux user like this:
+
 ```
 $ adduser anosek -G wheel
 $ shopt -s dotglob
@@ -107,12 +118,6 @@ $ cp -a /etc/skel/* /home/anosek
 $ shopt -u dotglob
 $ chown -R anosek.anosek ~anosek
 $ su - anosek
-```
-
-If you restart the Linux machine, the container will stop. You can start it by issuing:
-
-```
-$ podman start toolbox
 ```
 
 ## Deploying OpenShift Toolbox to OpenShift cluster
