@@ -65,7 +65,7 @@ curl --location \
 
 # install kustomize
 curl --location \
-  https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv3.8.2/kustomize_v3.8.2_linux_amd64.tar.gz | \
+  https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv3.8.8/kustomize_v3.8.8_linux_amd64.tar.gz | \
   tar xvfz - --directory /usr/local/bin && \
   chmod 755 /usr/local/bin/kustomize
 
