@@ -13,7 +13,7 @@ dnf install \
   python3-openshift \
   runc \
   skopeo \
-  the_silver_searcher \
+  ripgrep \
   tmux
 
 # install etcd client
