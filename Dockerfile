@@ -1,4 +1,4 @@
-FROM fedora:latest as basic
+FROM docker.io/fedora:latest as basic
 
 ARG OPENSHIFT_TOOLBOX_COMMIT=unspecified
 ENV OPENSHIFT_TOOLBOX_COMMIT $OPENSHIFT_TOOLBOX_COMMIT
