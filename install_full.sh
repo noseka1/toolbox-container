@@ -16,6 +16,13 @@ dnf install \
   ripgrep \
   tmux
 
+# install oc and kubectl
+curl --location \
+  https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/openshift-client-linux.tar.gz | \
+  tar xvfz - --directory /usr/local/bin && \
+  kubectl completion bash > /etc/bash_completion.d/kubectl && \
+  oc completion bash > /etc/bash_completion.d/oc
+
 # install etcd client
 wget https://github.com/etcd-io/etcd/releases/download/v3.4.12/etcd-v3.4.12-linux-amd64.tar.gz && \
   tar xfz etcd-v3.4.12-linux-amd64.tar.gz --no-same-owner && \

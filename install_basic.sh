@@ -39,13 +39,6 @@ dnf install \
   wget \
   wireshark-cli
 
-# install oc and kubectl
-curl --location \
-  https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/openshift-client-linux.tar.gz | \
-  tar xvfz - --directory /usr/local/bin && \
-  kubectl completion bash > /etc/bash_completion.d/kubectl && \
-  oc completion bash > /etc/bash_completion.d/oc
-
 # install termshark
 curl --location \
   https://github.com/gcla/termshark/releases/download/v2.1.1/termshark_2.1.1_linux_x64.tar.gz | \
