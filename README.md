@@ -35,11 +35,12 @@ $ podman build \
   .
 ```
 
-Upload the built image to a container registry:
+Upload the built image to a container registry (replace the target regitry with your location):
 
 ```
 $ podman push openshift-toolbox:basic quay.io/noseka1/openshift-toolbox:basic
 ```
+
 ## Using OpenShift Toolbox for development on Windows
 
 You may encounter situations where you were handed over a corporate machine that runs Windows. Also, you were given rather restricted permissions for what you can run on this machine. If the Windows machine allows you to run Docker, you can use OpenShift Toolbox to spin up a development environment.
