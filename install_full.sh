@@ -155,6 +155,11 @@ curl --location \
   tar xvfz - --directory /usr/local/bin &&
   mv /usr/local/bin/ketall-amd64-linux /usr/local/bin/kubectl-get-all
 
+# install kubectl-neat
+curl --location \
+  https://github.com/itaysk/kubectl-neat/releases/download/v2.0.1/kubectl-neat_linux.tar.gz | \
+  tar xvfz - --directory /usr/local/bin
+
 # install hey
 curl --location \
   --output /usr/local/bin/hey \
