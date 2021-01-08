@@ -149,11 +149,11 @@ curl --location \
   https://github.com/ahmetb/kubectl-tree/releases/download/v0.4.0/kubectl-tree_v0.4.0_linux_amd64.tar.gz | \
   tar xvfz - --directory /usr/local/bin
 
-# install ketall
+# install ketall aka kubectl-get-all
 curl --location \
   https://github.com/corneliusweig/ketall/releases/download/v1.3.2/ketall-amd64-linux.tar.gz | \
   tar xvfz - --directory /usr/local/bin &&
-  mv /usr/local/bin/ketall-amd64-linux /usr/local/bin/kubectl-get_all
+  mv /usr/local/bin/ketall-amd64-linux /usr/local/bin/kubectl-get-all
 
 # install hey
 curl --location \
