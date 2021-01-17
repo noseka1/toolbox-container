@@ -26,6 +26,7 @@ dnf install \
   man-db \
   net-tools \
   nmap-ncat \
+  openssl \
   patch \
   procps-ng \
   psmisc \
