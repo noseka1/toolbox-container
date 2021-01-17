@@ -240,7 +240,7 @@ $ python3 -m http.server
 Serve plain HTTP:
 
 ```
-$ gunicorn-3 --bind 0.0.0.0:80 --access-logfile - httpbin:app
+$ gunicorn-3 --bind 0.0.0.0:8080 --access-logfile - httpbin:app
 ```
 
 Serve HTTPS:
@@ -250,7 +250,7 @@ $ openssl req -newkey rsa:2048 -nodes -keyout httpbin.key -x509 -out httpbin.crt
 ```
 
 ```
-$ gunicorn-3 --bind 0.0.0.0:443 --access-logfile - --keyfile httpbin.key --certfile httpbin.crt  httpbin:app
+$ gunicorn-3 --bind 0.0.0.0:8443 --access-logfile - --keyfile httpbin.key --certfile httpbin.crt  httpbin:app
 ```
 
 ### Run NFS server
