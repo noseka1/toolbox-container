@@ -9,6 +9,7 @@ dnf install \
   diffutils \
   dnsmasq \
   fd-find \
+  findutils \
   gdb \
   git \
   httpd \
