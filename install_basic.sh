@@ -43,5 +43,5 @@ dnf install \
 
 # install termshark
 curl --location \
-  https://github.com/gcla/termshark/releases/download/v2.1.1/termshark_2.1.1_linux_x64.tar.gz | \
-  tar xvfz - --strip-components=1 --directory /usr/local/bin termshark_2.1.1_linux_x64/termshark
+  https://github.com/gcla/termshark/releases/download/v2.2.0/termshark_2.2.0_linux_x64.tar.gz | \
+  tar xvfz - --strip-components=1 --directory /usr/local/bin termshark_2.2.0_linux_x64/termshark
