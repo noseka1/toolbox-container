@@ -16,6 +16,11 @@ dnf install \
   ripgrep \
   tmux
 
+# install termshark
+curl --location \
+  https://github.com/gcla/termshark/releases/download/v2.2.0/termshark_2.2.0_linux_x64.tar.gz | \
+  tar xvfz - --strip-components=1 --directory /usr/local/bin termshark_2.2.0_linux_x64/termshark
+
 # install oc and kubectl
 curl --location \
   https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/openshift-client-linux.tar.gz | \
