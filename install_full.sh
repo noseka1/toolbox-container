@@ -28,19 +28,19 @@ dnf install \
   gem install json --version 2.3.0 && \
   gem install fluentd --version 1.10.1
 
+INSTALL_DIR=/usr/local/bin
+
 function get_latest() {
   TAG=$(curl https://api.github.com/repos/$REPO/releases | jq --raw-output '.[0].tag_name')
   VER=${TAG#v}
 }
 
-INSTALL_DIR=/usr/local/bin
-
 # install termshark
 REPO=gcla/termshark
 get_latest $REPO
 curl --location \
-  https://github.com/$REPO/releases/download/$TAG/termshark_$VER_linux_x64.tar.gz | \
-  tar xvfz - --strip-components=1 --directory $INSTALL_DIR termshark_$VER_linux_x64/termshark
+  https://github.com/$REPO/releases/download/$TAG/termshark_${VER}_linux_x64.tar.gz | \
+  tar xvfz - --strip-components=1 --directory $INSTALL_DIR termshark_${VER}_linux_x64/termshark
 
 # install oc and kubectl
 curl --location \
@@ -62,10 +62,8 @@ go get github.com/go-delve/delve/cmd/dlv
 ln /root/go/bin/dlv $INSTALL_DIR
 
 # install s2i
-REPO=openshift/source-to-image
-get_latest $REPO
 curl --location \
-  https://github.com/$REPO/releases/download/$TAG/source-to-image-$TAG-eed2850f-linux-amd64.tar.gz | \
+  https://github.com/openshift/source-to-image/releases/download/v1.3.1/source-to-image-v1.3.1-a5a77147-linux-amd64.tar.gz | \
   tar xvfz - --directory $INSTALL_DIR && \
   chmod 755 $INSTALL_DIR/s2i \
   chmod 755 $INSTALL_DIR
@@ -94,9 +92,10 @@ curl --location \
 
 # install kustomize
 REPO=kubernetes-sigs/kustomize
-get_latest $REPO
+TAG=v3.9.2
+VER=3.9.2
 curl --location \
-  https://github.com/$REPO/releases/download/kustomize%2F$TAG/kustomize_${TAG}_linux_amd64.tar.gz | \
+  https://github.com/$REPO/releases/download/kustomize/$TAG/kustomize_${TAG}_linux_amd64.tar.gz | \
   tar xvfz - --directory $INSTALL_DIR && \
   chmod 755 $INSTALL_DIR/kustomize
 
