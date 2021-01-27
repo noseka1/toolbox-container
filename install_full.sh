@@ -161,7 +161,7 @@ REPO=wagoodman/dive
 get_latest $REPO
 curl --location \
   https://github.com/$REPO/releases/download/$TAG/dive_${VER}_linux_amd64.tar.gz | \
-  tar xvfz - dive --directory $INSTALL_DIR
+  tar xvfz - --directory $INSTALL_DIR
 
 # install argocd
 REPO=argoproj/argo-cd
@@ -176,7 +176,7 @@ REPO=knqyf263/pet
 get_latest $REPO
 curl --location \
   https://github.com/$REPO/releases/download/$TAG/pet_${VER}_linux_amd64.tar.gz | \
-  tar xvfz - pet --directory $INSTALL_DIR
+  tar xvfz - --directory $INSTALL_DIR
 
 # install rbac-lookup
 REPO=FairwindsOps/rbac-lookup
