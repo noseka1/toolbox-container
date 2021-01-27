@@ -16,24 +16,6 @@ dnf install \
   ripgrep \
   tmux
 
-# install termshark
-curl --location \
-  https://github.com/gcla/termshark/releases/download/v2.2.0/termshark_2.2.0_linux_x64.tar.gz | \
-  tar xvfz - --strip-components=1 --directory /usr/local/bin termshark_2.2.0_linux_x64/termshark
-
-# install oc and kubectl
-curl --location \
-  https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/openshift-client-linux.tar.gz | \
-  tar xvfz - --directory /usr/local/bin && \
-  kubectl completion bash > /etc/bash_completion.d/kubectl && \
-  oc completion bash > /etc/bash_completion.d/oc
-
-# install etcd client
-wget https://github.com/etcd-io/etcd/releases/download/v3.4.12/etcd-v3.4.12-linux-amd64.tar.gz && \
-  tar xfz etcd-v3.4.12-linux-amd64.tar.gz --no-same-owner && \
-  cp etcd-v3.4.12-linux-amd64/etcdctl /usr/local/bin && \
-  rm -rf etcd-v3.4.12-linux-amd64*
-
 # install fluentd
 dnf install \
   --assumeyes \
@@ -46,127 +28,190 @@ dnf install \
   gem install json --version 2.3.0 && \
   gem install fluentd --version 1.10.1
 
+function get_latest() {
+  TAG=$(curl https://api.github.com/repos/$REPO/releases | jq --raw-output '.[0].tag_name')
+  VER=${TAG#v}
+}
+
+INSTALL_DIR=/usr/local/bin
+
+# install termshark
+REPO=gcla/termshark
+get_latest $REPO
+curl --location \
+  https://github.com/$REPO/releases/download/$TAG/termshark_$VER_linux_x64.tar.gz | \
+  tar xvfz - --strip-components=1 --directory $INSTALL_DIR termshark_$VER_linux_x64/termshark
+
+# install oc and kubectl
+curl --location \
+  https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/openshift-client-linux.tar.gz | \
+  tar xvfz - --directory $INSTALL_DIR && \
+  kubectl completion bash > /etc/bash_completion.d/kubectl && \
+  oc completion bash > /etc/bash_completion.d/oc
+
+# install etcd client
+REPO=etcd-io/etcd
+get_latest $REPO
+wget https://github.com/$REPO/releases/download/$TAG/etcd-$TAG-linux-amd64.tar.gz && \
+  tar xfz etcd-$TAG-linux-amd64.tar.gz --no-same-owner && \
+  cp etcd-$TAG-linux-amd64/etcdctl $INSTALL_DIR && \
+  rm -rf etcd-$TAG-linux-amd64*
+
 # install delve (Golang debugger)
 go get github.com/go-delve/delve/cmd/dlv
-ln /root/go/bin/dlv /usr/local/bin
+ln /root/go/bin/dlv $INSTALL_DIR
 
 # install s2i
+REPO=openshift/source-to-image
+get_latest $REPO
 curl --location \
-  https://github.com/openshift/source-to-image/releases/download/v1.3.0/source-to-image-v1.3.0-eed2850f-linux-amd64.tar.gz | \
-  tar xvfz - --directory /usr/local/bin && \
-  chmod 755 /usr/local/bin/s2i \
-  chmod 755 /usr/local/bin
+  https://github.com/$REPO/releases/download/$TAG/source-to-image-$TAG-eed2850f-linux-amd64.tar.gz | \
+  tar xvfz - --directory $INSTALL_DIR && \
+  chmod 755 $INSTALL_DIR/s2i \
+  chmod 755 $INSTALL_DIR
 
 # install noobaa
+REPO=noobaa/noobaa-operator
+get_latest $REPO
 curl --location \
-  --output /usr/local/bin/noobaa \
-  https://github.com/noobaa/noobaa-operator/releases/download/v2.3.0/noobaa-linux-v2.3.0 && \
-  chmod 755 /usr/local/bin/noobaa
+  --output $INSTALL_DIR/noobaa \
+  https://github.com/$REPO/noobaa-operator/releases/download/$TAG/noobaa-linux-$TAG && \
+  chmod 755 $INSTALL_DIR/noobaa
 
 # install helm
 curl --location \
-  --output /usr/local/bin/helm \
+  --output $INSTALL_DIR/helm \
   https://mirror.openshift.com/pub/openshift-v4/clients/helm/latest/helm-linux-amd64 && \
-  chmod 755 /usr/local/bin/helm
+  chmod 755 $INSTALL_DIR/helm
 
 # install operator sdk
+REPO=operator-framework/operator-sdk
+get_latest $REPO
 curl --location \
-  --output /usr/local/bin/operator-sdk \
-  https://github.com/operator-framework/operator-sdk/releases/download/v0.19.3/operator-sdk-v0.19.3-x86_64-linux-gnu && \
-  chmod 755 /usr/local/bin/operator-sdk
+  --output $INSTALL_DIR/operator-sdk \
+  https://github.com/$REPO/releases/download/$TAG/operator-sdk-$TAG-x86_64-linux-gnu && \
+  chmod 755 $INSTALL_DIR/operator-sdk
 
 # install kustomize
+REPO=kubernetes-sigs/kustomize
+get_latest $REPO
 curl --location \
-  https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv3.8.8/kustomize_v3.8.8_linux_amd64.tar.gz | \
-  tar xvfz - --directory /usr/local/bin && \
-  chmod 755 /usr/local/bin/kustomize
+  https://github.com/$REPO/releases/download/kustomize%2F$TAG/kustomize_${TAG}_linux_amd64.tar.gz | \
+  tar xvfz - --directory $INSTALL_DIR && \
+  chmod 755 $INSTALL_DIR/kustomize
 
 # install odo
 curl --location \
-  --output /usr/local/bin/odo \
+  --output $INSTALL_DIR/odo \
   https://mirror.openshift.com/pub/openshift-v4/clients/odo/latest/odo-linux-amd64 && \
-  chmod 755 /usr/local/bin/odo
+  chmod 755 $INSTALL_DIR/odo
 
 # install kn (serverless client)
 curl --location \
-  https://mirror.openshift.com/pub/openshift-v4/clients/serverless/latest/kn-linux-amd64-0.17.3.tar.gz | \
-  tar xvfz - --directory /usr/local/bin && \
-  chmod 755 /usr/local/bin/kn
+  https://mirror.openshift.com/pub/openshift-v4/clients/serverless/latest/kn-linux-amd64-0.18.4.tar.gz | \
+  tar xvfz - --directory $INSTALL_DIR && \
+  chmod 755 $INSTALL_DIR/kn
 
 # install tekton cli
-rpm --install https://github.com/tektoncd/cli/releases/download/v0.12.0/tektoncd-cli-0.12.0_Linux-64bit.rpm
+REPO=tektoncd/cli
+get_latest $REPO
+rpm --install https://github.com/$REPO/releases/download/$TAG/tektoncd-cli-${VER}_Linux-64bit.rpm
 
 # install stern
+REPO=wercker/stern
+get_latest $REPO
 curl --location \
-  --output /usr/local/bin/stern \
-  https://github.com/wercker/stern/releases/download/1.11.0/stern_linux_amd64 && \
-  chmod 755 /usr/local/bin/stern
+  --output $INSTALL_DIR/stern \
+  https://github.com/$REPO/releases/download/$VER/stern_linux_amd64 && \
+  chmod 755 $INSTALL_DIR/stern
 
 # install kubens and kubectx
+REPO=ahmetb/kubectx
+get_latest $REPO
 curl --location \
-  --output /usr/local/bin/kubens \
-  https://github.com/ahmetb/kubectx/releases/download/v0.9.1/kubens && \
-  chmod 755 /usr/local/bin/kubens && \
-  curl --location \
-  --output /usr/local/bin/kubectx \
-  https://github.com/ahmetb/kubectx/releases/download/v0.9.1/kubectx && \
-  chmod 755 /usr/local/bin/kubectx
+  --output $INSTALL_DIR/kubens \
+  https://github.com/$REPO/releases/download/$TAG/kubens && \
+  chmod 755 $INSTALL_DIR/kubens && \
+curl --location \
+  --output $INSTALL_DIR/kubectx \
+  https://github.com/$REPO/releases/download/$TAG/kubectx && \
+  chmod 755 $INSTALL_DIR/kubectx
 
 # install fortio
-rpm --install https://github.com/fortio/fortio/releases/download/v1.6.8/fortio-1.6.8-1.x86_64.rpm
+REPO=fortio/fortio
+get_latest $REPO
+rpm --install https://github.com/$REPO/releases/download/$TAG/fortio-$VER-1.x86_64.rpm
 
 # install lazygit
+REPO=jesseduffield/lazygit
+get_latest $REPO
 curl --location \
-  https://github.com/jesseduffield/lazygit/releases/download/v0.22.1/lazygit_0.22.1_Linux_x86_64.tar.gz | \
-  tar xvfz - --directory /usr/local/bin && \
-  chmod 755 /usr/local/bin/lazygit
+  https://github.com/$REPO/releases/download/$TAG/lazygit_${VER}_Linux_x86_64.tar.gz | \
+  tar xvfz - --directory $INSTALL_DIR && \
+  chmod 755 $INSTALL_DIR/lazygit
 
 # install gitmux
+REPO=arl/gitmux
+get_latest $REPO
 curl --location \
-  https://github.com/arl/gitmux/releases/download/v0.7.4/gitmux_0.7.4_linux_amd64.tar.gz | \
-  tar xvfz - --directory /usr/local/bin
+  https://github.com/$REPO/releases/download/$TAG/gitmux_${VER}_linux_amd64.tar.gz | \
+  tar xvfz - --directory $INSTALL_DIR
 
 # install dive
+REPO=wagoodman/dive
+get_latest $REPO
 dnf install \
   --assumeyes \
   --setopt install_weak_deps=False \
-  https://github.com/wagoodman/dive/releases/download/v0.9.2/dive_0.9.2_linux_amd64.rpm
+  https://github.com/$REPO/releases/download/$TAG/dive_${VER}_linux_amd64.rpm
 
 # install argocd
+REPO=argoproj/argo-cd
+get_latest $REPO
 curl --location \
-  --output /usr/local/bin/argocd \
-  https://github.com/argoproj/argo-cd/releases/download/v1.7.3/argocd-linux-amd64 && \
-  chmod 755 /usr/local/bin/argocd
+  --output $INSTALL_DIR/argocd \
+  https://github.com/$REPO/releases/download/$TAG/argocd-linux-amd64 && \
+  chmod 755 $INSTALL_DIR/argocd
 
 # install pet
+REPO=knqyf263/pet
+get_latest $REPO
 dnf install \
   --assumeyes \
   --setopt install_weak_deps=False \
-  https://github.com/knqyf263/pet/releases/download/v0.3.6/pet_0.3.6_linux_amd64.rpm
+  https://github.com/$REPO/releases/download/$TAG/pet_${VER}_linux_amd64.rpm
 
 # install rbac-lookup
+REPO=FairwindsOps/rbac-lookup
+get_latest $REPO
 curl --location \
-  https://github.com/FairwindsOps/rbac-lookup/releases/download/v0.6.0/rbac-lookup_0.6.0_Linux_x86_64.tar.gz | \
-  tar xvfz - --directory /usr/local/bin
+  https://github.com/$REPO/releases/download/$TAG/rbac-lookup_${VER}_Linux_x86_64.tar.gz | \
+  tar xvfz - --directory $INSTALL_DIR
 
 # install kubectl-tree
+REPO=ahmetb/kubectl-tree
+get_latest $REPO
 curl --location \
-  https://github.com/ahmetb/kubectl-tree/releases/download/v0.4.0/kubectl-tree_v0.4.0_linux_amd64.tar.gz | \
-  tar xvfz - --directory /usr/local/bin
+  https://github.com/$REPO/releases/download/$TAG/kubectl-tree_${TAG}_linux_amd64.tar.gz | \
+  tar xvfz - --directory $INSTALL_DIR
 
 # install ketall aka kubectl-get-all
+REPO=corneliusweig/ketall
+get_latest $REPO
 curl --location \
-  https://github.com/corneliusweig/ketall/releases/download/v1.3.2/ketall-amd64-linux.tar.gz | \
-  tar xvfz - --directory /usr/local/bin &&
-  mv /usr/local/bin/ketall-amd64-linux /usr/local/bin/kubectl-get-all
+  https://github.com/$REPO/releases/download/$TAG/ketall-amd64-linux.tar.gz | \
+  tar xvfz - --directory $INSTALL_DIR &&
+  mv $INSTALL_DIR/ketall-amd64-linux $INSTALL_DIR/kubectl-get-all
 
 # install kubectl-neat
+REPO=itaysk/kubectl-neat
+get_latest $REPO
 curl --location \
-  https://github.com/itaysk/kubectl-neat/releases/download/v2.0.1/kubectl-neat_linux.tar.gz | \
-  tar xvfz - --directory /usr/local/bin
+  https://github.com/$REPO/releases/download/$TAG/kubectl-neat_linux.tar.gz | \
+  tar xvfz - --directory $INSTALL_DIR
 
 # install hey
 curl --location \
-  --output /usr/local/bin/hey \
+  --output $INSTALL_DIR/hey \
   https://storage.googleapis.com/hey-release/hey_linux_amd64 && \
-  chmod 755 /usr/local/bin/hey
+  chmod 755 $INSTALL_DIR/hey
