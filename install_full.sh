@@ -212,3 +212,10 @@ curl --location \
   --output $INSTALL_DIR/hey \
   https://storage.googleapis.com/hey-release/hey_linux_amd64 && \
   chmod 755 $INSTALL_DIR/hey
+
+# install kube-debug-pod
+REPO=noseka1/kube-debug-pod
+get_latest $REPO
+curl --location \
+  https://github.com/$REPO/releases/download/$VER/kube-debug-pod_${VER}_linux_amd64.tar.gz | \
+  tar xvfz - --directory $INSTALL_DIR
