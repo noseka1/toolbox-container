@@ -246,7 +246,7 @@ $ gunicorn-3 --bind 0.0.0.0:8080 --access-logfile - httpbin:app
 Serve HTTPS:
 
 ```
-$ openssl req -newkey rsa:2048 -nodes -keyout httpbin.key -x509 -out httpbin.crt
+$ openssl req -newkey rsa:2048 -nodes -keyout httpbin.key -x509 -out httpbin.crt -subj '/CN=example.com'
 ```
 
 ```
