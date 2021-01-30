@@ -14,7 +14,8 @@ dnf install \
   runc \
   skopeo \
   ripgrep \
-  tmux
+  tmux \
+  xz
 
 # install fluentd
 dnf install \
@@ -219,3 +220,21 @@ get_latest $REPO
 curl --location \
   https://github.com/$REPO/releases/download/$VER/kube-debug-pod_${VER}_linux_amd64.tar.gz | \
   tar xvfz - --directory $INSTALL_DIR
+
+# install istioctl
+REPO=istio/istio
+get_latest $REPO
+curl --location \
+  https://github.com/$REPO/releases/download/$VER/istioctl-$VER-linux-amd64.tar.gz |\
+  tar xvfz - --directory $INSTALL_DIR
+
+# install envoy (the same version that Istio is using)
+VER=1.14.5
+DOWNLOAD_URL=$(curl --location \
+  https://tetrate.bintray.com/getenvoy/manifest.json \
+  | jq --raw-output ".flavors.standard.versions.\"$VER\".builds.LINUX_GLIBC.downloadLocationUrl")
+curl --location \
+  $DOWNLOAD_URL | \
+  tar xvfJ - --directory $INSTALL_DIR
+mv $INSTALL_DIR/getenvoy-envoy-*/bin/envoy $INSTALL_DIR
+rm -rf $INSTALL_DIR/getenvoy-envoy-*
