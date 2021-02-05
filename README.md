@@ -176,6 +176,18 @@ $ oc set volume \
     --mount-path /home/toolbox
 ```
 
+#### Mounting the root of the underlying node on /host
+
+```
+$ oc set volume \
+    deployment/openshift-toolbox \
+    --add \
+    --name host \
+    --type hostPath \
+    --path / \
+    --mount-path /host
+```
+
 #### Allowing cluster-admin access to OpenShift from within the toolbox
 
 ```
@@ -207,18 +219,6 @@ $ oc patch deployment openshift-toolbox \
 $ oc patch deployment openshift-toolbox \
     --type json \
     --patch '[{"op": "replace", "path": "/spec/template/spec/hostIPC", "value": true}]'
-```
-
-#### Mounting the root of the underlying node on /host
-
-```
-$ oc set volume \
-    deployment/openshift-toolbox \
-    --add \
-    --name host \
-    --type hostPath \
-    --path / \
-    --mount-path /host
 ```
 
 ## Example workloads
