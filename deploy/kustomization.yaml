@@ -14,19 +14,19 @@ configMapGenerator:
   - init.sh
 
 resources:
-- openshift-toolbox-deploy.yaml
 - openshift-toolbox-ns.yaml
+- openshift-toolbox-deploy.yaml
 - openshift-toolbox-sa.yaml
-- openshift-toolbox-home-pvc.yaml
-- openshift-toolbox-scc-role.yaml
-- openshift-toolbox-scc-rolebinding.yaml
-- openshift-toolbox-cluster-admin-clusterrolebinding.yaml
+#- openshift-toolbox-home-pvc.yaml
+#- openshift-toolbox-scc-role.yaml
+#- openshift-toolbox-scc-rolebinding.yaml
+#- openshift-toolbox-cluster-admin-clusterrolebinding.yaml
 
 patchesStrategicMerge:
-- openshift-toolbox-deploy-hostNetwork.yaml
-- openshift-toolbox-deploy-hostPID.yaml
-- openshift-toolbox-deploy-hostIPC.yaml
-- openshift-toolbox-deploy-privileged.yaml
-- openshift-toolbox-deploy-home.yaml
-- openshift-toolbox-deploy-host.yaml
-- openshift-toolbox-deploy-nodeName.yaml
+#- openshift-toolbox-deploy-hostNetwork.yaml
+#- openshift-toolbox-deploy-hostPID.yaml
+#- openshift-toolbox-deploy-hostIPC.yaml
+#- openshift-toolbox-deploy-privileged.yaml
+#- openshift-toolbox-deploy-home.yaml
+#- openshift-toolbox-deploy-host.yaml
+#- openshift-toolbox-deploy-nodeName.yaml
