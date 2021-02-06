@@ -192,6 +192,32 @@ $ oc set volume \
     --path / \
     --mount-path /host
 ```
+#### Executing custom init script on start-up
+
+Create a custom script. The toolbox container will execute this script on container start-up:
+
+```
+$ cat >init.sh <<EOF
+echo Hello from the custom init script!
+EOF
+```
+
+Create a configmap that includes the init script:
+
+```
+$ oc create configmap openshift-toolbox-init --from-file=init.sh
+```
+
+Attach the configmap to the toolbox container:
+```
+$ oc set volume \
+    deployment/openshift-toolbox \
+    --add \
+    --name init \
+    --type configmap \
+    --configmap-name openshift-toolbox-init \
+    --mount-path /toolbox
+```
 
 #### Allowing cluster-admin access to OpenShift from within the toolbox
 
