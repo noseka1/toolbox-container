@@ -175,7 +175,8 @@ $ oc set volume \
     deployment/openshift-toolbox \
     --add \
     --type persistentVolumeClaim \
-    --claim-name openshift-toolbox \
+    --name home \
+    --claim-name openshift-toolbox-home \
     --claim-size 50G \
     --mount-path /home/toolbox
 ```
