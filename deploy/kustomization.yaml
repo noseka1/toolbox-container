@@ -8,6 +8,11 @@ images:
   newName: quay.io/noseka1/openshift-toolbox
   newTag: basic
 
+configMapGenerator:
+- name: openshift-toolbox-init
+  files:
+  - init.sh
+
 resources:
 - openshift-toolbox-deploy.yaml
 - openshift-toolbox-ns.yaml
