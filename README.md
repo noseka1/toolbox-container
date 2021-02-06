@@ -95,7 +95,11 @@ $ podman volume create toolbox-home-anosek
 ```
 
 ```
-$ podman run --detach --name toolbox --mount type=volume,src=toolbox-home-anosek,target=/home/anosek quay.io/noseka1/openshift-toolbox:full 
+$ podman run \
+    --detach
+    --name toolbox
+    --mount type=volume,src=toolbox-home-anosek,target=/home/anosek
+    quay.io/noseka1/openshift-toolbox:full 
 ```
 
 ```
