@@ -14,7 +14,7 @@ RUN adduser toolbox --groups wheel && \
   chmod 775 /home/toolbox
 
 # allow sudo without password
-RUN echo '%wheel ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
+RUN echo '%wheel ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers.d/10_wheel_nopasswd
 
 WORKDIR /home/toolbox
 
