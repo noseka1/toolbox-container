@@ -3,11 +3,11 @@ FROM docker.io/fedora:latest as basic
 ARG OPENSHIFT_TOOLBOX_COMMIT=unspecified
 ENV OPENSHIFT_TOOLBOX_COMMIT $OPENSHIFT_TOOLBOX_COMMIT
 
-COPY install_basic.sh /usr/local/bin
-RUN /usr/local/bin/install_basic.sh
+COPY toolbox_install_basic.sh /usr/local/bin
+RUN /usr/local/bin/toolbox_install_basic.sh
 
 # add start script
-COPY start.sh /usr/local/bin
+COPY toolbox_start.sh /usr/local/bin
 
 RUN adduser toolbox --groups wheel && \
   chgrp 0 /home/toolbox && \
@@ -18,7 +18,7 @@ RUN echo '%wheel ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers.d/10_wheel_nopasswd
 
 WORKDIR /home/toolbox
 
-CMD [ "/usr/local/bin/start.sh" ]
+CMD [ "/usr/local/bin/toolbox_start.sh" ]
 
 #########################
 #      STAGE  FULL      #
@@ -26,5 +26,5 @@ CMD [ "/usr/local/bin/start.sh" ]
 
 FROM basic as full
 
-COPY install_full.sh /usr/local/bin
-RUN /usr/local/bin/install_full.sh
+COPY toolbox_install_full.sh /usr/local/bin
+RUN /usr/local/bin/toolbox_install_full.sh
