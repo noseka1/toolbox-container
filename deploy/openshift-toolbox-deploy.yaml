@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: openshift-toolbox
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: openshift-toolbox
+  template:
+    metadata:
+      labels:
+        app: openshift-toolbox
+    spec:
+      containers:
+      - image: openshift-toolbox
+        imagePullPolicy: Always
+        name: openshift-toolbox
+      serviceAccountName: openshift-toolbox
