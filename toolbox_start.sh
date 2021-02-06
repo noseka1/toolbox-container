@@ -47,14 +47,14 @@ fi
 CUSTOM_INIT=/toolbox/init.sh
 if [ -r $CUSTOM_INIT ]; then
   echo '
-  ***********************
-  * CUSTOM INIT SCRIPT  *
-  ***********************
-  '
+***********************
+* CUSTOM INIT SCRIPT  *
+***********************
+'
   set -xv
   source $CUSTOM_INIT
   echo
-  echo Init script exited with code $?
+  echo Init script completed with exit code $?
 fi
 
 echo
