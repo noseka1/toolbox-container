@@ -44,6 +44,19 @@ else
   echo "No token found!"
 fi
 
+CUSTOM_INIT=/toolbox/init.sh
+if [ -r $CUSTOM_INIT ]; then
+  echo '
+  ***********************
+  * CUSTOM INIT SCRIPT  *
+  ***********************
+  '
+  set -xv
+  source $CUSTOM_INIT
+  echo
+  echo Init script exited with code $?
+fi
+
 echo
 echo Press Ctrl-C to exit ...
 
