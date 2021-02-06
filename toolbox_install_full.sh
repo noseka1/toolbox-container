@@ -29,6 +29,8 @@ dnf install \
   gem install json --version 2.3.0 && \
   gem install fluentd --version 1.10.1
 
+dnf clean all
+
 INSTALL_DIR=/usr/local/bin
 
 function get_latest() {

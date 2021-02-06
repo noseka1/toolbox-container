@@ -40,3 +40,5 @@ dnf install \
   vim \
   wget \
   wireshark-cli
+
+dnf clean all
