@@ -127,6 +127,8 @@ $ su - anosek
 
 ## Deploying OpenShift Toolbox to OpenShift cluster
 
+Note that instead of using the deployment commands in this section one-by-one, you can leverage the Kustomize scripts located in the [deploy](deploy subdirectory).
+
 ### Deploying openshift-toolbox
 
 Deploy the *openshift-toolbox* on the cluster:
