@@ -3,6 +3,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: openshift-toolbox-home
 spec:
+  accessModes:
+  - ReadWriteOnce
   resources:
     requests:
       storage: 50G
