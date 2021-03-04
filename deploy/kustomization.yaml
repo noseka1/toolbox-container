@@ -28,5 +28,5 @@ patchesStrategicMerge:
 #- openshift-toolbox-deploy-hostIPC.yaml
 #- openshift-toolbox-deploy-privileged.yaml
 #- openshift-toolbox-deploy-home.yaml
-#- openshift-toolbox-deploy-host.yaml
+#- openshift-toolbox-deploy-hostPath.yaml
 #- openshift-toolbox-deploy-nodeName.yaml
