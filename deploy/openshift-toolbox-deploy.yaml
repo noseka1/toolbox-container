@@ -17,8 +17,8 @@ spec:
         imagePullPolicy: Always
         name: openshift-toolbox
         volumeMounts:
-        - mountPath: /toolbox
-          name: init
+        - name: init
+          mountPath: /toolbox
       serviceAccountName: openshift-toolbox
       volumes:
       - name: init
