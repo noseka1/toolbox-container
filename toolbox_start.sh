@@ -51,15 +51,26 @@ if [ -r $CUSTOM_INIT ]; then
 * CUSTOM INIT SCRIPT  *
 ***********************
 '
-  set -xv
   source $CUSTOM_INIT
   echo
   echo Init script completed with exit code $?
 fi
 
-echo
-echo Press Ctrl-C to exit ...
+CUSTOM_RUN=/toolbox/run.sh
+if [ -r $CUSTOM_RUN ]; then
+  echo '
+***********************
+* CUSTOM RUN SCRIPT  *
+***********************
+'
+  source $CUSTOM_RUN
+  echo
+  echo Run script completed with exit code $?
+else
+  echo
+  echo Press Ctrl-C to exit ...
 
-# block here
-trap : TERM INT
-sleep infinity & wait
+  # block here
+  trap : TERM INT
+  sleep infinity & wait
+fi
