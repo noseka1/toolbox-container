@@ -336,3 +336,17 @@ Load test a service:
 ```
 $ hey -c 50 -z 10s <service_url>
 ```
+
+### MinIO S3 client
+
+Configure target S3 server:
+
+```
+$ mc config host add s3.example.com https://s3.example.com <ACCESS_KEY> <SECRET_KEY>
+```
+
+List objects in `mybucket`:
+
+```
+$ mc ls s3.example.com/mybucket
+```
