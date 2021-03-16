@@ -55,8 +55,8 @@ curl --location \
 # install etcd client
 REPO=etcd-io/etcd
 get_latest $REPO
-wget https://github.com/$REPO/releases/download/$TAG/etcd-$TAG-linux-amd64.tar.gz && \
-  tar xfz etcd-$TAG-linux-amd64.tar.gz --no-same-owner && \
+wget https://github.com/$REPO/releases/download/$TAG/etcd-$TAG-linux-amd64.tar && \
+  tar xf etcd-$TAG-linux-amd64.tar --no-same-owner && \
   cp etcd-$TAG-linux-amd64/etcdctl $INSTALL_DIR && \
   rm -rf etcd-$TAG-linux-amd64*
 
