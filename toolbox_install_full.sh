@@ -240,3 +240,9 @@ curl --location \
   tar xvfJ - --directory $INSTALL_DIR
 mv $INSTALL_DIR/getenvoy-envoy-*/bin/envoy $INSTALL_DIR
 rm -rf $INSTALL_DIR/getenvoy-envoy-*
+
+# install MinIO client (S3 compatible client)
+curl --location \
+  --output $INSTALL_DIR/mc \
+  https://dl.min.io/client/mc/release/linux-amd64/mc && \
+  chmod 755 $INSTALL_DIR/mc
