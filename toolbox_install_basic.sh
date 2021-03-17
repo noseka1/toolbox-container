@@ -4,6 +4,7 @@ dnf install \
   --assumeyes \
   --setopt install_weak_deps=False \
   bind-utils \
+  blktrace \
   bzip2 \
   curl \
   diffutils \
