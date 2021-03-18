@@ -8,8 +8,8 @@ spec:
       containers:
       - name: openshift-toolbox
         volumeMounts:
-        - mountPath: /home/toolbox
-          name: home
+        - name: home
+          mountPath: /home/toolbox
       volumes:
       - name: home
         persistentVolumeClaim:
