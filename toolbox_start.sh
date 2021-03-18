@@ -52,8 +52,12 @@ if [ -r $CUSTOM_INIT ]; then
 ***********************
 '
   source $CUSTOM_INIT
+  EXIT_CODE=$?
   echo
-  echo Init script completed with exit code $?
+  echo Init script completed with exit code $EXIT_CODE
+  if [ $EXIT_CODE -ne 0 ]; then
+    exit $EXIT_CODE
+  fi
 fi
 
 CUSTOM_RUN=/toolbox/run.sh
@@ -64,8 +68,9 @@ if [ -r $CUSTOM_RUN ]; then
 ***********************
 '
   source $CUSTOM_RUN
+  EXIT_CODE=$?
   echo
-  echo Run script completed with exit code $?
+  echo Run script completed with exit code $EXIT_CODE
 else
   echo
   echo Press Ctrl-C to exit ...
