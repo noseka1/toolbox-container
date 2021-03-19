@@ -288,6 +288,8 @@ $ gunicorn-3 --bind 0.0.0.0:8443 --access-logfile - --keyfile httpbin.key --cert
 
 ### Run NFS server
 
+NFS server must run in a privileged container (i.e. `pod.spec.template.spec.containers.securityContext.privileged: true`).
+
 ```
 $ dnf install nfs-utils -y
 ```
@@ -312,11 +314,16 @@ $ /usr/sbin/rpc.nfsd -G 10 -N 2 -V 3
 ```
 $ /usr/sbin/rpc.statd --no-notify
 ```
+
 Configure local directories to export through NFS:
 
 ```
-$ echo '/home/toolbox *(rw,async,no_root_squash)' > /etc/exports.d/toolbox.exports
+$ echo '/home/toolbox *(rw,fsid=0,async,no_root_squash)' > /etc/exports.d/toolbox.exports
 ```
+
+**Note that the fsid=0 option is critical.** Without this option the mount command would hang when trying to mount an NFS share.
+
+
 ```
 $ exportfs -a
 ```
