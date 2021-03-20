@@ -321,8 +321,7 @@ Configure local directories to export through NFS:
 $ echo '/home/toolbox *(rw,fsid=0,async,no_root_squash)' > /etc/exports.d/toolbox.exports
 ```
 
-**Note that the fsid=0 option is critical.** Without this option the mount command would hang when trying to mount an NFS share.
-
+**Note that the fsid=0 option is critical.** Without this option the mount command would hang when trying to mount an NFS share. Note that there can be only one export with fsid=0 on the given NFS server.
 
 ```
 $ exportfs -a
