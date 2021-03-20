@@ -5,7 +5,8 @@ echo '
 ******************************************
 '
 
-cat /etc/redhat-release
+echo OS: $(cat /etc/redhat-release)
+echo Time: $(date)
 
 echo '
 ******
