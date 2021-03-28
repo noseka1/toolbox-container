@@ -76,7 +76,7 @@ REPO=noobaa/noobaa-operator
 get_latest $REPO
 curl --location \
   --output $INSTALL_DIR/noobaa \
-  https://github.com/$REPO/noobaa-operator/releases/download/$TAG/noobaa-linux-$TAG && \
+  https://github.com/$REPO/releases/download/$TAG/noobaa-linux-$TAG && \
   chmod 755 $INSTALL_DIR/noobaa
 
 # install helm
