@@ -95,8 +95,8 @@ curl --location \
 
 # install kustomize
 REPO=kubernetes-sigs/kustomize
-TAG=v3.9.2
-VER=3.9.2
+TAG=v4.1.2
+VER=4.1.2
 curl --location \
   https://github.com/$REPO/releases/download/kustomize/$TAG/kustomize_${TAG}_linux_amd64.tar.gz | \
   tar xvfz - --directory $INSTALL_DIR && \
