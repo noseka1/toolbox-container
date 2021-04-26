@@ -38,6 +38,7 @@ dnf install \
   strace \
   tcpdump \
   telnet \
+  unzip \
   vim \
   wget \
   wireshark-cli
