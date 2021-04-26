@@ -10,6 +10,7 @@ dnf install \
   diffutils \
   dnsmasq \
   fd-find \
+  file \
   findutils \
   gdb \
   git \
