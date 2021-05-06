@@ -245,4 +245,4 @@ rm -rf $INSTALL_DIR/getenvoy-envoy-*
 curl --location \
   --output $INSTALL_DIR/mc \
   https://dl.min.io/client/mc/release/linux-amd64/mc && \
-  chmod 755 $INSTALL_DIR/mc
+  chmod 755 $INSTALL_DIR/mclient
