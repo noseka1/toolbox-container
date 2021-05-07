@@ -43,7 +43,7 @@ REPO=gcla/termshark
 get_latest $REPO
 curl --location \
   https://github.com/$REPO/releases/download/$TAG/termshark_${VER}_linux_x64.tar.gz | \
-  tar xvfz - --strip-components=1 --directory $INSTALL_DIR termshark_${VER}_linux_x64/termshark
+  tar xvfz - --directory $INSTALL_DIR --strip-components=1 termshark_${VER}_linux_x64/termshark
 
 # install oc and kubectl
 curl --location \
@@ -55,21 +55,18 @@ curl --location \
 # install etcd client
 REPO=etcd-io/etcd
 get_latest $REPO
-wget https://github.com/$REPO/releases/download/$TAG/etcd-$TAG-linux-amd64.tar && \
-  tar xf etcd-$TAG-linux-amd64.tar --no-same-owner && \
-  cp etcd-$TAG-linux-amd64/etcdctl $INSTALL_DIR && \
-  rm -rf etcd-$TAG-linux-amd64*
+curl --location \
+  https://github.com/$REPO/releases/download/$TAG/etcd-$TAG-linux-amd64.tar.gz | \
+  tar xvfz - etcd-$TAG-linux-amd64/etcdctl --directory $INSTALL_DIR --strip-components=1 --no-same-owner
 
 # install delve (Golang debugger)
 go get github.com/go-delve/delve/cmd/dlv
-ln /root/go/bin/dlv $INSTALL_DIR
+ln --force /root/go/bin/dlv $INSTALL_DIR
 
 # install s2i
 curl --location \
   https://github.com/openshift/source-to-image/releases/download/v1.3.1/source-to-image-v1.3.1-a5a77147-linux-amd64.tar.gz | \
-  tar xvfz - --directory $INSTALL_DIR && \
-  chmod 755 $INSTALL_DIR/s2i \
-  chmod 755 $INSTALL_DIR
+  tar xvfz - --directory $INSTALL_DIR --strip-components=1
 
 # install noobaa
 REPO=noobaa/noobaa-operator
@@ -110,7 +107,7 @@ curl --location \
 
 # install kn (serverless client)
 curl --location \
-  https://mirror.openshift.com/pub/openshift-v4/clients/serverless/latest/kn-linux-amd64-0.18.4.tar.gz | \
+  https://mirror.openshift.com/pub/openshift-v4/clients/serverless/latest/kn-linux-amd64.tar.gz | \
   tar xvfz - --directory $INSTALL_DIR && \
   chmod 755 $INSTALL_DIR/kn
 
@@ -217,10 +214,10 @@ curl --location \
   chmod 755 $INSTALL_DIR/hey
 
 # install kube-debug-pod
-REPO=noseka1/kube-debug-pod
+REPO=noseka1/kubectl-debugpod
 get_latest $REPO
 curl --location \
-  https://github.com/$REPO/releases/download/$VER/kube-debug-pod_${VER}_linux_amd64.tar.gz | \
+  https://github.com/$REPO/releases/download/$VER/kubectl-debugpod_${VER}_linux_amd64.tar.gz | \
   tar xvfz - --directory $INSTALL_DIR
 
 # install istioctl
