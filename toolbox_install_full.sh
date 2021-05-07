@@ -120,11 +120,11 @@ get_latest $REPO
 rpm --install https://github.com/$REPO/releases/download/$TAG/tektoncd-cli-${VER}_Linux-64bit.rpm
 
 # install stern
-REPO=wercker/stern
+REPO=stern/stern
 get_latest $REPO
 curl --location \
-  --output $INSTALL_DIR/stern \
-  https://github.com/$REPO/releases/download/$VER/stern_linux_amd64 && \
+  https://github.com/$REPO/releases/download/$TAG/stern_${VER}_linux_amd64.tar.gz | \
+  tar xvfz - stern_${VER}_linux_amd64/stern --directory $INSTALL_DIR --strip-components=1 && \
   chmod 755 $INSTALL_DIR/stern
 
 # install kubens and kubectx
