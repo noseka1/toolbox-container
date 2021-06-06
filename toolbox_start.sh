@@ -17,6 +17,14 @@ echo '
 id
 
 echo '
+*********
+* CAPSH *
+*********
+'
+
+capsh --print
+
+echo '
 ***************
 * ENVIRONMENT *
 ***************
