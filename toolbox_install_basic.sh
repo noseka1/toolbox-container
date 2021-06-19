@@ -27,6 +27,7 @@ dnf install \
   lsof \
   man-db \
   net-tools \
+  nmap \
   nmap-ncat \
   openssl \
   patch \
