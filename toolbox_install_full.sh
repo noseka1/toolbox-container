@@ -57,7 +57,7 @@ REPO=etcd-io/etcd
 get_latest $REPO
 curl --location \
   https://github.com/$REPO/releases/download/$TAG/etcd-$TAG-linux-amd64.tar.gz | \
-  tar xvfz - etcd-$TAG-linux-amd64/etcdctl --directory $INSTALL_DIR --strip-components=1 --no-same-owner
+  tar xvfz - --directory $INSTALL_DIR --strip-components=1 --no-same-owner etcd-$TAG-linux-amd64/etcdctl
 
 # install delve (Golang debugger)
 go get github.com/go-delve/delve/cmd/dlv
@@ -121,7 +121,7 @@ REPO=stern/stern
 get_latest $REPO
 curl --location \
   https://github.com/$REPO/releases/download/$TAG/stern_${VER}_linux_amd64.tar.gz | \
-  tar xvfz - stern_${VER}_linux_amd64/stern --directory $INSTALL_DIR --strip-components=1 && \
+  tar xvfz - --directory $INSTALL_DIR --strip-components=1 stern_${VER}_linux_amd64/stern && \
   chmod 755 $INSTALL_DIR/stern
 
 # install kubens and kubectx
