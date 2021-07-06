@@ -38,6 +38,13 @@ function get_latest() {
   VER=${TAG#v}
 }
 
+# install dust
+REPO=bootandy/dust
+get_latest $REPO
+curl --location \
+  https://github.com/$REPO/releases/download/$TAG/dust-${TAG}-x86_64-unknown-linux-gnu.tar.gz | \
+  tar xvfz - --directory $INSTALL_DIR --strip-components=1 dust-${TAG}-x86_64-unknown-linux-gnu/dust
+
 # install termshark
 REPO=gcla/termshark
 get_latest $REPO
