@@ -5,6 +5,7 @@ dnf install \
   --setopt install_weak_deps=False \
   ansible \
   awscli \
+  bat \
   buildah \
   fzf \
   golang \
