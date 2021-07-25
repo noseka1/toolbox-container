@@ -251,3 +251,12 @@ curl --location \
   --output $INSTALL_DIR/mclient \
   https://dl.min.io/client/mc/release/linux-amd64/mc && \
   chmod 755 $INSTALL_DIR/mclient
+
+# install kubevirt cli
+REPO=kubevirt/kubevirt
+TAG=v0.43.0
+VER=0.43.0
+curl --location \
+  --output $INSTALL_DIR/virtctl \
+  https://github.com/$REPO/releases/download/$TAG/virtctl-${TAG}-linux-amd64
+  chmod 755 $INSTALL_DIR/virtctl
