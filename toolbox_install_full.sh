@@ -260,3 +260,9 @@ curl --location \
   --output $INSTALL_DIR/virtctl \
   https://github.com/$REPO/releases/download/$TAG/virtctl-${TAG}-linux-amd64
   chmod 755 $INSTALL_DIR/virtctl
+
+# install roxctl
+curl --location \
+  --output $INSTALL_DIR/roxctl \
+  https://mirror.openshift.com/pub/rhacs/assets/latest/bin/Linux/roxctl && \
+  chmod 755 $INSTALL_DIR/roxctl
