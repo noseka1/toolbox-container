@@ -43,6 +43,7 @@ dnf install \
   unzip \
   vim \
   wget \
-  wireshark-cli
+  wireshark-cli \
+  xz
 
 dnf clean all

@@ -15,8 +15,7 @@ dnf install \
   runc \
   skopeo \
   ripgrep \
-  tmux \
-  xz
+  tmux
 
 # install fluentd
 dnf install \
