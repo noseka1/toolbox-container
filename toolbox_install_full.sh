@@ -68,7 +68,15 @@ curl --location \
   tar xvfz - --directory $INSTALL_DIR --strip-components=1 --no-same-owner etcd-$TAG-linux-amd64/etcdctl
 
 # install delve (Golang debugger)
-go get github.com/go-delve/delve/cmd/dlv
+REPO=go-delve/delve
+get_latest $REPO
+TMPDIR=$(mktemp --directory --suffix -dlv)
+(
+  cd $TMPDIR
+  go mod init local/build
+  go get github.com/go-delve/delve/cmd/dlv@$TAG
+  rm -rf $TMPDIR
+)
 ln --force /root/go/bin/dlv $INSTALL_DIR
 
 # install s2i
