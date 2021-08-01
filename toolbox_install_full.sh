@@ -8,7 +8,6 @@ dnf install \
   bat \
   buildah \
   fzf \
-  golang \
   podman \
   python3-kubernetes \
   python3-openshift \
@@ -31,12 +30,8 @@ dnf install \
 
 dnf clean all
 
-INSTALL_DIR=/usr/local/bin
-
-function get_latest() {
-  TAG=$(curl https://api.github.com/repos/$REPO/releases | jq --raw-output '.[0].tag_name')
-  VER=${TAG#v}
-}
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+. $SCRIPT_DIR/toolbox_install_common.sh
 
 # install dust
 REPO=bootandy/dust
@@ -44,13 +39,6 @@ get_latest $REPO
 curl --location \
   https://github.com/$REPO/releases/download/$TAG/dust-${TAG}-x86_64-unknown-linux-gnu.tar.gz | \
   tar xvfz - --directory $INSTALL_DIR --strip-components=1 dust-${TAG}-x86_64-unknown-linux-gnu/dust
-
-# install termshark
-REPO=gcla/termshark
-get_latest $REPO
-curl --location \
-  https://github.com/$REPO/releases/download/$TAG/termshark_${VER}_linux_x64.tar.gz | \
-  tar xvfz - --directory $INSTALL_DIR --strip-components=1 termshark_${VER}_linux_x64/termshark
 
 # install oc and kubectl
 curl --location \
@@ -65,18 +53,6 @@ get_latest $REPO
 curl --location \
   https://github.com/$REPO/releases/download/$TAG/etcd-$TAG-linux-amd64.tar.gz | \
   tar xvfz - --directory $INSTALL_DIR --strip-components=1 --no-same-owner etcd-$TAG-linux-amd64/etcdctl
-
-# install delve (Golang debugger)
-REPO=go-delve/delve
-get_latest $REPO
-TMPDIR=$(mktemp --directory --suffix -dlv)
-(
-  cd $TMPDIR
-  go mod init local/build
-  go get github.com/go-delve/delve/cmd/dlv@$TAG
-  rm -rf $TMPDIR
-)
-ln --force /root/go/bin/dlv $INSTALL_DIR
 
 # install s2i
 curl --location \

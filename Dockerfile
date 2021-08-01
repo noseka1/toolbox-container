@@ -3,6 +3,7 @@ FROM docker.io/fedora:latest as basic
 ARG OPENSHIFT_TOOLBOX_COMMIT=unspecified
 ENV OPENSHIFT_TOOLBOX_COMMIT $OPENSHIFT_TOOLBOX_COMMIT
 
+COPY toolbox_install_common.sh /usr/local/bin
 COPY toolbox_install_basic.sh /usr/local/bin
 RUN /usr/local/bin/toolbox_install_basic.sh
 
