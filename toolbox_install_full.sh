@@ -219,15 +219,13 @@ curl --location \
   tar xvfz - --directory $install_dir
 
 # install envoy (the same version that Istio is using)
-ver=1.14.5
-download_url=$(curl --location \
-  https://tetrate.bintray.com/getenvoy/manifest.json \
-  | jq --raw-output ".flavors.standard.versions.\"$ver\".builds.LINUX_GLIBC.downloadLocationUrl")
+ver=$(curl --silent https://archive.tetratelabs.io/envoy/envoy-versions.json | jq --raw-output '.latestVersion')
+download_url=https://archive.tetratelabs.io/envoy/download/v${ver}/envoy-v${ver}-linux-amd64.tar.xz
 curl --location \
   $download_url | \
   tar xvfJ - --directory $install_dir
-mv $install_dir/getenvoy-envoy-*/bin/envoy $install_dir
-rm -rf $install_dir/getenvoy-envoy-*
+mv $install_dir/envoy-v${ver}-linux-amd64/bin/envoy $install_dir
+rm -rf $install_dir/envoy-v${ver}-linux-amd64
 
 # install MinIO client (S3 compatible client)
 curl --location \
