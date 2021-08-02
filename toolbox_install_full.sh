@@ -204,7 +204,7 @@ curl --location \
   https://storage.googleapis.com/hey-release/hey_linux_amd64 && \
   chmod 755 $INSTALL_DIR/hey
 
-# install kube-debug-pod
+# install kube-debugpod
 REPO=noseka1/kubectl-debugpod
 get_latest $REPO
 curl --location \
