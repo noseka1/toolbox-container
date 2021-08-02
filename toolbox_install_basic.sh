@@ -49,12 +49,12 @@ dnf install \
 
 dnf clean all
 
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-. $SCRIPT_DIR/toolbox_install_common.sh
+script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+. $script_dir/toolbox_install_common.sh
 
 # install termshark
-REPO=gcla/termshark
-get_latest $REPO
+repo=gcla/termshark
+get_latest $repo
 curl --location \
-  https://github.com/$REPO/releases/download/$TAG/termshark_${VER}_linux_x64.tar.gz | \
-  tar xvfz - --directory $INSTALL_DIR --strip-components=1 termshark_${VER}_linux_x64/termshark
+  https://github.com/$repo/releases/download/$tag/termshark_${ver}_linux_x64.tar.gz | \
+  tar xvfz - --directory $install_dir --strip-components=1 termshark_${ver}_linux_x64/termshark

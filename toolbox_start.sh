@@ -53,33 +53,33 @@ else
   echo "No token found!"
 fi
 
-CUSTOM_INIT=/toolbox/init.sh
-if [ -r $CUSTOM_INIT ]; then
+custom_init=/toolbox/init.sh
+if [ -r $custom_init ]; then
   echo '
 ***********************
 * CUSTOM INIT SCRIPT  *
 ***********************
 '
-  source $CUSTOM_INIT
-  EXIT_CODE=$?
+  source $custom_init
+  exit_code=$?
   echo
-  echo Init script completed with exit code $EXIT_CODE
-  if [ $EXIT_CODE -ne 0 ]; then
-    exit $EXIT_CODE
+  echo Init script completed with exit code $exit_code
+  if [ $exit_code -ne 0 ]; then
+    exit $exit_code
   fi
 fi
 
-CUSTOM_RUN=/toolbox/run.sh
-if [ -r $CUSTOM_RUN ]; then
+custom_run=/toolbox/run.sh
+if [ -r $custom_run ]; then
   echo '
 ***********************
 * CUSTOM RUN SCRIPT  *
 ***********************
 '
-  source $CUSTOM_RUN
-  EXIT_CODE=$?
+  source $custom_run
+  exit_code=$?
   echo
-  echo Run script completed with exit code $EXIT_CODE
+  echo Run script completed with exit code $exit_code
 else
   echo
   echo Press Ctrl-C to exit ...
