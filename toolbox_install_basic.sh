@@ -58,15 +58,3 @@ get_latest $REPO
 curl --location \
   https://github.com/$REPO/releases/download/$TAG/termshark_${VER}_linux_x64.tar.gz | \
   tar xvfz - --directory $INSTALL_DIR --strip-components=1 termshark_${VER}_linux_x64/termshark
-
-# install delve (Golang debugger)
-REPO=go-delve/delve
-get_latest $REPO
-TMPDIR=$(mktemp --directory --suffix -dlv)
-(
-  cd $TMPDIR
-  go mod init local/build
-  go get github.com/go-delve/delve/cmd/dlv@$TAG
-  rm -rf $TMPDIR
-)
-ln --force /root/go/bin/dlv $INSTALL_DIR
