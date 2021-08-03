@@ -13,6 +13,7 @@ dnf install \
   python3-openshift \
   runc \
   skopeo \
+  stress-ng \
   ripgrep \
   tmux
 
