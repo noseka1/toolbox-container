@@ -163,6 +163,12 @@ curl --location \
   https://github.com/$repo/releases/download/$tag/argocd-linux-amd64 && \
   chmod 755 $install_dir/argocd
 
+# install argo rollouts client
+curl --location \
+  --output $install_dir/kubectl-argo-rollouts \
+  https://github.com/argoproj/argo-rollouts/releases/latest/download/kubectl-argo-rollouts-linux-amd64 && \
+  chmod 755 $install_dir/kubectl-argo-rollouts
+
 # install pet
 repo=knqyf263/pet
 get_latest $repo
