@@ -34,6 +34,13 @@ dnf clean all
 script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 . $script_dir/toolbox_install_common.sh
 
+# install velero client (the velero client version should match the version deployed by the oadp operator)
+repo=vmware-tanzu/velero
+tag=v1.6.3
+curl --location \
+  https://github.com/$repo/releases/download/$tag/velero-${tag}-linux-amd64.tar.gz | \
+  tar xvfz - --directory $install_dir --strip-components=1 velero-${tag}-linux-amd64/velero
+
 # install dust
 repo=bootandy/dust
 get_latest $repo
