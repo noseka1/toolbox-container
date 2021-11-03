@@ -86,7 +86,7 @@ repo=operator-framework/operator-sdk
 get_latest $repo
 curl --location \
   --output $install_dir/operator-sdk \
-  https://github.com/$repo/releases/download/$tag/operator-sdk-$tag-x86_64-linux-gnu && \
+  https://github.com/$repo/releases/download/$tag/operator-sdk_linux_amd64 && \
   chmod 755 $install_dir/operator-sdk
 
 # install kustomize
