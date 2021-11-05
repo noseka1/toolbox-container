@@ -1,5 +1,7 @@
 #!/bin/bash -x
 
+set -e
+
 dnf install \
   --assumeyes \
   --setopt install_weak_deps=False \
