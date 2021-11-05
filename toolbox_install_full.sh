@@ -211,7 +211,7 @@ curl --location \
 repo=itaysk/kubectl-neat
 get_latest $repo
 curl --location \
-  https://github.com/$repo/releases/download/$tag/kubectl-neat_linux.tar.gz | \
+  https://github.com/$repo/releases/download/$tag/kubectl-neat_linux_amd64.tar.gz | \
   tar xvfz - --directory $install_dir
 
 # install hey
