@@ -215,7 +215,7 @@ curl --location \
 # install hey
 curl --location \
   --output $install_dir/hey \
-  https://storage.googleapis.com/hey-release/hey_linux_amd64 && \
+  https://hey-release.s3.us-east-2.amazonaws.com/hey_linux_amd64 && \
   chmod 755 $install_dir/hey
 
 # install kube-debugpod
