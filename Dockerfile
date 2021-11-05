@@ -2,7 +2,7 @@
 # STAGE GOLANG-BUILDER  #
 #########################
 
-FROM docker.io/fedora:latest as golang-builder
+FROM docker.io/fedora:34 as golang-builder
 
 COPY toolbox_install_common.sh /usr/local/bin
 COPY toolbox_install_golang.sh /usr/local/bin
@@ -12,7 +12,7 @@ RUN /usr/local/bin/toolbox_install_golang.sh
 #      STAGE BASIC      #
 #########################
 
-FROM docker.io/fedora:latest as basic
+FROM docker.io/fedora:34 as basic
 
 ARG OPENSHIFT_TOOLBOX_COMMIT=unspecified
 ENV OPENSHIFT_TOOLBOX_COMMIT $OPENSHIFT_TOOLBOX_COMMIT
