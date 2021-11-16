@@ -16,7 +16,6 @@ dnf install \
   findutils \
   gdb \
   git \
-  golang \
   httpd \
   haproxy \
   hostname \
