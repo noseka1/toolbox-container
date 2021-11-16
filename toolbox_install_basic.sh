@@ -22,6 +22,7 @@ dnf install \
   hostname \
   htop \
   iftop \
+  iptables \
   iotop \
   iperf \
   iproute \
@@ -60,3 +61,9 @@ get_latest $repo
 curl --location \
   https://github.com/$repo/releases/download/$tag/termshark_${ver}_linux_x64.tar.gz | \
   tar xvfz - --directory $install_dir --strip-components=1 termshark_${ver}_linux_x64/termshark
+
+# install mitmproxy
+ver=7.0.4
+curl --location \
+  https://snapshots.mitmproxy.org/${ver}/mitmproxy-${ver}-linux.tar.gz | \
+  tar xvfz - --directory $install_dir
