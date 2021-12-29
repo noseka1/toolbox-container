@@ -1,7 +1,7 @@
 #!/bin/bash
 echo '
 ******************************************
-* WELCOME TO OPENSHIFT-TOOLBOX CONTAINER *
+* WELCOME TO TOOLBOX CONTAINER *
 ******************************************
 '
 

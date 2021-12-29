@@ -1,17 +1,17 @@
-# OpenShift Toolbox Container Image
+# Toolbox Container image
 
-OpenShift Toolbox is a container image that includes popular tools for building and troubleshooting containerized applications. It can also be used for troubleshooting issues with OpenShift/Kubernetes clusters.
+Toolbox Container Image is a container image that includes popular tools for building and troubleshooting containerized applications. It can also be used for troubleshooting issues with OpenShift/Kubernetes clusters.
 
-Before the image can be used, it must be built. Refer to [Building OpenShift Toolbox](#building-openshift-toolbox-container-image) section for instructions on how to build the image.
+Before the image can be used, it must be built. Refer to [Building Toolbox Container](#building-toolbox-container-image) section for instructions on how to build the image.
 
 For more information on how to use the image, refer to sections:
 
- * [Using OpenShift Toolbox for development on Windows](#using-openshift-toolbox-for-development-on-windows)
- * [Using OpenShift Toolbox for development on Linux](#using-openshift-toolbox-for-development-on-linux)
- * [Initializing OpenShift Toolbox for development](#initializing-openShift-toolbox-for-development)
- * [Deploying OpenShift Toolbox to OpenShift cluster](#deploying-openshift-toolbox-to-openshift-cluster)
+ * [Using Toolbox Container for development on Windows](#using-toolbox-container-for-development-on-windows)
+ * [Using Toolbox Container for development on Linux](#using-toolbox-container-for-development-on-linux)
+ * [Initializing Toolbox Container for development](#initializing-toolbox-container-for-development)
+ * [Deploying Toolbox Container to OpenShift cluster](#deploying-toolbox-container-to-openshift-cluster)
 
-## Building OpenShift Toolbox container image
+## Building Toolbox Container image
 
 OpenShift Toolbox comes in two sizes: basic and full. See the Dockerfile for the list of included tools in each of the sizes.
 
@@ -19,9 +19,9 @@ Build the basic container image:
 
 ```
 $ podman build \
-  --build-arg OPENSHIFT_TOOLBOX_COMMIT=$(git rev-parse HEAD) \
+  --build-arg TOOLBOX_CONTAINER_COMMIT=$(git rev-parse HEAD) \
   --target basic \
-  --tag openshift-toolbox:basic \
+  --tag toolbox-container:basic \
   .
 ```
 
@@ -29,21 +29,21 @@ Alternatively, build the full version of the container image:
 
 ```
 $ podman build \
-  --build-arg OPENSHIFT_TOOLBOX_COMMIT=$(git rev-parse HEAD) \
+  --build-arg TOOLBOX_CONTAINER_COMMIT=$(git rev-parse HEAD) \
   --target full \
-  --tag openshift-toolbox:full \
+  --tag toolbox-container:full \
   .
 ```
 
 Upload the built image to a container registry (replace the target regitry with your location):
 
 ```
-$ podman push openshift-toolbox:basic quay.io/noseka1/openshift-toolbox:basic
+$ podman push toolbox-container:basic quay.io/noseka1/toolbox-container:basic
 ```
 
-## Using OpenShift Toolbox for development on Windows
+## Using Toolbox Container for development on Windows
 
-You may encounter situations where you were handed over a corporate machine that runs Windows. Also, you were given rather restricted permissions for what you can run on this machine. If the Windows machine allows you to run Docker, you can use OpenShift Toolbox to spin up a development environment.
+You may encounter situations where you were handed over a corporate machine that runs Windows. Also, you were given rather restricted permissions for what you can run on this machine. If the Windows machine allows you to run Docker, you can use Toolbox Container to spin up a development environment.
 
 In the following code examples, replace the username `anosek` with your own username.
 
@@ -56,7 +56,7 @@ $ docker volume create toolbox-home-anosek
 Pull and start the toolbox container:
 
 ```
-$ docker run --detach --network host --name toolbox --mount source=toolbox-home-anosek,target=/home/anosek quay.io/noseka1/openshift-toolbox:full 
+$ docker run --detach --network host --name toolbox --mount source=toolbox-home-anosek,target=/home/anosek quay.io/noseka1/toolbox-container:full
 ```
 
 Start a terminal session within the container:
@@ -84,7 +84,7 @@ $ docker start toolbox
 
 Note that if you delete and recreate the container, you will need to issue the `adduser ...` command again. The user information is stored in the `/etc` directory which is not backed by a volume.
 
-## Using OpenShift Toolbox for development on Linux
+## Using Toolbox Container for development on Linux
 
 Previous section showed how to create a development container on Windows. This section shows the same use case but this time using Linux. Note that no root privileges are required to run the commands in this section.
 
@@ -99,7 +99,7 @@ $ podman run \
     --detach
     --name toolbox
     --mount type=volume,src=toolbox-home-anosek,target=/home/anosek
-    quay.io/noseka1/openshift-toolbox:full 
+    quay.io/noseka1/toolbox-container:full
 ```
 
 ```
@@ -112,7 +112,7 @@ If you restart the Linux machine, the container will stop. You can start it by i
 $ podman start toolbox
 ```
 
-## Initializing OpenShift Toolbox for development
+## Initializing Toolbox Container for development
 
 When attached to the toolbox container, you can create your Linux user like this:
 
@@ -125,16 +125,16 @@ $ chown -R anosek.anosek ~anosek
 $ su - anosek
 ```
 
-## Deploying OpenShift Toolbox to OpenShift cluster
+## Deploying Toolbox Container to OpenShift cluster
 
 Note that instead of using the deployment commands in this section one-by-one, you can leverage the Kustomize scripts located in the [deploy directory](deploy).
 
-### Deploying openshift-toolbox
+### Deploying toolbox-container
 
-Deploy the *openshift-toolbox* on the cluster:
+Deploy the *toolbox-container* on the cluster:
 
 ```
-$ oc create deployment openshift-toolbox --image quay.io/noseka1/openshift-toolbox:basic
+$ oc create deployment toolbox-container --image quay.io/noseka1/toolbox-container:basic
 ```
 
 Find out the pod name from the output of:
@@ -143,30 +143,30 @@ Find out the pod name from the output of:
 $ oc get pod
 ```
 
-Connect to the *openshift-toolbox* container:
+Connect to the *toolbox-container* container:
 
 ```
-$ oc rsh openshift-toolbox-<hash>
+$ oc rsh toolbox-container-<hash>
 ```
 
-### Configuring openshift-toolbox
+### Configuring toolbox-container
 
 #### Running as privileged container
 
 ```
-$ oc create serviceaccount openshift-toolbox
+$ oc create serviceaccount toolbox-container
 ```
 ```
-$ oc adm policy add-scc-to-user privileged --serviceaccount openshift-toolbox
+$ oc adm policy add-scc-to-user privileged --serviceaccount toolbox-container
 ```
 ```
-$ oc patch deployment openshift-toolbox \
+$ oc patch deployment toolbox-container \
     --type json \
-    --patch '[{"op": "add", "path": "/spec/template/spec/serviceAccountName", "value": "openshift-toolbox"}]'
+    --patch '[{"op": "add", "path": "/spec/template/spec/serviceAccountName", "value": "toolbox-container"}]'
 ```
 
 ```
-$ oc patch deployment openshift-toolbox \
+$ oc patch deployment toolbox-container \
     --type json \
     --patch '[{"op": "add", "path": "/spec/template/spec/containers/0/securityContext", "value": { "privileged": true }}]'
 ```
@@ -174,11 +174,11 @@ $ oc patch deployment openshift-toolbox \
 
 ```
 $ oc set volume \
-    deployment/openshift-toolbox \
+    deployment/toolbox-container \
     --add \
     --type persistentVolumeClaim \
     --name home \
-    --claim-name openshift-toolbox-home \
+    --claim-name toolbox-container-home \
     --claim-size 50G \
     --mount-path /home/toolbox
 ```
@@ -187,7 +187,7 @@ $ oc set volume \
 
 ```
 $ oc set volume \
-    deployment/openshift-toolbox \
+    deployment/toolbox-container \
     --add \
     --name host \
     --type hostPath \
@@ -207,49 +207,49 @@ EOF
 Create a configmap that includes the init script:
 
 ```
-$ oc create configmap openshift-toolbox-init --from-file=init.sh
+$ oc create configmap toolbox-container-init --from-file=init.sh
 ```
 
 Attach the configmap to the toolbox container:
 ```
 $ oc set volume \
-    deployment/openshift-toolbox \
+    deployment/toolbox-container \
     --add \
     --name init \
     --type configmap \
-    --configmap-name openshift-toolbox-init \
+    --configmap-name toolbox-container-init \
     --mount-path /toolbox
 ```
 
 #### Allowing cluster-admin access to OpenShift from within the toolbox
 
 ```
-$ oc adm policy add-cluster-role-to-user cluster-admin --serviceaccount openshift-toolbox
+$ oc adm policy add-cluster-role-to-user cluster-admin --serviceaccount toolbox-container
 ```
 
 #### Scheduling the toolbox to run on a specific node
 
 ```
-$ oc patch deployment openshift-toolbox \
+$ oc patch deployment toolbox-container \
     --type json \
     --patch '[{"op": "add", "path": "/spec/template/spec/nodeName", "value": "ip-10-0-143-77.us-west-2.compute.internal"}]'
 ```
 #### Enabling access to the underlying node by sharing namespaces
 
 ```
-$ oc patch deployment openshift-toolbox \
+$ oc patch deployment toolbox-container \
     --type json \
     --patch '[{"op": "replace", "path": "/spec/template/spec/hostNetwork", "value": true}]'
 ```
 
 ```
-$ oc patch deployment openshift-toolbox \
+$ oc patch deployment toolbox-container \
     --type json \
     --patch '[{"op": "replace", "path": "/spec/template/spec/hostPID", "value": true}]'
 ```
 
 ```
-$ oc patch deployment openshift-toolbox \
+$ oc patch deployment toolbox-container \
     --type json \
     --patch '[{"op": "replace", "path": "/spec/template/spec/hostIPC", "value": true}]'
 ```
@@ -331,7 +331,7 @@ Check that the exports are available:
 
 ```
 $ showmount -e
-Export list for openshift-toolbox-7c7dc58758-pwkfw:
+Export list for toolbox-container-7c7dc58758-pwkfw:
 /home/toolbox *
 ```
 

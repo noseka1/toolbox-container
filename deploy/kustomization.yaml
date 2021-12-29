@@ -1,32 +1,32 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-namespace: openshift-toolbox
+namespace: toolbox-container
 
 images:
-- name: openshift-toolbox
-  newName: quay.io/noseka1/openshift-toolbox
+- name: toolbox-container
+  newName: quay.io/noseka1/toolbox-container
   newTag: basic
 
 configMapGenerator:
-- name: openshift-toolbox-init
+- name: toolbox-container-init
   files:
   - init.sh
 
 resources:
-- openshift-toolbox-ns.yaml
-- openshift-toolbox-deploy.yaml
-- openshift-toolbox-sa.yaml
-#- openshift-toolbox-home-pvc.yaml
-#- openshift-toolbox-scc-role.yaml
-#- openshift-toolbox-scc-rolebinding.yaml
-#- openshift-toolbox-cluster-admin-clusterrolebinding.yaml
+- toolbox-container-ns.yaml
+- toolbox-container-deploy.yaml
+- toolbox-container-sa.yaml
+#- toolbox-container-home-pvc.yaml
+#- toolbox-container-scc-role.yaml
+#- toolbox-container-scc-rolebinding.yaml
+#- toolbox-container-cluster-admin-clusterrolebinding.yaml
 
 patchesStrategicMerge:
-#- openshift-toolbox-deploy-hostNetwork.yaml
-#- openshift-toolbox-deploy-hostPID.yaml
-#- openshift-toolbox-deploy-hostIPC.yaml
-#- openshift-toolbox-deploy-privileged.yaml
-#- openshift-toolbox-deploy-home-pvc.yaml
-#- openshift-toolbox-deploy-hostPath.yaml
-#- openshift-toolbox-deploy-nodeName.yaml
+#- toolbox-container-deploy-hostNetwork.yaml
+#- toolbox-container-deploy-hostPID.yaml
+#- toolbox-container-deploy-hostIPC.yaml
+#- toolbox-container-deploy-privileged.yaml
+#- toolbox-container-deploy-home-pvc.yaml
+#- toolbox-container-deploy-hostPath.yaml
+#- toolbox-container-deploy-nodeName.yaml

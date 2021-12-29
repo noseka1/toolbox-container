@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: openshift-toolbox-home
+  name: toolbox-container-home
 spec:
   accessModes:
   - ReadWriteOnce

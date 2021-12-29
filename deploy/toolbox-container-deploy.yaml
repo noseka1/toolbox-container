@@ -1,26 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: openshift-toolbox
+  name: toolbox-container
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: openshift-toolbox
+      app: toolbox-container
   template:
     metadata:
       labels:
-        app: openshift-toolbox
+        app: toolbox-container
     spec:
       containers:
-      - image: openshift-toolbox
+      - image: toolbox-container
         imagePullPolicy: Always
-        name: openshift-toolbox
+        name: toolbox-container
         volumeMounts:
         - name: init
           mountPath: /toolbox
-      serviceAccountName: openshift-toolbox
+      serviceAccountName: toolbox-container
       volumes:
       - name: init
         configMap:
-          name: openshift-toolbox-init
+          name: toolbox-container-init

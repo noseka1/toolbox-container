@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: openshift-toolbox
+  name: toolbox-container
 spec:
   template:
     spec:
       containers:
-      - name: openshift-toolbox
+      - name: toolbox-container
         volumeMounts:
         - name: home
           mountPath: /home/toolbox
       volumes:
       - name: home
         persistentVolumeClaim:
-          claimName: openshift-toolbox-home
+          claimName: toolbox-container-home
