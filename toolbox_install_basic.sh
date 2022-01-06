@@ -9,7 +9,6 @@ chmod 775 ~toolbox
 # allow sudo without password
 echo '%wheel ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers.d/10_wheel_nopasswd
 
-
 dnf install \
   --assumeyes \
   --setopt install_weak_deps=False \
@@ -40,6 +39,7 @@ dnf install \
   net-tools \
   nmap \
   nmap-ncat \
+  openssh-server \
   openssl \
   patch \
   procps-ng \
@@ -58,6 +58,11 @@ dnf install \
   xz
 
 dnf clean all
+
+# Disable SELinux ssh module to allow ssh clients to log in
+sed -i '/selinux/d' /etc/pam.d/sshd
+# Disable checking of file ownership/mode in the user's home dir
+sed -i 's/^#StrictModes yes/StrictModes no/' /etc/ssh/sshd_config
 
 script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 . $script_dir/toolbox_install_common.sh

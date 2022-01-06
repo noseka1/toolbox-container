@@ -10,7 +10,6 @@ dnf install \
   bat \
   buildah \
   fzf \
-  openssh-server \
   podman \
   python3-kubernetes \
   python3-openshift \
@@ -19,11 +18,6 @@ dnf install \
   stress-ng \
   ripgrep \
   tmux
-
-# Disable SELinux ssh module to allow ssh clients to log in
-sed -i '/selinux/d' /etc/pam.d/sshd
-# Disable checking of file ownership/mode in the user's home dir
-sed -i 's/^#StrictModes yes/StrictModes no/' /etc/ssh/sshd_config
 
 # install fluentd
 dnf install \
