@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: toolbox-container
+spec:
+  selector:
+    app: toolbox-container
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+  - name: https
+    port: 443
+    protocol: TCP
+  - name: ssh
+    port: 22
+    protocol: TCP
+  type: ClusterIP
