@@ -3,8 +3,8 @@
 set -e
 
 adduser toolbox --groups wheel
-chgrp 0 /home/toolbox
-chmod 775 /home/toolbox
+chgrp 0 ~toolbox
+chmod 775 ~toolbox
 
 # allow sudo without password
 echo '%wheel ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers.d/10_wheel_nopasswd
