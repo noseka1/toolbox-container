@@ -63,6 +63,11 @@ dnf clean all
 sed -i '/selinux/d' /etc/pam.d/sshd
 # Disable checking of file ownership/mode in the user's home dir
 sed -i 's/^#StrictModes yes/StrictModes no/' /etc/ssh/sshd_config
+# Create an empty authorized_keys file for user toolbox
+mkdir ~toolbox/.ssh
+chown toolbox.toolbox ~toolbox/.ssh
+> ~toolbox/.ssh/authorized_keys
+chown toolbox.toolbox ~toolbox/.ssh/authorized_keys
 
 script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 . $script_dir/toolbox_install_common.sh
