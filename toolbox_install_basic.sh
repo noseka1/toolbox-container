@@ -12,6 +12,7 @@ echo '%wheel ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers.d/10_wheel_nopasswd
 dnf install \
   --assumeyes \
   --setopt install_weak_deps=False \
+  binutils \
   bind-utils \
   blktrace \
   bzip2 \
