@@ -191,7 +191,7 @@ repo=knqyf263/pet
 get_latest $repo
 curl --location \
   https://github.com/$repo/releases/download/$tag/pet_${ver}_linux_amd64.tar.gz | \
-  tar xvfz - --directory $install_dir
+  tar xvfz - --directory $install_dir pet
 
 # install rbac-lookup
 repo=FairwindsOps/rbac-lookup
@@ -233,7 +233,7 @@ repo=noseka1/kubectl-debugpod
 get_latest $repo
 curl --location \
   https://github.com/$repo/releases/download/$ver/kubectl-debugpod_${ver}_linux_amd64.tar.gz | \
-  tar xvfz - --directory $install_dir
+  tar xvfz - --directory $install_dir kubectl-debugpod
 
 # install istioctl
 repo=istio/istio
