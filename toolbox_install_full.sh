@@ -123,7 +123,9 @@ curl --location \
 # install tekton cli
 repo=tektoncd/cli
 get_latest $repo
-rpm --install https://github.com/$repo/releases/download/$tag/tektoncd-cli-${ver}_Linux-64bit.rpm
+curl --location \
+  https://github.com/$repo/releases/download/$tag/tkn_${ver}_Linux_x86_64.tar.gz | \
+  tar xvfz - --directory $install_dir tkn
 
 # install stern
 repo=stern/stern
@@ -148,7 +150,10 @@ curl --location \
 # install fortio
 repo=fortio/fortio
 get_latest $repo
-rpm --install https://github.com/$repo/releases/download/$tag/fortio-$ver-1.x86_64.rpm
+curl --location \
+  https://github.com/$repo/releases/download/$tag/fortio-linux_x64-$ver.tgz | \
+  tar xvfz - --directory $install_dir --strip-components=2 usr/bin/fortio && \
+  chmod 755 $install_dir/fortio
 
 # install lazygit
 repo=jesseduffield/lazygit
