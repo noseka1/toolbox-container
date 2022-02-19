@@ -91,6 +91,14 @@ curl --location \
   https://github.com/$repo/releases/download/$tag/operator-sdk_linux_amd64 && \
   chmod 755 $install_dir/operator-sdk
 
+# install opm (operator package manager)
+repo=operator-framework/operator-registry
+get_latest $repo
+curl --location \
+  --output $install_dir/opm \
+  https://github.com/$repo/releases/download/$tag/linux-amd64-opm && \
+  chmod 755 $install_dir/opm
+
 # install kustomize
 repo=kubernetes-sigs/kustomize
 tag=v4.2.0
@@ -263,3 +271,39 @@ curl --location \
   --output $install_dir/roxctl \
   https://mirror.openshift.com/pub/rhacs/assets/latest/bin/Linux/roxctl && \
   chmod 755 $install_dir/roxctl
+
+# rosa CLI
+repo=openshift/rosa
+get_latest $repo
+curl --location \
+  --output $install_dir/rosa \
+  https://github.com/$repo/releases/download/$tag/rosa-linux-amd64 && \
+  chmod 755 $install_dir/rosa
+
+# ocm CLI
+repo=openshift-online/ocm-cli
+get_latest $repo
+curl --location \
+  --output $install_dir/ocm \
+  https://github.com/$repo/releases/download/$tag/ocm-linux-amd64 && \
+  chmod 755 $install_dir/ocm
+
+# mirror-registry
+curl --location \
+  https://developers.redhat.com/content-gateway/file/pub/openshift-v4/clients/mirror-registry/1.0/mirror-registry.tar.gz | \
+  tar xvfz - --directory $install_dir
+
+# tilt
+repo=tilt-dev/tilt
+get_latest $repo
+curl --location \
+  https://github.com/$repo/releases/download/$tag/tilt.${ver}.linux.x86_64.tar.gz | \
+  tar xvfz - --directory $install_dir tilt
+
+# skaffold
+repo=GoogleContainerTools/skaffold
+get_latest $repo
+curl --location \
+  --output $install_dir/skaffold \
+  https://github.com/$repo/releases/download/$tag/skaffold-linux-amd64 && \
+  chmod 755 $install_dir/skaffold
