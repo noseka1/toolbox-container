@@ -125,7 +125,7 @@ repo=tektoncd/cli
 get_latest $repo
 curl --location \
   https://github.com/$repo/releases/download/$tag/tkn_${ver}_Linux_x86_64.tar.gz | \
-  tar xvfz - --directory $install_dir tkn
+  tar xvfz - --directory $install_dir --no-same-owner tkn
 
 # install stern
 repo=stern/stern
