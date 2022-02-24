@@ -50,12 +50,40 @@ curl --location \
   https://github.com/$repo/releases/download/$tag/dust-${tag}-x86_64-unknown-linux-gnu.tar.gz | \
   tar xvfz - --directory $install_dir --strip-components=1 dust-${tag}-x86_64-unknown-linux-gnu/dust
 
+# install fd
+repo=sharkdp/fd
+get_latest $repo
+curl --location \
+  https://github.com/$repo/releases/download/${tag}/fd-${tag}-i686-unknown-linux-musl.tar.gz | \
+  tar xvfz - --directory $install_dir --strip-components=1 fd-${tag}-i686-unknown-linux-musl/fd
+
+# install fzf
+repo=junegunn/fzf
+get_latest $repo
+curl --location \
+  https://github.com/$repo/releases/download/$ver/fzf-$ver-linux_amd64.tar.gz | \
+  tar xvfz - --directory $install_dir
+
+# install ripgrep
+repo=BurntSushi/ripgrep
+get_latest $repo
+curl --location \
+  https://github.com/$repo/releases/download/$ver/ripgrep-$ver-x86_64-unknown-linux-musl.tar.gz | \
+  tar xvfz - --directory $install_dir --strip-components=1 ripgrep-$ver-x86_64-unknown-linux-musl/rg
+
 # install oc and kubectl
 curl --location \
   https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/openshift-client-linux.tar.gz | \
   tar xvfz - --directory $install_dir && \
   kubectl completion bash > /etc/bash_completion.d/kubectl && \
   oc completion bash > /etc/bash_completion.d/oc
+
+# kubecolor
+repo=hidetatz/kubecolor
+get_latest $repo
+curl --location \
+  https://github.com/$repo/releases/download/$tag/kubecolor_${ver}_Linux_x86_64.tar.gz | \
+  tar xvfz - --directory $install_dir kubecolor
 
 # install etcd client
 repo=etcd-io/etcd
