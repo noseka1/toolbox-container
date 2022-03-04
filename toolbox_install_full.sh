@@ -160,7 +160,7 @@ repo=stern/stern
 get_latest $repo
 curl --location \
   https://github.com/$repo/releases/download/$tag/stern_${ver}_linux_amd64.tar.gz | \
-  tar xvfz - --directory $install_dir --strip-components=1 stern_${ver}_linux_amd64/stern && \
+  tar xvfz - --directory $install_dir --no-same-owner stern && \
   chmod 755 $install_dir/stern
 
 # install kubens and kubectx
