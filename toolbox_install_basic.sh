@@ -73,7 +73,7 @@ chown toolbox.toolbox ~toolbox/.ssh/authorized_keys
 script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 . $script_dir/toolbox_install_common.sh
 
-# install termshark
+# Install termshark
 repo=gcla/termshark
 get_latest $repo
 curl --location \
@@ -85,3 +85,9 @@ ver=7.0.4
 curl --location \
   https://snapshots.mitmproxy.org/${ver}/mitmproxy-${ver}-linux.tar.gz | \
   tar xvfz - --directory $install_dir
+
+# Install sysdig
+repo=draios/sysdig
+get_latest $repo
+rpm --install --nodeps \
+  https://github.com/draios/sysdig/releases/download/$ver/sysdig-$ver-x86_64.rpm
