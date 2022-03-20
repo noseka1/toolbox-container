@@ -286,6 +286,28 @@ $ openssl req -newkey rsa:2048 -nodes -keyout httpbin.key -x509 -out httpbin.crt
 $ gunicorn-3 --bind 0.0.0.0:8443 --access-logfile - --keyfile httpbin.key --certfile httpbin.crt  httpbin:app
 ```
 
+### Run a requestbin server
+
+```
+$ (cat <<EOF
+"""Send a reply from the proxy without sending any data to the remote server."""
+from mitmproxy import http
+from mitmproxy import ctx
+import datetime
+
+def request(flow: http.HTTPFlow) -> None:
+  ctx.log.info("")
+  ctx.log.info(datetime.datetime.now())
+  ctx.log.info("")
+  flow.response = http.Response.make(200)
+EOF
+) > http-reply-from-proxy.py
+```
+
+```
+$ mitmdump -s http-reply-from-proxy.py --set flow_detail=3
+```
+
 ### Run NFS server
 
 NFS server must run in a privileged container (i.e. `pod.spec.template.spec.containers.securityContext.privileged: true`).
