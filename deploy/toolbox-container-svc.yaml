@@ -9,8 +9,14 @@ spec:
   - name: http
     port: 80
     protocol: TCP
+  - name: http-8080
+    port: 8080
+    protocol: TCP
   - name: https
     port: 443
+    protocol: TCP
+  - name: https-8443
+    port: 8443
     protocol: TCP
   - name: ssh
     port: 22
