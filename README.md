@@ -234,6 +234,7 @@ $ oc patch deployment toolbox-container \
     --type json \
     --patch '[{"op": "add", "path": "/spec/template/spec/nodeName", "value": "ip-10-0-143-77.us-west-2.compute.internal"}]'
 ```
+
 #### Enabling access to the underlying node by sharing namespaces
 
 ```
@@ -305,7 +306,7 @@ EOF
 ```
 
 ```
-$ mitmdump -s http-reply-from-proxy.py --set flow_detail=3
+$ mitmdump -s http-reply-from-proxy.py --set flow_detail=4
 ```
 
 ### Run NFS server
