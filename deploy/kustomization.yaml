@@ -1,8 +1,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-namespace: toolbox-container
-
 images:
 - name: toolbox-container
   newName: quay.io/noseka1/toolbox-container
@@ -14,7 +12,6 @@ configMapGenerator:
   - init.sh
 
 resources:
-- toolbox-container-ns.yaml
 - toolbox-container-deploy.yaml
 - toolbox-container-sa.yaml
 #- toolbox-container-home-pvc.yaml
