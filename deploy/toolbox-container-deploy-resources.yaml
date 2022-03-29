@@ -1,0 +1,15 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: toolbox-container
+spec:
+  template:
+    spec:
+      containers:
+      - name: toolbox-container
+        resources:
+          requests:
+            memory: 100Mi
+            cpu: 200m
+          limits:
+            memory: 100Mi
