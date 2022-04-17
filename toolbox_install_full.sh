@@ -167,13 +167,11 @@ curl --location \
 repo=ahmetb/kubectx
 get_latest $repo
 curl --location \
-  --output $install_dir/kubens \
-  https://github.com/$repo/releases/download/$tag/kubens && \
-  chmod 755 $install_dir/kubens && \
+  https://github.com/$repo/releases/download/$tag/kubens_${tag}_linux_x86_64.tar.gz | \
+  tar xvfz - --directory $install_dir --no-same-owner kubens
 curl --location \
-  --output $install_dir/kubectx \
-  https://github.com/$repo/releases/download/$tag/kubectx && \
-  chmod 755 $install_dir/kubectx
+  https://github.com/$repo/releases/download/$tag/kubectx_${tag}_linux_x86_64.tar.gz | \
+  tar xvfz - --directory $install_dir --no-same-owner kubectx
 
 # install fortio
 repo=fortio/fortio
