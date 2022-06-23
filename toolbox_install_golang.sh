@@ -13,10 +13,4 @@ script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 # build delve (Golang debugger)
 repo=go-delve/delve
 get_latest $repo
-tmpdir=$(mktemp --directory --suffix -dlv)
-(
-  cd $tmpdir
-  go mod init local/build
-  go get github.com/go-delve/delve/cmd/dlv@$tag
-  rm -rf $tmpdir
-)
+go install github.com/go-delve/delve/cmd/dlv@$tag
