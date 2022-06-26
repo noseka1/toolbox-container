@@ -19,6 +19,7 @@ dnf install \
   curl \
   diffutils \
   dnsmasq \
+  fatrace \
   fd-find \
   file \
   findutils \
