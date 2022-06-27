@@ -19,6 +19,7 @@ resources:
 #- toolbox-container-scc-rolebinding.yaml
 #- toolbox-container-cluster-admin-clusterrolebinding.yaml
 #- toolbox-container-svc.yaml
+#- toolbox-container-route.yaml
 
 patchesStrategicMerge:
 #- toolbox-container-deploy-hostNetwork.yaml
