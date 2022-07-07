@@ -106,10 +106,12 @@ curl --location \
   chmod 755 $install_dir/noobaa
 
 # install helm
+repo=helm/helm
+get_latest $repo
 curl --location \
   --output $install_dir/helm \
-  https://mirror.openshift.com/pub/openshift-v4/clients/helm/latest/helm-linux-amd64 && \
-  chmod 755 $install_dir/helm
+  https://get.helm.sh/helm-$tag-linux-amd64.tar.gz | \
+  tar xvfz - --directory $install_dir --strip-components=1 --no-same-owner linux-amd64/helm
 
 # install operator sdk
 repo=operator-framework/operator-sdk
