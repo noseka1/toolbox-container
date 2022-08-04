@@ -231,7 +231,7 @@ repo=FairwindsOps/rbac-lookup
 get_latest $repo
 curl --location \
   https://github.com/$repo/releases/download/$tag/rbac-lookup_${ver}_Linux_x86_64.tar.gz | \
-  tar xvfz - --directory $install_dir
+  tar xvfz - --directory $install_dir rbac-lookup
 
 # install kubectl-tree
 repo=ahmetb/kubectl-tree
