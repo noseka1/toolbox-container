@@ -244,7 +244,7 @@ repo=corneliusweig/ketall
 get_latest $repo
 curl --location \
   https://github.com/$repo/releases/download/$tag/ketall-amd64-linux.tar.gz | \
-  tar xvfz - --directory $install_dir &&
+  tar xvfz - --directory $install_dir kubectl-get-all &&
   mv $install_dir/ketall-amd64-linux $install_dir/kubectl-get-all
 
 # install kubectl-neat
