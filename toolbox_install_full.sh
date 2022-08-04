@@ -78,6 +78,12 @@ curl --location \
   kubectl completion bash > /etc/bash_completion.d/kubectl && \
   oc completion bash > /etc/bash_completion.d/oc
 
+# install oc-mirror plugin
+curl --location \
+  https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/oc-mirror.tar.gz | \
+  tar xvfz - --directory $install_dir && \
+  chmod 755 $install_dir/oc-mirror
+
 # kubecolor
 repo=hidetatz/kubecolor
 get_latest $repo
