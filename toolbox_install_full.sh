@@ -202,7 +202,7 @@ repo=wagoodman/dive
 get_latest $repo
 curl --location \
   https://github.com/$repo/releases/download/$tag/dive_${ver}_linux_amd64.tar.gz | \
-  tar xvfz - --directory $install_dir
+  tar xvfz - --directory $install_dir dive
 
 # install argocd
 repo=argoproj/argo-cd
