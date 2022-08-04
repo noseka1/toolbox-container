@@ -74,7 +74,7 @@ curl --location \
 # install oc and kubectl
 curl --location \
   https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/openshift-client-linux.tar.gz | \
-  tar xvfz - --directory $install_dir && \
+  tar xvfz - --directory $install_dir oc kubectl && \
   kubectl completion bash > /etc/bash_completion.d/kubectl && \
   oc completion bash > /etc/bash_completion.d/oc
 
