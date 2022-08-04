@@ -323,7 +323,7 @@ curl --location \
 
 # mirror-registry
 curl --location \
-  https://developers.redhat.com/content-gateway/file/pub/openshift-v4/clients/mirror-registry/1.0/mirror-registry.tar.gz | \
+  https://developers.redhat.com/content-gateway/rest/mirror2/pub/openshift-v4/clients/mirror-registry/latest/mirror-registry.tar.gz | \
   tar xvfz - --directory $install_dir
 
 # tilt
