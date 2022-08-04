@@ -109,7 +109,6 @@ curl --location \
 repo=helm/helm
 get_latest $repo
 curl --location \
-  --output $install_dir/helm \
   https://get.helm.sh/helm-$tag-linux-amd64.tar.gz | \
   tar xvfz - --directory $install_dir --strip-components=1 --no-same-owner linux-amd64/helm
 
