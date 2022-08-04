@@ -187,7 +187,7 @@ repo=jesseduffield/lazygit
 get_latest $repo
 curl --location \
   https://github.com/$repo/releases/download/$tag/lazygit_${ver}_Linux_x86_64.tar.gz | \
-  tar xvfz - --directory $install_dir && \
+  tar xvfz - --directory $install_dir lazygit && \
   chmod 755 $install_dir/lazygit
 
 # install gitmux
