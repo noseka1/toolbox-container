@@ -340,3 +340,15 @@ curl --location \
   --output $install_dir/skaffold \
   https://github.com/$repo/releases/download/$tag/skaffold-linux-amd64 && \
   chmod 755 $install_dir/skaffold
+
+# install butane
+curl --location \
+  --output $install_dir/butane \
+  https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/butane/latest/butane-amd64 && \
+  chmod 755 $install_dir/butane
+
+# install CoreOS installer
+curl --location \
+  --output $install_dir/coreos-installer \
+  https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/coreos-installer/latest/coreos-installer_amd64 && \
+  chmod 755 $install_dir/coreos-installer
