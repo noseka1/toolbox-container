@@ -1,12 +1,19 @@
 #!/bin/bash -x
 
-set -e
+set -euo pipefail
 
+# Create toolbox user
 adduser toolbox --groups wheel
 chgrp 0 ~toolbox
 chmod 775 ~toolbox
 
-# allow sudo without password
+# Allow adding user with arbitrary uid on container start
+for f in /etc/passwd /etc/group; do
+  chgrp 0 $f
+  chmod g+w $f
+done
+
+# Allow sudo without password
 echo '%wheel ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers.d/10_wheel_nopasswd
 
 dnf install \

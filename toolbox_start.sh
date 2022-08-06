@@ -53,6 +53,12 @@ else
   echo "No token found!"
 fi
 
+# Add toolbox user entry to /etc/passwd and /etc/group
+if ! whoami &> /dev/null; then
+  echo "toolbox:x:$(id -u):0:Toolbox user:$HOME:/bin/bash" >> /etc/passwd
+  echo "toolbox:x:$(id -u):" >> /etc/group
+fi
+
 custom_init=/toolbox/init.sh
 if [ -r $custom_init ]; then
   echo '

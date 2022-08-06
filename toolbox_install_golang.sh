@@ -1,5 +1,7 @@
 #!/bin/bash -x
 
+set -euo pipefail
+
 dnf install \
   --assumeyes \
   --setopt install_weak_deps=False \
