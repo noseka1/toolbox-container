@@ -26,6 +26,7 @@ COPY --from=golang-builder /root/go/bin/dlv /usr/local/bin
 # add start script
 COPY toolbox_start.sh /usr/local/bin
 
+ENV HOME=/home/toolbox
 WORKDIR /home/toolbox
 
 CMD [ "/usr/local/bin/toolbox_start.sh" ]
