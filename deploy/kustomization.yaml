@@ -3,7 +3,7 @@ kind: Kustomization
 
 images:
 - name: toolbox-container
-  newName: quay.io/noseka1/toolbox-container
+  newName: quay.io/mmwillingham/toolbox-container
   newTag: basic
 
 configMapGenerator:
