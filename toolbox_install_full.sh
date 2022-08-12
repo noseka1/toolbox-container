@@ -267,7 +267,7 @@ curl --location \
   chmod 755 $install_dir/hey
 
 # Install kube-debugpod
-repo=noseka1/kubectl-debugpod
+repo=mmwillingham/kubectl-debugpod
 get_latest $repo
 curl --location \
   https://github.com/$repo/releases/download/$ver/kubectl-debugpod_${ver}_linux_amd64.tar.gz | \
