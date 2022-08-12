@@ -19,6 +19,7 @@ Build the basic container image:
 
 ```
 $ podman build \
+  --security-opt seccomp=unconfined \
   --build-arg TOOLBOX_CONTAINER_COMMIT=$(git rev-parse HEAD) \
   --target basic \
   --tag toolbox-container:basic \
@@ -29,6 +30,7 @@ Alternatively, build the full version of the container image:
 
 ```
 $ podman build \
+  --security-opt seccomp=unconfined \
   --build-arg TOOLBOX_CONTAINER_COMMIT=$(git rev-parse HEAD) \
   --target full \
   --tag toolbox-container:full \
@@ -38,25 +40,25 @@ $ podman build \
 Upload the built image to a container registry (replace the target regitry with your location):
 
 ```
-$ podman push toolbox-container:basic quay.io/noseka1/toolbox-container:basic
+$ podman push toolbox-container:basic quay.io/mmwillingham/toolbox-container:basic
 ```
 
 ## Using Toolbox Container for development on Windows
 
 You may encounter situations where you were handed over a corporate machine that runs Windows. Also, you were given rather restricted permissions for what you can run on this machine. If the Windows machine allows you to run Docker, you can use Toolbox Container to spin up a development environment.
 
-In the following code examples, replace the username `anosek` with your own username.
+In the following code examples, replace the username `mmwillingham` with your own username.
 
 First, create a persistent volume that will be used to back your home directory:
 
 ```
-$ docker volume create toolbox-home-anosek
+$ docker volume create toolbox-home-mmwillingham
 ```
 
 Pull and start the toolbox container:
 
 ```
-$ docker run --detach --network host --name toolbox --mount source=toolbox-home-anosek,target=/home/anosek quay.io/noseka1/toolbox-container:full
+$ docker run --detach --network host --name toolbox --mount source=toolbox-home-mmwillingham,target=/home/mmwillingham quay.io/mmwillingham/toolbox-container:full
 ```
 
 Start a terminal session within the container:
@@ -70,8 +72,8 @@ The above command remaps the detach keys to ctrl-@. The default ctrl-p key combi
 Within the container, you can create your user and switch to it:
 
 ```
-$ adduser anosek -G wheel
-$ su - anosek
+$ adduser mmwillingham -G wheel
+$ su - mmwillingham
 ```
 
 Now you are all set. You can run `tmux` within the container to obtain additional shell windows. Alternatively, you can run the `docker exec -ti ...` command as you did before to start an additional shell session.
@@ -88,18 +90,18 @@ Note that if you delete and recreate the container, you will need to issue the `
 
 Previous section showed how to create a development container on Windows. This section shows the same use case but this time using Linux. Note that no root privileges are required to run the commands in this section.
 
-In the following code examples, replace the username `anosek` with your own username.
+In the following code examples, replace the username `mmwillingham` with your own username.
 
 ```
-$ podman volume create toolbox-home-anosek
+$ podman volume create toolbox-home-mmwillingham
 ```
 
 ```
 $ podman run \
     --detach
     --name toolbox
-    --mount type=volume,src=toolbox-home-anosek,target=/home/anosek
-    quay.io/noseka1/toolbox-container:full
+    --mount type=volume,src=toolbox-home-mmwillingham,target=/home/mmwillingham
+    quay.io/mmwillingham/toolbox-container:full
 ```
 
 ```
@@ -117,12 +119,12 @@ $ podman start toolbox
 When attached to the toolbox container, you can create your Linux user like this:
 
 ```
-$ adduser anosek -G wheel
+$ adduser mmwillingham -G wheel
 $ shopt -s dotglob
-$ cp -a /etc/skel/* /home/anosek
+$ cp -a /etc/skel/* /home/mmwillingham
 $ shopt -u dotglob
-$ chown -R anosek.anosek ~anosek
-$ su - anosek
+$ chown -R mmwillingham.mmwillingham ~mmwillingham
+$ su - mmwillingham
 ```
 
 ## Deploying Toolbox Container to OpenShift cluster
@@ -134,7 +136,7 @@ Note that instead of using the deployment commands in this section one-by-one, y
 Deploy the *toolbox-container* on the cluster:
 
 ```
-$ oc create deployment toolbox-container --image quay.io/noseka1/toolbox-container:basic
+$ oc create deployment toolbox-container --image quay.io/mmwillingham/toolbox-container:basic
 ```
 
 Find out the pod name from the output of:
