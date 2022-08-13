@@ -238,6 +238,13 @@ curl --location \
   https://github.com/$repo/releases/download/$tag/rbac-lookup_${ver}_Linux_x86_64.tar.gz | \
   tar xvfz - --directory $install_dir rbac-lookup
 
+# Install rbac-tool
+repo=alcideio/rbac-tool
+get_latest $repo
+curl --location \
+  https://github.com/$repo/releases/download/$tag/rbac-tool_${tag}_linux_amd64.tar.gz | \
+  tar xvfz - --directory $install_dir rbac-tool
+
 # Install kubectl-tree
 repo=ahmetb/kubectl-tree
 get_latest $repo
