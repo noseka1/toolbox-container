@@ -56,6 +56,7 @@ dnf install \
   python3-gunicorn \
   python3-httpbin \
   python3-pygments \
+  rsync \
   socat \
   strace \
   tcpdump \
