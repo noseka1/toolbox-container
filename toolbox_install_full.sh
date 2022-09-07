@@ -10,6 +10,7 @@ dnf install \
   bat \
   buildah \
   fzf \
+  kcat \
   podman \
   python3-kubernetes \
   python3-openshift \

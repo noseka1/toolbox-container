@@ -38,4 +38,5 @@ CMD [ "/usr/local/bin/toolbox_start.sh" ]
 FROM basic as full
 
 COPY toolbox_install_full.sh /usr/local/bin
+COPY bvn13-kcat-fedora-35.repo /etc/yum.repos.d
 RUN /usr/local/bin/toolbox_install_full.sh
