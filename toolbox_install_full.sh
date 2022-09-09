@@ -39,7 +39,7 @@ script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
 # Install velero client (the velero client version should match the version deployed by the oadp operator)
 repo=vmware-tanzu/velero
-tag=v1.7.0
+tag=v1.9.0
 curl --location \
   https://github.com/$repo/releases/download/$tag/velero-${tag}-linux-amd64.tar.gz | \
   tar xvfz - --directory $install_dir --strip-components=1 velero-${tag}-linux-amd64/velero
