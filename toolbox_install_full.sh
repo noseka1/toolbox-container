@@ -9,13 +9,11 @@ dnf install \
   awscli \
   bat \
   buildah \
-  duf \
   fzf \
   kcat \
   podman \
   python3-kubernetes \
   python3-openshift \
-  ripgrep \
   runc \
   skopeo \
   stress-ng \
@@ -51,27 +49,6 @@ get_latest $repo
 curl --location \
   https://github.com/$repo/releases/download/$tag/dust-${tag}-x86_64-unknown-linux-gnu.tar.gz | \
   tar xvfz - --directory $install_dir --strip-components=1 dust-${tag}-x86_64-unknown-linux-gnu/dust
-
-# Install fd
-repo=sharkdp/fd
-get_latest $repo
-curl --location \
-  https://github.com/$repo/releases/download/${tag}/fd-${tag}-i686-unknown-linux-musl.tar.gz | \
-  tar xvfz - --directory $install_dir --strip-components=1 fd-${tag}-i686-unknown-linux-musl/fd
-
-# Install fzf
-repo=junegunn/fzf
-get_latest $repo
-curl --location \
-  https://github.com/$repo/releases/download/$ver/fzf-$ver-linux_amd64.tar.gz | \
-  tar xvfz - --directory $install_dir
-
-# Install ripgrep
-repo=BurntSushi/ripgrep
-get_latest $repo
-curl --location \
-  https://github.com/$repo/releases/download/$ver/ripgrep-$ver-x86_64-unknown-linux-musl.tar.gz | \
-  tar xvfz - --directory $install_dir --strip-components=1 ripgrep-$ver-x86_64-unknown-linux-musl/rg
 
 # Install oc and kubectl
 curl --location \

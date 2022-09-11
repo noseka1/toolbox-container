@@ -26,6 +26,7 @@ dnf install \
   curl \
   diffutils \
   dnsmasq \
+  duf \
   fatrace \
   fd-find \
   file \
@@ -56,6 +57,7 @@ dnf install \
   python3-gunicorn \
   python3-httpbin \
   python3-pygments \
+  ripgrep \
   rsync \
   socat \
   strace \
