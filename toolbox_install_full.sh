@@ -9,15 +9,16 @@ dnf install \
   awscli \
   bat \
   buildah \
+  duf \
   fzf \
   kcat \
   podman \
   python3-kubernetes \
   python3-openshift \
+  ripgrep \
   runc \
   skopeo \
   stress-ng \
-  ripgrep \
   tmux
 
 # Install fluentd
@@ -365,3 +366,25 @@ curl --location \
   --output $install_dir/coreos-installer \
   https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/coreos-installer/latest/coreos-installer_amd64 && \
   chmod 755 $install_dir/coreos-installer
+
+# Install RHOAS (Red Hat OpenShift Application Services) CLI
+repo=redhat-developer/app-services-cli
+get_latest $repo
+curl --location \
+  https://github.com/$repo/releases/download/$tag/rhoas_${ver}_linux_amd64.tar.gz | \
+  tar xvfz - --directory $install_dir --strip-components=1 rhoas_${ver}_linux_amd64/rhoas
+
+# Install OpenShift installer
+curl --location \
+  https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-install-linux.tar.gz | \
+  tar xvfz - --directory $install_dir openshift-install
+
+# Install OpenShift Local (formerly known as CodeReady Containers)
+curl --location \
+  https://developers.redhat.com/content-gateway/rest/mirror/pub/openshift-v4/clients/crc/latest/crc-linux-amd64.tar.xz | \
+  tar xvfJ - --directory $install_dir --strip-components=1 --no-anchored --wildcards crc
+
+# Install Cloud Credential Operator CLI utility
+curl --location \
+  https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/ccoctl-linux.tar.gz | \
+  tar xvfz - --directory $install_dir ccoctl
