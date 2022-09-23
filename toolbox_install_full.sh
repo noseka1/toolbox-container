@@ -36,6 +36,13 @@ dnf clean all
 script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 . $script_dir/toolbox_install_common.sh
 
+# Install cert-manager client
+repo=cert-manager/cert-manager
+get_latest $repo
+curl --location \
+  https://github.com/$repo/releases/download/$tag/cmctl-linux-amd64.tar.gz | \
+  tar xvfz - --directory $install_dir cmctl
+
 # Install velero client (the velero client version should match the version deployed by the oadp operator)
 repo=vmware-tanzu/velero
 tag=v1.9.0
