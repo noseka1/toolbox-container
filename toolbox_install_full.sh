@@ -379,3 +379,11 @@ get_latest $repo
 curl --location \
   https://github.com/$repo/releases/download/$tag/go-containerregistry_Linux_x86_64.tar.gz | \
   tar xvfz - --directory $install_dir crane
+
+# Install cosign
+repo=sigstore/cosign
+get_latest $repo
+curl --location \
+  --output $install_dir/cosign \
+  https://github.com/sigstore/cosign/releases/download/$tag/cosign-linux-amd64 && \
+  chmod 755 $install_dir/cosign
