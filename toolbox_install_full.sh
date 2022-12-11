@@ -372,3 +372,10 @@ curl --location \
 curl --location \
   https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/ccoctl-linux.tar.gz | \
   tar xvfz - --directory $install_dir ccoctl
+
+# Install crane
+repo=google/go-containerregistry
+get_latest $repo
+curl --location \
+  https://github.com/$repo/releases/download/$tag/go-containerregistry_Linux_x86_64.tar.gz | \
+  tar xvfz - --directory $install_dir crane
