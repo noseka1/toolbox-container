@@ -93,7 +93,7 @@ curl --location \
   tar xvfz - --directory $install_dir --strip-components=1 termshark_${ver}_linux_x64/termshark
 
 # Install mitmproxy
-ver=8.0.0
+ver=9.0.1
 curl --location \
   https://snapshots.mitmproxy.org/${ver}/mitmproxy-${ver}-linux.tar.gz | \
   tar xvfz - --directory $install_dir
