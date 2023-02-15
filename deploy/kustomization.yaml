@@ -30,3 +30,4 @@ patchesStrategicMerge:
 #- toolbox-container-deploy-hostPath.yaml
 #- toolbox-container-deploy-nodeName.yaml
 #- toolbox-container-deploy-resources.yaml
+#- toolbox-container-deploy-sleep.yaml
