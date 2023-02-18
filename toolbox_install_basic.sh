@@ -2,6 +2,9 @@
 
 set -euo pipefail
 
+script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+. $script_dir/toolbox_install_common.sh
+
 # Create toolbox user
 adduser toolbox --groups wheel
 chgrp 0 ~toolbox
@@ -82,13 +85,10 @@ chown toolbox.toolbox ~toolbox/.ssh
 > ~toolbox/.ssh/authorized_keys
 chown toolbox.toolbox ~toolbox/.ssh/authorized_keys
 
-script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-. $script_dir/toolbox_install_common.sh
-
 # Install termshark
 repo=gcla/termshark
 get_latest $repo
-curl --location \
+"${githubget[@]}" \
   https://github.com/$repo/releases/download/$tag/termshark_${ver}_linux_x64.tar.gz | \
   tar xvfz - --directory $install_dir --strip-components=1 termshark_${ver}_linux_x64/termshark
 
