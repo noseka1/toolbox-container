@@ -19,18 +19,6 @@ dnf install \
   stress-ng \
   tmux
 
-# Install fluentd
-dnf install \
-  --assumeyes \
-  --setopt install_weak_deps=False \
-  ruby-devel \
-  gcc \
-  gem \
-  redhat-rpm-config \
-  make && \
-  gem install json --version 2.3.0 && \
-  gem install fluentd --version 1.10.1
-
 dnf clean all
 
 script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
