@@ -26,6 +26,7 @@ patchesStrategicMerge:
 #- toolbox-container-deploy-hostPID.yaml
 #- toolbox-container-deploy-hostIPC.yaml
 #- toolbox-container-deploy-privileged.yaml
+#- toolbox-container-deploy-capabilities.yaml
 #- toolbox-container-deploy-home-pvc.yaml
 #- toolbox-container-deploy-hostPath.yaml
 #- toolbox-container-deploy-nodeName.yaml
