@@ -279,8 +279,8 @@ curl --location \
 
 # Install kubevirt cli
 repo=kubevirt/kubevirt
-tag=v0.43.0
-ver=0.43.0
+tag=v0.59.0
+ver=0.59.0
 "${githubget[@]}" \
   --output $install_dir/virtctl \
   https://github.com/$repo/releases/download/$tag/virtctl-${tag}-linux-amd64
