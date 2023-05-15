@@ -242,11 +242,13 @@ get_latest $repo
   https://github.com/$repo/releases/download/$tag/kubectl-neat_linux_amd64.tar.gz | \
   tar xvfz - --directory $install_dir
 
-# Install hey
-curl --location \
-  --output $install_dir/hey \
-  https://hey-release.s3.us-east-2.amazonaws.com/hey_linux_amd64 && \
-  chmod 755 $install_dir/hey
+# Install oha
+repo=hatoo/oha
+get_latest $repo
+"${githubget[@]}" \
+  --output $install_dir/oha \
+  https://github.com/$repo/releases/download/$tag/oha-linux-amd64 && \
+  chmod 755 $install_dir/oha
 
 # Install kube-debugpod
 repo=noseka1/kubectl-debugpod
