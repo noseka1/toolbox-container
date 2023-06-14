@@ -15,22 +15,29 @@ For more information on how to use the image, refer to sections:
 
 OpenShift Toolbox comes in two sizes: basic and full. See the Dockerfile for the list of included tools in each of the sizes.
 
-Build the basic container image. Before issuing the following command, replace the <githubtoken> placeholder with your GitHub authentication token:
+
+Export GITHUB_TOKEN variable. Replace the <githubtoken> placeholder with your GitHub authentication token:
+
+```
+$ export GITHUB_TOKEN=<githubtoken>
+```
+
+Build the basic container image:
 
 ```
 $ podman build \
-  --build-arg GITHUB_TOKEN=<githubtoken> \
+  --secret id=GITHUB_TOKEN \
   --build-arg TOOLBOX_CONTAINER_COMMIT=$(git rev-parse HEAD) \
   --target basic \
   --tag toolbox-container:basic \
   .
 ```
 
-Alternatively, build the full version of the container image. Before issuing the following command, replace the <githubtoken> placeholder with your GitHub authentication token:
+Alternatively, build the full version of the container image:
 
 ```
 $ podman build \
-  --build-arg GITHUB_TOKEN=<githubtoken> \
+  --secret id=GITHUB_TOKEN \
   --build-arg TOOLBOX_CONTAINER_COMMIT=$(git rev-parse HEAD) \
   --target full \
   --tag toolbox-container:full \

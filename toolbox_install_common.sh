@@ -1,5 +1,9 @@
 github_token=${GITHUB_TOKEN:-}
 
+if [[ -z "$github_token" ]] && [[ -r /run/secrets/GITHUB_TOKEN ]]; then
+  github_token=$(cat /run/secrets/GITHUB_TOKEN)
+fi
+
 if [[ -z "$github_token" ]]; then
   echo You must pass a non-empty environment variable GITHUB_TOKEN to run this script.
   exit 1

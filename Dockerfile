@@ -4,12 +4,9 @@
 
 FROM docker.io/fedora:37 as golang-builder
 
-ARG GITHUB_TOKEN
-
 COPY toolbox_install_common.sh /usr/local/bin
 COPY toolbox_install_golang.sh /usr/local/bin
-
-RUN /usr/local/bin/toolbox_install_golang.sh
+RUN --mount=type=secret,id=GITHUB_TOKEN /usr/local/bin/toolbox_install_golang.sh
 
 #########################
 #      STAGE BASIC      #
@@ -17,13 +14,12 @@ RUN /usr/local/bin/toolbox_install_golang.sh
 
 FROM docker.io/fedora:37 as basic
 
-ARG GITHUB_TOKEN
 ARG TOOLBOX_CONTAINER_COMMIT=unspecified
 ENV TOOLBOX_CONTAINER_COMMIT $TOOLBOX_CONTAINER_COMMIT
 
 COPY toolbox_install_common.sh /usr/local/bin
 COPY toolbox_install_basic.sh /usr/local/bin
-RUN /usr/local/bin/toolbox_install_basic.sh
+RUN --mount=type=secret,id=GITHUB_TOKEN /usr/local/bin/toolbox_install_basic.sh
 
 COPY --from=golang-builder /root/go/bin/dlv /usr/local/bin
 
@@ -41,8 +37,6 @@ CMD [ "/usr/local/bin/toolbox_start.sh" ]
 
 FROM basic as full
 
-ARG GITHUB_TOKEN
-
 COPY toolbox_install_full.sh /usr/local/bin
 COPY bvn13-kcat-fedora-35.repo /etc/yum.repos.d
-RUN /usr/local/bin/toolbox_install_full.sh
+RUN --mount=type=secret,id=GITHUB_TOKEN /usr/local/bin/toolbox_install_full.sh
