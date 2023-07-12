@@ -34,7 +34,7 @@ get_latest $repo
 
 # Install velero client (the velero client version should match the version deployed by the oadp operator)
 repo=vmware-tanzu/velero
-tag=v1.9.0
+tag=v1.11.0
 "${githubget[@]}" \
   https://github.com/$repo/releases/download/$tag/velero-${tag}-linux-amd64.tar.gz | \
   tar xvfz - --directory $install_dir --strip-components=1 velero-${tag}-linux-amd64/velero
@@ -111,8 +111,8 @@ get_latest $repo
 
 # Install kustomize
 repo=kubernetes-sigs/kustomize
-tag=v4.2.0
-ver=4.2.0
+tag=v5.1.0
+ver=5.1.0
 "${githubget[@]}" \
   https://github.com/$repo/releases/download/kustomize/$tag/kustomize_${tag}_linux_amd64.tar.gz | \
   tar xvfz - --directory $install_dir && \
@@ -281,8 +281,8 @@ curl --location \
 
 # Install kubevirt cli
 repo=kubevirt/kubevirt
-tag=v0.59.0
-ver=0.59.0
+tag=v1.0.0
+ver=1.0.0
 "${githubget[@]}" \
   --output $install_dir/virtctl \
   https://github.com/$repo/releases/download/$tag/virtctl-${tag}-linux-amd64
