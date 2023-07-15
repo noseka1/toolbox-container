@@ -2,7 +2,7 @@
 # STAGE GOLANG-BUILDER  #
 #########################
 
-FROM docker.io/fedora:37 as golang-builder
+FROM docker.io/fedora:38 as golang-builder
 
 COPY toolbox_install_common.sh /usr/local/bin
 COPY toolbox_install_golang.sh /usr/local/bin
@@ -12,7 +12,7 @@ RUN --mount=type=secret,id=GITHUB_TOKEN /usr/local/bin/toolbox_install_golang.sh
 #      STAGE BASIC      #
 #########################
 
-FROM docker.io/fedora:37 as basic
+FROM docker.io/fedora:38 as basic
 
 ARG TOOLBOX_CONTAINER_COMMIT=unspecified
 ENV TOOLBOX_CONTAINER_COMMIT $TOOLBOX_CONTAINER_COMMIT
