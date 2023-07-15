@@ -81,9 +81,9 @@ sed -i '/selinux/d' /etc/pam.d/sshd
 sed -i 's/^#StrictModes yes/StrictModes no/' /etc/ssh/sshd_config
 # Create an empty authorized_keys file for user toolbox
 mkdir ~toolbox/.ssh
-chown toolbox.toolbox ~toolbox/.ssh
+chown toolbox:toolbox ~toolbox/.ssh
 > ~toolbox/.ssh/authorized_keys
-chown toolbox.toolbox ~toolbox/.ssh/authorized_keys
+chown toolbox:toolbox ~toolbox/.ssh/authorized_keys
 
 # Install termshark
 github_download_latest_asset gcla/termshark "termshark_.*_linux_x64.tar.gz" | \
