@@ -378,3 +378,9 @@ get_latest $repo
   --output $install_dir/cosign \
   https://github.com/sigstore/cosign/releases/download/$tag/cosign-linux-amd64 && \
   chmod 755 $install_dir/cosign
+
+# Install skupper client
+github_get_latest_asset skupperproject/skupper skupper-cli-.*-linux-amd64.tgz
+"${githubget[@]}" \
+  ${github_asset_url} | \
+  tar xvfz - --directory $install_dir skupper

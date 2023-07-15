@@ -17,3 +17,10 @@ function get_latest() {
   tag=$("${githubget[@]}" https://api.github.com/repos/$repo/releases | jq --raw-output '.[0].tag_name')
   ver=${tag#v}
 }
+
+function github_get_latest_asset() {
+  local latest_release=$("${githubget[@]}" https://api.github.com/repos/$1/releases/latest)
+  github_asset_tag=$(echo $latest_release | jq --raw-output '.tag_name')
+  github_asset_ver=${github_asset_tag#v}
+  github_asset_url=$(echo $latest_release | jq --raw-output ".assets[] | select(.name | test(\"$2\")) | .browser_download_url")
+}
