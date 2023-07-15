@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 
 set -euo pipefail
 
@@ -13,6 +13,5 @@ dnf install \
   golang
 
 # build delve (Golang debugger)
-repo=go-delve/delve
-get_latest $repo
-go install github.com/go-delve/delve/cmd/dlv@$tag
+github_get_latest_asset go-delve/delve ".*"
+go install github.com/go-delve/delve/cmd/dlv@$github_asset_tag

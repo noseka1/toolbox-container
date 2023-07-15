@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 
 set -euo pipefail
 
@@ -86,20 +86,15 @@ chown toolbox.toolbox ~toolbox/.ssh
 chown toolbox.toolbox ~toolbox/.ssh/authorized_keys
 
 # Install termshark
-repo=gcla/termshark
-get_latest $repo
-"${githubget[@]}" \
-  https://github.com/$repo/releases/download/$tag/termshark_${ver}_linux_x64.tar.gz | \
-  tar xvfz - --directory $install_dir --strip-components=1 termshark_${ver}_linux_x64/termshark
+github_download_latest_asset gcla/termshark "termshark_.*_linux_x64.tar.gz" | \
+  tar xvfz - --directory $install_dir --strip-components=1 --wildcards termshark_*_linux_x64/termshark
 
 # Install mitmproxy
 ver=9.0.1
-curl --location \
+curl --location --no-progress-meter \
   https://snapshots.mitmproxy.org/${ver}/mitmproxy-${ver}-linux.tar.gz | \
   tar xvfz - --directory $install_dir
 
 # Install sysdig
-repo=draios/sysdig
-get_latest $repo
-rpm --install --nodeps \
-  https://github.com/draios/sysdig/releases/download/$ver/sysdig-$ver-x86_64.rpm
+github_get_latest_asset draios/sysdig sysdig-.*-x86_64.rpm
+rpm --install --nodeps $github_asset_url
