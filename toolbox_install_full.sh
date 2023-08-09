@@ -25,6 +25,13 @@ if type dnf > /dev/null 2>&1; then
   dnf clean all
 fi
 
+# Install Terraform binary
+ver=1.5.5
+curl --location --no-progress-meter \
+  https://releases.hashicorp.com/terraform/$ver/terraform_${ver}_linux_amd64.zip | \
+  gunzip > $install_dir/terraform && \
+  chmod 755 $install_dir/terraform
+
 # Install cert-manager client
 github_download_latest_asset cert-manager/cert-manager "cmctl-linux-amd64.tar.gz" | \
   tar xvfz - --directory $install_dir cmctl
