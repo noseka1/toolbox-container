@@ -21,7 +21,8 @@ if type dnf > /dev/null 2>&1; then
     runc \
     skopeo \
     stress-ng \
-    tmux
+    tmux \
+    zsh
   dnf clean all
 fi
 
