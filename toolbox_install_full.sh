@@ -176,6 +176,10 @@ github_download_latest_asset corneliusweig/ketall "ketall-amd64-linux.tar.gz$" |
 github_download_latest_asset itaysk/kubectl-neat "kubectl-neat_linux_amd64.tar.gz" | \
   tar xvfz - --directory $install_dir kubectl-neat
 
+# Install kube-capacity
+github_download_latest_asset robscott/kube-capacity "kube-capacity_.*_linux_x86_64.tar.gz" | \
+  tar xvfz - --directory $install_dir kube-capacity
+
 # Install oha
 github_download_latest_asset hatoo/oha "oha-linux-amd64" \
   > $install_dir/oha && \
