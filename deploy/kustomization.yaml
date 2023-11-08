@@ -28,7 +28,11 @@ patchesStrategicMerge:
 #- toolbox-container-deploy-privileged.yaml
 #- toolbox-container-deploy-capabilities.yaml
 #- toolbox-container-deploy-home-pvc.yaml
-#- toolbox-container-deploy-hostPath.yaml
+#- toolbox-container-deploy-hostPath-host.yaml
+#- toolbox-container-deploy-hostPath-dev.yaml
+#- toolbox-container-deploy-hostPath-proc.yaml
+#- toolbox-container-deploy-hostPath-sys.yaml
+#- toolbox-container-deploy-hostPath-run.yaml
 #- toolbox-container-deploy-nodeName.yaml
 #- toolbox-container-deploy-resources.yaml
 #- toolbox-container-deploy-sleep.yaml
