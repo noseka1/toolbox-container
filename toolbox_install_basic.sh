@@ -27,6 +27,7 @@ dnf install \
   blktrace \
   bzip2 \
   curl \
+  ddrescue \
   diffutils \
   dnsmasq \
   duf \
