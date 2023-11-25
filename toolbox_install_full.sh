@@ -102,9 +102,8 @@ curl --location --no-progress-meter \
   chmod 755 $install_dir/odo
 
 # Install kn (serverless client)
-curl --location --no-progress-meter \
-  https://mirror.openshift.com/pub/openshift-v4/clients/serverless/latest/kn-linux-amd64.tar.gz | \
-  tar xvfz - --directory $install_dir && \
+github_download_latest_asset knative/client "kn-linux-amd64" \
+  > $install_dir/kn && \
   chmod 755 $install_dir/kn
 
 # Install tekton cli
