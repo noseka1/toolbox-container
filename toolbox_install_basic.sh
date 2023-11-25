@@ -35,6 +35,7 @@ dnf install \
   fd-find \
   file \
   findutils \
+  fio \
   gdb \
   git \
   httpd \
