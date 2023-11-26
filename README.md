@@ -125,12 +125,27 @@ $ podman start toolbox
 
 When attached to the toolbox container, you can create your Linux user like this:
 
+Create a user with an empty home directory:
+
 ```
 $ adduser anosek -G wheel
-$ shopt -s dotglob
-$ cp -a /etc/skel/* /home/anosek
-$ shopt -u dotglob
-$ chown -R anosek:anosek ~anosek
+```
+
+Copy the initial shell configuration:
+
+```
+$ rsync -av --chown anosek:anosek /etc/skel/ /home/anosek
+```
+
+Optionally, copy the sample configuration from the toolbox user:
+
+```
+$ rsync -av --chown anosek:anosek /home/toolbox/ /home/anosek
+```
+
+Continue working as the new user:
+
+```
 $ su - anosek
 ```
 
