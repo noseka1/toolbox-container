@@ -128,7 +128,7 @@ When attached to the toolbox container, you can create your Linux user like this
 Create a user with an empty home directory:
 
 ```
-$ adduser anosek -G wheel
+$ adduser anosek -G wheel --shell /bin/zsh
 ```
 
 Copy the initial shell configuration:
