@@ -67,6 +67,7 @@ dnf install \
   rsync \
   socat \
   strace \
+  symlinks \
   tcpdump \
   telnet \
   unzip \
