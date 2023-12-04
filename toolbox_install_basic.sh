@@ -105,3 +105,8 @@ rpm --install --nodeps $github_asset_url
 # Install zenith
 github_download_latest_asset bvaisvil/zenith "zenith.x86_64-unknown-linux-musl.tgz$" | \
   tar xvfz - --directory $install_dir
+
+# Install yq
+github_download_latest_asset mikefarah/yq yq_linux_amd64 \
+  > $install_dir/yq && \
+  chmod 755 $install_dir/yq
