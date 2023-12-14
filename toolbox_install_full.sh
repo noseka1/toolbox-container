@@ -150,9 +150,9 @@ github_download_latest_asset argoproj/argo-rollouts "kubectl-argo-rollouts-linux
   > $install_dir/kubectl-argo-rollouts && \
   chmod 755 $install_dir/kubectl-argo-rollouts
 
-# Install pet
-github_download_latest_asset knqyf263/pet "pet_.*_linux_amd64.tar.gz" | \
-  tar xvfz - --directory $install_dir pet
+# Install navi
+github_download_latest_asset denisidoro/navi "navi-v.*-x86_64-unknown-linux-musl.tar.gz" | \
+  tar xvfz - --directory $install_dir
 
 # Install rbac-lookup
 github_download_latest_asset FairwindsOps/rbac-lookup "rbac-lookup_.*_Linux_x86_64.tar.gz" | \
