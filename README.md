@@ -1,6 +1,6 @@
 # Toolbox Container Image
 
-Toolbox Container Image is a container image that includes popular tools for building and troubleshooting containerized applications. It can also be used for troubleshooting issues with OpenShift/Kubernetes clusters.
+Toolbox Container Image is a container image that includes popular tools for troubleshooting containerized applications or issues with OpenShift/Kubernetes clusters.
 
 Before the image can be used, it must be built. Refer to [Building Toolbox Container](#building-toolbox-container-image) section for instructions on how to build the image.
 
