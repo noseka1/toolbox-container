@@ -10,6 +10,7 @@ For more information on how to use the image, refer to sections:
  * [Using Toolbox Container for development on Linux](#using-toolbox-container-for-development-on-linux)
  * [Initializing Toolbox Container for development](#initializing-toolbox-container-for-development)
  * [Using Toolbox Container for troubleshooting cluster nodes](#using-toolbox-container-for-troubleshooting-cluster-nodes)
+ * [Using Toolbox Container for troubleshooting pods](#using-toolbox-container-for-troubleshooting-pods)
  * [Deploying Toolbox Container to OpenShift cluster](#deploying-toolbox-container-to-openshift-cluster)
 
 ## Building Toolbox Container image
@@ -156,6 +157,9 @@ You can use the Toolbox Container image in the `oc debug` command like this:
 ```
 $ oc debug node/<node> --image quay.io/noseka1/toolbox-container:basic
 ```
+## Using Toolbox Container for troubleshooting pods
+
+You can use the Toolbox Container image in conjuction with the [kubectl-debugpod](https://github.com/noseka1/kubectl-debugpod) utility to attach to any pod running on the cluster.
 
 ## Deploying Toolbox Container to OpenShift cluster
 
