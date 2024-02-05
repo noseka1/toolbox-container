@@ -120,14 +120,6 @@ If you restart the Linux machine, the container will stop. You can start it by i
 ```
 $ podman start toolbox
 ```
-## Using Toolbox Container for troubleshooting cluster nodes
-
-You can use the Toolbox Container image in the `oc debug` command like this:
-
-```
-$ oc debug node/<node> --image quay.io/noseka1/toolbox-container:basic
-```
-
 ## Initializing Toolbox Container for development
 
 When attached to the toolbox container, you can create your Linux user like this:
@@ -154,6 +146,14 @@ Continue working as the new user:
 
 ```
 $ su - anosek
+```
+
+## Using Toolbox Container for troubleshooting cluster nodes
+
+You can use the Toolbox Container image in the `oc debug` command like this:
+
+```
+$ oc debug node/<node> --image quay.io/noseka1/toolbox-container:basic
 ```
 
 ## Deploying Toolbox Container to OpenShift cluster
