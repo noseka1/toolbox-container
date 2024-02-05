@@ -9,6 +9,7 @@ For more information on how to use the image, refer to sections:
  * [Using Toolbox Container for development on Windows](#using-toolbox-container-for-development-on-windows)
  * [Using Toolbox Container for development on Linux](#using-toolbox-container-for-development-on-linux)
  * [Initializing Toolbox Container for development](#initializing-toolbox-container-for-development)
+ * [Using Toolbox Container for troubleshooting cluster nodes](using-toolbox-container-for-troubleshooting-cluster-nodes)
  * [Deploying Toolbox Container to OpenShift cluster](#deploying-toolbox-container-to-openshift-cluster)
 
 ## Building Toolbox Container image
