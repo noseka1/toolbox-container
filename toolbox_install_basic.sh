@@ -53,6 +53,7 @@ dnf install \
   man-db \
   net-tools \
   nginx \
+  nmon \
   nmap \
   nmap-ncat \
   openssh-server \
