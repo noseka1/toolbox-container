@@ -32,6 +32,7 @@ patchesStrategicMerge:
 #- toolbox-container-deploy-hostPath-dev.yaml
 #- toolbox-container-deploy-hostPath-proc.yaml
 #- toolbox-container-deploy-hostPath-sys.yaml
+#- toolbox-container-deploy-hostPath-root.yaml
 #- toolbox-container-deploy-hostPath-run.yaml
 #- toolbox-container-deploy-hostPath-lib-modules.yaml
 #- toolbox-container-deploy-nodeName.yaml
