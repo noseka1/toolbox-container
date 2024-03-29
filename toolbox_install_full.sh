@@ -283,3 +283,8 @@ github_download_latest_asset sigstore/cosign "cosign-linux-amd64" \
 # Install skupper client
 github_download_latest_asset skupperproject/skupper skupper-cli-.*-linux-amd64.tgz | \
   tar xvfz - --directory $install_dir skupper
+
+# Install OpenShift must-gather client (omc)
+github_download_latest_asset gmeghnag/omc "omc_Linux_x86_64$" \
+  > $install_dir/omc && \
+  chmod 755 $install_dir/omc
