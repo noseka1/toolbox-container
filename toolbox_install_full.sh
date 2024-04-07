@@ -122,6 +122,11 @@ github_download_latest_asset ahmetb/kubectx "kubens_.*_linux_x86_64.tar.gz" | \
 github_download_latest_asset ahmetb/kubectx "kubectx_.*_linux_x86_64.tar.gz" | \
   tar xvfz - --directory $install_dir --no-same-owner kubectx
 
+# Install Kubernetes context switcher
+github_download_latest_asset danielfoehrKn/kubeswitch "switcher_linux_amd64$" \
+  > $install_dir/switcher && \
+  chmod 755 $install_dir/switcher
+
 # Install fortio
 github_download_latest_asset fortio/fortio "fortio-linux_amd64-.*.tgz" | \
   tar xvfz - --directory $install_dir --strip-components=2 usr/bin/fortio && \
