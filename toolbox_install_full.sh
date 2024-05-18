@@ -15,6 +15,7 @@ if type dnf > /dev/null 2>&1; then
     buildah \
     fzf \
     kcat \
+    lnav \
     podman \
     python3-kubernetes \
     python3-openshift \
