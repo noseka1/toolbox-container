@@ -33,6 +33,11 @@ curl --location --no-progress-meter \
   gunzip > $install_dir/terraform && \
   chmod 755 $install_dir/terraform
 
+# NMState command-line interface
+github_download_latest_asset nmstate/nmstate "nmstatectl-linux-x64.zip" | \
+  gunzip > $install_dir/nmstatectl && \
+  chmod 755 $install_dir/nmstatectl
+
 # Install cert-manager client
 github_download_latest_asset cert-manager/cert-manager "cmctl-linux-amd64.tar.gz" | \
   tar xvfz - --directory $install_dir cmctl
