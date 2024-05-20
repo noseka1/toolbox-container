@@ -52,7 +52,9 @@ Upload the built image to a container registry (replace the target regitry with 
 $ podman push toolbox-container:basic quay.io/noseka1/toolbox-container:basic
 ```
 
-## Using Toolbox Container for development on Windows
+## Using Toolbox Container for development
+
+### Starting Toolbox Container on Windows
 
 You may encounter situations where you were handed over a corporate machine that runs Windows. Also, you were given rather restricted permissions for what you can run on this machine. If the Windows machine allows you to run Docker, you can use Toolbox Container to spin up a development environment.
 
@@ -67,37 +69,17 @@ $ docker volume create toolbox-home-anosek
 Pull and start the toolbox container:
 
 ```
-$ docker run --detach --network host --name toolbox --mount source=toolbox-home-anosek,target=/home/anosek quay.io/noseka1/toolbox-container:full
+$ docker run \
+    --detach \
+    --network host \
+    --name toolbox \
+    --mount source=toolbox-home-anosek,target=/home/anosek \
+    quay.io/noseka1/toolbox-container:full
 ```
 
-Start a terminal session within the container:
+### Starting Toolbox Container on Linux
 
-```
-$ docker exec -ti --detach-keys ctrl-@,@ toolbox /bin/bash
-```
-
-The above command remaps the detach keys to ctrl-@. The default ctrl-p key combination conflicts with the terminal controls.
-
-Within the container, you can create your user and switch to it:
-
-```
-$ adduser anosek -G wheel
-$ su - anosek
-```
-
-Now you are all set. You can run `tmux` within the container to obtain additional shell windows. Alternatively, you can run the `docker exec -ti ...` command as you did before to start an additional shell session.
-
-If you restart the Windows machine, the container will stop. You can start it by issuing:
-
-```
-$ docker start toolbox
-```
-
-Note that if you delete and recreate the container, you will need to issue the `adduser ...` command again. The user information is stored in the `/etc` directory which is not backed by a volume.
-
-## Using Toolbox Container for development on Linux
-
-Previous section showed how to create a development container on Windows. This section shows the same use case but this time using Linux. Note that no root privileges are required to run the commands in this section.
+Previous section showed how to create a development container on Windows. This section shows the same use case but this time using Linux. Note that no root privileges on the podman host machine are required to run the commands in this section.
 
 In the following code examples, replace the username `anosek` with your own username.
 
@@ -113,18 +95,15 @@ $ podman run \
     quay.io/noseka1/toolbox-container:full
 ```
 
+### Initializing Toolbox Container for development
+
+Start a terminal session within the container:
+
 ```
 $ podman exec -ti --detach-keys ctrl-@,@ toolbox /bin/bash
 ```
 
-If you restart the Linux machine, the container will stop. You can start it by issuing:
-
-```
-$ podman start toolbox
-```
-## Initializing Toolbox Container for development
-
-When attached to the toolbox container, you can create your Linux user like this:
+The above command remaps the detach keys to ctrl-@. The default ctrl-p key combination conflicts with the terminal controls.
 
 Create a user with an empty home directory:
 
@@ -149,6 +128,46 @@ Continue working as the new user:
 ```
 $ su - anosek
 ```
+
+You are all set now. You can run `tmux` within the container to obtain additional shell windows. Alternatively, you can run the `podman exec -ti ...` command as you did before to start an additional shell session.
+
+If you restart the podman host machine, the container will stop. You can start it by issuing:
+
+```
+$ podman start toolbox
+```
+
+### Updating Toolbox Container image
+
+Stop the toolbox container if it is running:
+
+```
+$ podman stop toolbox
+```
+
+Delete the toolbox container. Note that this command deletes the container only. The volume backing your home directory will NOT be deleted:
+
+```
+$ podman rm toolbox
+```
+
+Pull the latest version of the image:
+
+```
+$ podman pull quay.io/noseka1/toolbox-container:full
+```
+
+Execute a command to re-create the toolbox container using the latest container image. For example, on a Linux host issue:
+
+```
+$ podman run \
+    --detach
+    --name toolbox
+    --mount type=volume,src=toolbox-home-anosek,target=/home/anosek
+    quay.io/noseka1/toolbox-container:full
+```
+
+Note that when you delete and recreate the container, you will need to issue the `adduser ...` command again. The user information is stored in the `/etc` directory which is not backed by a volume.
 
 ## Using Toolbox Container for troubleshooting cluster nodes
 
