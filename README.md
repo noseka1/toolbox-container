@@ -6,9 +6,7 @@ Before the image can be used, it must be built. Refer to [Building Toolbox Conta
 
 For more information on how to use the image, refer to sections:
 
- * [Using Toolbox Container for development on Windows](#using-toolbox-container-for-development-on-windows)
- * [Using Toolbox Container for development on Linux](#using-toolbox-container-for-development-on-linux)
- * [Initializing Toolbox Container for development](#initializing-toolbox-container-for-development)
+ * [Using Toolbox Container for development](#using-toolbox-container-for-development)
  * [Using Toolbox Container for troubleshooting cluster nodes](#using-toolbox-container-for-troubleshooting-cluster-nodes)
  * [Using Toolbox Container for troubleshooting pods](#using-toolbox-container-for-troubleshooting-pods)
  * [Deploying Toolbox Container to OpenShift cluster](#deploying-toolbox-container-to-openshift-cluster)
@@ -16,7 +14,6 @@ For more information on how to use the image, refer to sections:
 ## Building Toolbox Container image
 
 OpenShift Toolbox comes in two sizes: basic and full. See the Dockerfile for the list of included tools in each of the sizes.
-
 
 Export GITHUB_TOKEN variable. Replace the <githubtoken> placeholder with your GitHub authentication token:
 
