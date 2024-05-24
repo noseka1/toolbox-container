@@ -56,6 +56,7 @@ dnf install \
   nmon \
   nmap \
   nmap-ncat \
+  numactl \
   openssh-server \
   openssl \
   patch \
