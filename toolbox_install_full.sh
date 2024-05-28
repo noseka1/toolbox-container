@@ -12,6 +12,7 @@ if type dnf > /dev/null 2>&1; then
     ansible \
     awscli \
     bat \
+    bc \
     buildah \
     fzf \
     kcat \
