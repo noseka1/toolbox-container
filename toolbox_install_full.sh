@@ -28,6 +28,10 @@ if type dnf > /dev/null 2>&1; then
   dnf clean all
 fi
 
+# Install oras client
+github_download_latest_asset oras-project/oras "oras_.*_linux_amd64.tar.gz$" | \
+  tar xvfz - --directory $install_dir --no-same-owner oras
+
 # Install Terraform binary
 ver=1.5.5
 curl --location --no-progress-meter \
