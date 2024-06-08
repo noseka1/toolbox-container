@@ -28,6 +28,10 @@ if type dnf > /dev/null 2>&1; then
   dnf clean all
 fi
 
+# Install govc vSphere CLI
+github_download_latest_asset vmware/govmomi govc_Linux_x86_64.tar.gz | \
+  tar xvfz - --directory $install_dir --no-same-owner govc
+
 # Install oras client
 github_download_latest_asset oras-project/oras "oras_.*_linux_amd64.tar.gz$" | \
   tar xvfz - --directory $install_dir --no-same-owner oras
