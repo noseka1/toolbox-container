@@ -36,6 +36,7 @@ dnf install \
   file \
   findutils \
   fio \
+  fio-engine-libaio \
   gdb \
   git \
   httpd \
