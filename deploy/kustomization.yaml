@@ -21,20 +21,20 @@ resources:
 #- toolbox-container-svc.yaml
 #- toolbox-container-route.yaml
 
-patchesStrategicMerge:
-#- toolbox-container-deploy-hostNetwork.yaml
-#- toolbox-container-deploy-hostPID.yaml
-#- toolbox-container-deploy-hostIPC.yaml
-#- toolbox-container-deploy-privileged.yaml
-#- toolbox-container-deploy-capabilities.yaml
-#- toolbox-container-deploy-home-pvc.yaml
-#- toolbox-container-deploy-hostPath-host.yaml
-#- toolbox-container-deploy-hostPath-dev.yaml
-#- toolbox-container-deploy-hostPath-proc.yaml
-#- toolbox-container-deploy-hostPath-sys.yaml
-#- toolbox-container-deploy-hostPath-root.yaml
-#- toolbox-container-deploy-hostPath-run.yaml
-#- toolbox-container-deploy-hostPath-lib-modules.yaml
-#- toolbox-container-deploy-nodeName.yaml
-#- toolbox-container-deploy-resources.yaml
-#- toolbox-container-deploy-sleep.yaml
+patches:
+#- path: toolbox-container-deploy-hostNetwork.yaml
+#- path: toolbox-container-deploy-hostPID.yaml
+#- path: toolbox-container-deploy-hostIPC.yaml
+#- path: toolbox-container-deploy-privileged.yaml
+#- path: toolbox-container-deploy-capabilities.yaml
+#- path: toolbox-container-deploy-home-pvc.yaml
+#- path: toolbox-container-deploy-hostPath-host.yaml
+#- path: toolbox-container-deploy-hostPath-dev.yaml
+#- path: toolbox-container-deploy-hostPath-proc.yaml
+#- path: toolbox-container-deploy-hostPath-sys.yaml
+#- path: toolbox-container-deploy-hostPath-root.yaml
+#- path: toolbox-container-deploy-hostPath-run.yaml
+#- path: toolbox-container-deploy-hostPath-lib-modules.yaml
+#- path: toolbox-container-deploy-nodeName.yaml
+#- path: toolbox-container-deploy-resources.yaml
+#- path: toolbox-container-deploy-sleep.yaml
