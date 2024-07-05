@@ -237,9 +237,8 @@ curl --location --no-progress-meter \
   chmod 755 $install_dir/roxctl
 
 # Install rosa CLI
-github_download_latest_asset openshift/rosa rosa-linux-amd64 \
-  > $install_dir/rosa && \
-  chmod 755 $install_dir/rosa
+github_download_latest_asset openshift/rosa "rosa_Linux_x86_64.tar.gz" | \
+  tar xvfz - --directory $install_dir rosa
 
 # Install ocm CLI
 github_download_latest_asset openshift-online/ocm-cli "ocm-linux-amd64" \
@@ -296,7 +295,7 @@ github_download_latest_asset google/go-containerregistry "go-containerregistry_L
   tar xvfz - --directory $install_dir crane
 
 # Install cosign
-github_download_latest_asset sigstore/cosign "cosign-linux-amd64" \
+github_download_latest_asset sigstore/cosign "cosign-linux-amd64$" \
   > $install_dir/cosign && \
   chmod 755 $install_dir/cosign
 
