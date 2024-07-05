@@ -1,6 +1,6 @@
 [copr:copr.fedorainfracloud.org:bvn13:kcat]
 name=Copr repo for kcat owned by bvn13
-baseurl=https://download.copr.fedorainfracloud.org/results/bvn13/kcat/fedora-37-$basearch/
+baseurl=https://download.copr.fedorainfracloud.org/results/bvn13/kcat/epel-9-$basearch/
 type=rpm-md
 skip_if_unavailable=True
 gpgcheck=1
