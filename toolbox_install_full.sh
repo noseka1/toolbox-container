@@ -28,6 +28,10 @@ if type dnf > /dev/null 2>&1; then
   dnf clean all
 fi
 
+# Install kube-capacity
+github_download_latest_asset robscott/kube-capacity kube-capacity_.*_linux_x86_64.tar.gz | \
+  tar xvfz - --directory $install_dir kube-capacity
+
 # Install govc vSphere CLI
 github_download_latest_asset vmware/govmomi govc_Linux_x86_64.tar.gz | \
   tar xvfz - --directory $install_dir --no-same-owner govc
