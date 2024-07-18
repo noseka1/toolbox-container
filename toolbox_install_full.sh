@@ -78,7 +78,7 @@ curl --location --no-progress-meter \
   chmod 755 $install_dir/oc-mirror
 
 # Install kubecolor
-github_download_latest_asset hidetatz/kubecolor "kubecolor_.*_Linux_x86_64.tar.gz" | \
+github_download_latest_asset kubecolor/kubecolor "kubecolor_.*_linux_amd64.tar.gz" | \
   tar xvfz - --directory $install_dir kubecolor
 
 # Install etcd client
