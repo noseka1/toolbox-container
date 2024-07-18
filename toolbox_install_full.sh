@@ -221,9 +221,9 @@ curl --location --no-progress-meter \
 
 # Install MinIO client (S3 compatible client)
 curl --location --no-progress-meter \
-  --output $install_dir/mclient \
+  --output $install_dir/mcli \
   https://dl.min.io/client/mc/release/linux-amd64/mc && \
-  chmod 755 $install_dir/mclient
+  chmod 755 $install_dir/mcli
 
 # Install kubevirt cli
 github_download_latest_asset kubevirt/kubevirt "virtctl-.*-linux-amd64" \
