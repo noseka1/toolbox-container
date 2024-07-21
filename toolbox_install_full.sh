@@ -28,6 +28,10 @@ if type dnf > /dev/null 2>&1; then
   dnf clean all
 fi
 
+# Install kopia
+github_download_latest_asset kopia/kopia "kopia-.*-linux-x64.tar.gz" | \
+  tar xvfz - --directory $install_dir --strip-components=1 --wildcards kopia-*-linux-x64/kopia
+
 # Install kube-capacity
 github_download_latest_asset robscott/kube-capacity kube-capacity_.*_linux_x86_64.tar.gz | \
   tar xvfz - --directory $install_dir kube-capacity
