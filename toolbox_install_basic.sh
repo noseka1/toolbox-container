@@ -113,3 +113,7 @@ github_download_latest_asset bvaisvil/zenith "zenith.x86_64-unknown-linux-musl.t
 github_download_latest_asset mikefarah/yq yq_linux_amd64 \
   > $install_dir/yq && \
   chmod 755 $install_dir/yq
+
+# Install grpcurl
+github_download_latest_asset fullstorydev/grpcurl "grpcurl_.*_linux_x86_64.tar.gz" | \
+  tar xvfz - --directory $install_dir --no-same-owner grpcurl
