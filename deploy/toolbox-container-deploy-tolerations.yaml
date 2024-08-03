@@ -1,0 +1,9 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: toolbox-container
+spec:
+  template:
+    spec:
+      tolerations:
+      - operator: Exists

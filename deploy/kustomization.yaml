@@ -36,5 +36,6 @@ patches:
 #- path: toolbox-container-deploy-hostPath-run.yaml
 #- path: toolbox-container-deploy-hostPath-lib-modules.yaml
 #- path: toolbox-container-deploy-nodeName.yaml
+#- path: toolbox-container-deploy-tolerations.yaml
 #- path: toolbox-container-deploy-resources.yaml
 #- path: toolbox-container-deploy-sleep.yaml
