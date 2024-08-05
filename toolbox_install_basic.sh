@@ -65,7 +65,6 @@ dnf install \
   psmisc \
   python3-gunicorn \
   python3-httpbin \
-  python3-pygments \
   ripgrep \
   rsync \
   socat \
