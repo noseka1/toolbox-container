@@ -95,7 +95,7 @@ github_download_latest_asset gcla/termshark "termshark_.*_linux_x64.tar.gz" | \
   tar xvfz - --directory $install_dir --strip-components=1 --wildcards termshark_*_linux_x64/termshark
 
 # Install mitmproxy
-ver=10.1.5
+ver=10.4.2
 curl --location --no-progress-meter \
   https://snapshots.mitmproxy.org/${ver}/mitmproxy-${ver}-linux.tar.gz | \
   tar xvfz - --directory $install_dir

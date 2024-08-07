@@ -45,7 +45,7 @@ github_download_latest_asset oras-project/oras "oras_.*_linux_amd64.tar.gz$" | \
   tar xvfz - --directory $install_dir --no-same-owner oras
 
 # Install Terraform binary
-ver=1.5.5
+ver=1.9.4
 curl --location --no-progress-meter \
   https://releases.hashicorp.com/terraform/$ver/terraform_${ver}_linux_amd64.zip | \
   gunzip > $install_dir/terraform && \
