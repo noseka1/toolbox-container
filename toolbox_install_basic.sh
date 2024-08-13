@@ -69,6 +69,7 @@ dnf install \
   socat \
   strace \
   symlinks \
+  sysstat \
   tcpdump \
   telnet \
   unzip \
