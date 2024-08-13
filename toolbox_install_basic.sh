@@ -52,7 +52,6 @@ dnf install \
   jq \
   lsof \
   man-db \
-  net-tools \
   nginx \
   nmon \
   nmap \
