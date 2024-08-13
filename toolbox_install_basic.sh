@@ -97,7 +97,7 @@ github_download_latest_asset gcla/termshark "termshark_.*_linux_x64.tar.gz" | \
 # Install mitmproxy
 ver=10.4.2
 curl --location --no-progress-meter \
-  https://snapshots.mitmproxy.org/${ver}/mitmproxy-${ver}-linux.tar.gz | \
+  https://downloads.mitmproxy.org/${ver}/mitmproxy-${ver}-linux-x86_64.tar.gz | \
   tar xvfz - --directory $install_dir
 
 # Install sysdig
