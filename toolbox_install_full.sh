@@ -14,9 +14,13 @@ if type dnf > /dev/null 2>&1; then
     bat \
     bc \
     buildah \
+    dnsmasq \
     fzf \
+    haproxy \
+    httpd \
     kcat \
     lnav \
+    nginx \
     podman \
     python3-kubernetes \
     python3-openshift \

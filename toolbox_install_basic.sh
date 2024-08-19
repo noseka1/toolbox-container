@@ -29,7 +29,6 @@ dnf install \
   curl \
   ddrescue \
   diffutils \
-  dnsmasq \
   duf \
   fatrace \
   fd-find \
@@ -39,8 +38,6 @@ dnf install \
   fio-engine-libaio \
   gdb \
   git \
-  httpd \
-  haproxy \
   hostname \
   htop \
   iftop \
@@ -52,7 +49,6 @@ dnf install \
   jq \
   lsof \
   man-db \
-  nginx \
   nmon \
   nmap \
   nmap-ncat \
