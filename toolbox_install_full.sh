@@ -34,7 +34,7 @@ fi
 
 # Install netobserv CLI
 github_download_latest_asset netobserv/network-observability-cli "netobserv-cli.tar.gz" | \
-  tar xvfz - --directory $install_dir --strip-components=1 --wildcards ./build/netobserv
+  tar xvfz - --directory $install_dir --strip-components=2 --wildcards ./build/netobserv
 
 # Install kopia
 github_download_latest_asset kopia/kopia "kopia-.*-linux-x64.tar.gz" | \
