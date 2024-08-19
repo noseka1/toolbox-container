@@ -28,6 +28,10 @@ if type dnf > /dev/null 2>&1; then
   dnf clean all
 fi
 
+# Install netobserv CLI
+github_download_latest_asset netobserv/network-observability-cli "netobserv-cli.tar.gz" | \
+  tar xvfz - --directory $install_dir --strip-components=1 --wildcards ./build/netobserv
+
 # Install kopia
 github_download_latest_asset kopia/kopia "kopia-.*-linux-x64.tar.gz" | \
   tar xvfz - --directory $install_dir --strip-components=1 --wildcards kopia-*-linux-x64/kopia
