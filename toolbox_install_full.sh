@@ -55,9 +55,10 @@ github_download_latest_asset oras-project/oras "oras_.*_linux_amd64.tar.gz$" | \
 # Install Terraform binary
 ver=1.9.4
 curl --location --no-progress-meter \
-  https://releases.hashicorp.com/terraform/$ver/terraform_${ver}_linux_amd64.zip | \
-  gunzip > $install_dir/terraform && \
-  chmod 755 $install_dir/terraform
+  https://releases.hashicorp.com/terraform/$ver/terraform_${ver}_linux_amd64.zip \
+  > /tmp/terraform.zip
+unzip /tmp/terraform.zip terraform -d $install_dir
+rm /tmp/terraform.zip
 
 # NMState command-line interface
 github_download_latest_asset nmstate/nmstate "nmstatectl-linux-x64.zip" | \
