@@ -96,10 +96,6 @@ curl --location --no-progress-meter \
   https://downloads.mitmproxy.org/${ver}/mitmproxy-${ver}-linux-x86_64.tar.gz | \
   tar xvfz - --directory $install_dir
 
-# Install sysdig
-github_get_latest_asset draios/sysdig sysdig-.*-x86_64.rpm
-rpm --install --nodeps $github_asset_url
-
 # Install zenith
 github_download_latest_asset bvaisvil/zenith "zenith.x86_64-unknown-linux-musl.tgz$" | \
   tar xvfz - --directory $install_dir
