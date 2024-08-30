@@ -431,3 +431,11 @@ List objects in `mybucket`:
 ```
 $ mcli ls s3.example.com/mybucket
 ```
+
+### Telnet
+
+Check port connectivity using Telnet:
+
+```
+$ curl -v telnet://api.mycluster.example.com:22
+```

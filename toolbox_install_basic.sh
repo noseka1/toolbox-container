@@ -67,7 +67,6 @@ dnf install \
   symlinks \
   sysstat \
   tcpdump \
-  telnet \
   unzip \
   vim \
   wget \
