@@ -1,0 +1,16 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: toolbox-container
+spec:
+  template:
+    spec:
+      containers:
+      - name: toolbox-container
+        volumeDevices:
+        - name: rbd
+          devicePath: /home/toolbox/rbd
+      volumes:
+      - name: rbd
+        persistentVolumeClaim:
+          claimName: toolbox-container-rbd
