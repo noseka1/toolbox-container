@@ -49,7 +49,7 @@ github_download_latest_asset vmware/govmomi govc_Linux_x86_64.tar.gz | \
   tar xvfz - --directory $install_dir --no-same-owner govc
 
 # Install oras client
-github_download_latest_asset oras-project/oras "oras_.*_linux_amd64.tar.gz$" | \
+github_download_latest_asset oras-project/oras "oras_.*_linux_amd64.tar.gz" | \
   tar xvfz - --directory $install_dir --no-same-owner oras
 
 # Install Terraform binary
@@ -66,7 +66,7 @@ github_download_latest_asset nmstate/nmstate "nmstatectl-linux-x64.zip" | \
   chmod 755 $install_dir/nmstatectl
 
 # Install cert-manager client
-github_download_latest_asset cert-manager/cmctl "cmctl_linux_amd64$" \
+github_download_latest_asset cert-manager/cmctl "cmctl_linux_amd64" \
   > $install_dir/cmctl && \
   chmod 755 $install_dir/cmctl
 
@@ -104,7 +104,7 @@ github_download_latest_asset openshift/source-to-image "source-to-image-.*-linux
   tar xvfz - --directory $install_dir --strip-components=1
 
 # Install noobaa
-github_download_latest_asset noobaa/noobaa-operator "noobaa-operator-.*-linux-amd64.tar.gz$" | \
+github_download_latest_asset noobaa/noobaa-operator "noobaa-operator-.*-linux-amd64.tar.gz" | \
   tar xvfz - --directory $install_dir ./noobaa-operator
 
 # Install helm
@@ -156,7 +156,7 @@ github_download_latest_asset ahmetb/kubectx "kubectx_.*_linux_x86_64.tar.gz" | \
   tar xvfz - --directory $install_dir --no-same-owner kubectx
 
 # Install Kubernetes context switcher
-github_download_latest_asset danielfoehrKn/kubeswitch "switcher_linux_amd64$" \
+github_download_latest_asset danielfoehrKn/kubeswitch "switcher_linux_amd64" \
   > $install_dir/switcher && \
   chmod 755 $install_dir/switcher
 
@@ -205,7 +205,7 @@ github_download_latest_asset ahmetb/kubectl-tree "kubectl-tree_.*_linux_amd64.ta
   tar xvfz - --directory $install_dir kubectl-tree
 
 # Install ketall aka kubectl-get-all
-github_download_latest_asset corneliusweig/ketall "ketall-amd64-linux.tar.gz$" | \
+github_download_latest_asset corneliusweig/ketall "ketall-amd64-linux.tar.gz" | \
   tar xvfz - --directory $install_dir ketall-amd64-linux &&
   mv $install_dir/ketall-amd64-linux $install_dir/kubectl-get-all
 
@@ -227,7 +227,7 @@ github_download_latest_asset noseka1/kubectl-debugpod "kubectl-debugpod_.*_linux
   tar xvfz - --directory $install_dir kubectl-debugpod
 
 # Install istioctl
-github_download_latest_asset istio/istio "istioctl-.*-linux-amd64.tar.gz$" | \
+github_download_latest_asset istio/istio "istioctl-.*-linux-amd64.tar.gz" | \
   tar xvfz - --directory $install_dir
 
 # Install envoy (the same version that Istio is using)
@@ -313,7 +313,7 @@ github_download_latest_asset google/go-containerregistry "go-containerregistry_L
   tar xvfz - --directory $install_dir crane
 
 # Install cosign
-github_download_latest_asset sigstore/cosign "cosign-linux-amd64$" \
+github_download_latest_asset sigstore/cosign "cosign-linux-amd64" \
   > $install_dir/cosign && \
   chmod 755 $install_dir/cosign
 
@@ -322,6 +322,6 @@ github_download_latest_asset skupperproject/skupper skupper-cli-.*-linux-amd64.t
   tar xvfz - --directory $install_dir skupper
 
 # Install OpenShift must-gather client (omc)
-github_download_latest_asset gmeghnag/omc "omc_Linux_x86_64$" \
+github_download_latest_asset gmeghnag/omc "omc_Linux_x86_64" \
   > $install_dir/omc && \
   chmod 755 $install_dir/omc
