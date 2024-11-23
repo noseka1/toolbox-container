@@ -66,8 +66,9 @@ github_download_latest_asset nmstate/nmstate "nmstatectl-linux-x64.zip" | \
   chmod 755 $install_dir/nmstatectl
 
 # Install cert-manager client
-github_download_latest_asset cert-manager/cert-manager "cmctl-linux-amd64.tar.gz" | \
-  tar xvfz - --directory $install_dir cmctl
+github_download_latest_asset cert-manager/cmctl "cmctl_linux_amd64$" \
+  > $install_dir/cmctl && \
+  chmod 755 $install_dir/cmctl
 
 # Install velero client (the velero client version should match the version deployed by the oadp operator)
 github_download_latest_asset vmware-tanzu/velero "velero-.*-linux-amd64.tar.gz" | \
