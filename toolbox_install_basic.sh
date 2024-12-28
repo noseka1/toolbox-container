@@ -29,7 +29,6 @@ dnf install \
   curl \
   ddrescue \
   diffutils \
-  duf \
   e2fsprogs \
   fatrace \
   fd-find \

@@ -15,6 +15,7 @@ if type dnf > /dev/null 2>&1; then
     bc \
     buildah \
     dnsmasq \
+    duf \
     fzf \
     haproxy \
     httpd \
