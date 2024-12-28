@@ -266,7 +266,7 @@ github_download_latest_asset openshift-online/ocm-cli "ocm-linux-amd64" \
 
 # Install mirror-registry
 curl --location --no-progress-meter \
-  https://developers.redhat.com/content-gateway/rest/mirror2/pub/openshift-v4/clients/mirror-registry/latest/mirror-registry.tar.gz | \
+  https://mirror.openshift.com/pub/cgw/mirror-registry/latest/mirror-registry-amd64.tar.gz | \
   tar xvfz - --directory $install_dir
 
 # Install tilt
