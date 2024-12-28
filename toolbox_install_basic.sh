@@ -107,3 +107,7 @@ github_download_latest_asset mikefarah/yq yq_linux_amd64 \
 # Install grpcurl
 github_download_latest_asset fullstorydev/grpcurl "grpcurl_.*_linux_x86_64.tar.gz" | \
   tar xvfz - --directory $install_dir --no-same-owner grpcurl
+
+# Install bandwhich
+github_download_latest_asset imsnif/bandwhich "bandwhich-v.*-x86_64-unknown-linux-gnu.tar.gz" | \
+  tar xvfz - --directory $install_dir bandwhich
