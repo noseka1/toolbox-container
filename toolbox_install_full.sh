@@ -22,6 +22,7 @@ if type dnf > /dev/null 2>&1; then
     kcat \
     lnav \
     nginx \
+    nmstate \
     podman \
     python3-kubernetes \
     python3-openshift \
@@ -60,11 +61,6 @@ curl --location --no-progress-meter \
   > /tmp/terraform.zip
 unzip /tmp/terraform.zip terraform -d $install_dir
 rm /tmp/terraform.zip
-
-# NMState command-line interface
-github_download_latest_asset nmstate/nmstate "nmstatectl-linux-x64.zip" | \
-  gunzip > $install_dir/nmstatectl && \
-  chmod 755 $install_dir/nmstatectl
 
 # Install cert-manager client
 github_download_latest_asset cert-manager/cmctl "cmctl_linux_amd64" \
