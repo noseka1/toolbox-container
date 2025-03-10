@@ -101,10 +101,6 @@ github_download_latest_asset kubecolor/kubecolor "kubecolor_.*_linux_amd64.tar.g
 github_download_latest_asset etcd-io/etcd "etcd-.*-linux-amd64.tar.gz" | \
   tar xvfz - --directory $install_dir --strip-components=1 --no-same-owner --wildcards etcd-*-linux-amd64/etcdctl
 
-# Install s2i
-github_download_latest_asset openshift/source-to-image "source-to-image-.*-linux-amd64.tar.gz" | \
-  tar xvfz - --directory $install_dir --strip-components=1
-
 # Install noobaa
 github_download_latest_asset noobaa/noobaa-operator "noobaa-operator-.*-linux-amd64.tar.gz" | \
   tar xvfz - --directory $install_dir ./noobaa-operator
