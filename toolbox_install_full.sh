@@ -34,6 +34,11 @@ if type dnf > /dev/null 2>&1; then
   dnf clean all
 fi
 
+# Install Loki logcli
+github_download_latest_asset grafana/loki "logcli-linux-amd64.zip" | \
+  gunzip > $install_dir/logcli && \
+  chmod 755 $install_dir/logcli
+
 # Install netobserv CLI
 github_download_latest_asset netobserv/network-observability-cli "netobserv-cli.tar.gz" | \
   tar xvfz - --directory $install_dir --strip-components=2 --wildcards ./build/netobserv
