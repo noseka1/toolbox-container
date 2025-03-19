@@ -11,7 +11,6 @@ if type dnf > /dev/null 2>&1; then
     --setopt install_weak_deps=False \
     bat \
     bc \
-    buildah \
     dnsmasq \
     duf \
     fzf \
@@ -20,8 +19,6 @@ if type dnf > /dev/null 2>&1; then
     lnav \
     nginx \
     nmstate \
-    podman \
-    crun \
     skopeo \
     stress-ng \
     tmux \
@@ -74,12 +71,6 @@ curl --location --no-progress-meter \
   kubectl completion bash > /etc/bash_completion.d/kubectl && \
   oc completion bash > /etc/bash_completion.d/oc
 
-# Install oc-mirror plugin
-curl --location --no-progress-meter \
-  https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/oc-mirror.tar.gz | \
-  tar xvfz - --directory $install_dir && \
-  chmod 755 $install_dir/oc-mirror
-
 # Install kubecolor
 github_download_latest_asset kubecolor/kubecolor "kubecolor_.*_linux_amd64.tar.gz" | \
   tar xvfz - --directory $install_dir kubecolor
@@ -102,11 +93,6 @@ curl --location --no-progress-meter \
 github_download_latest_asset operator-framework/operator-registry "linux-amd64-opm" \
   > $install_dir/opm && \
   chmod 755 $install_dir/opm
-
-# Install kustomize
-github_download_latest_asset kubernetes-sigs/kustomize "kustomize_.*_linux_amd64.tar.gz" | \
-  tar xvfz - --directory $install_dir && \
-  chmod 755 $install_dir/kustomize
 
 # Install tekton cli
 github_download_latest_asset tektoncd/cli "tkn_.*_Linux_x86_64.tar.gz" | \
@@ -137,16 +123,6 @@ github_download_latest_asset jesseduffield/lazygit "lazygit_.*_Linux_x86_64.tar.
 # Install gitmux
 github_download_latest_asset arl/gitmux "gitmux_.*_linux_amd64.tar.gz" | \
   tar xvfz - --directory $install_dir gitmux
-
-# Install argocd
-github_download_latest_asset argoproj/argo-cd "argocd-linux-amd64" \
-  > $install_dir/argocd && \
-  chmod 755 $install_dir/argocd
-
-# Install argo rollouts client
-github_download_latest_asset argoproj/argo-rollouts "kubectl-argo-rollouts-linux-amd64" \
-  > $install_dir/kubectl-argo-rollouts && \
-  chmod 755 $install_dir/kubectl-argo-rollouts
 
 # Install navi
 github_download_latest_asset denisidoro/navi "navi-v.*-x86_64-unknown-linux-musl.tar.gz" | \
@@ -213,20 +189,6 @@ curl --location --no-progress-meter \
   --output $install_dir/roxctl \
   https://mirror.openshift.com/pub/rhacs/assets/latest/bin/Linux/roxctl && \
   chmod 755 $install_dir/roxctl
-
-# Install rosa CLI
-github_download_latest_asset openshift/rosa "rosa_Linux_x86_64.tar.gz" | \
-  tar xvfz - --directory $install_dir rosa
-
-# Install ocm CLI
-github_download_latest_asset openshift-online/ocm-cli "ocm-linux-amd64" \
-  > $install_dir/ocm && \
-  chmod 755 $install_dir/ocm
-
-# Install Cloud Credential Operator CLI utility
-curl --location --no-progress-meter \
-  https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/ccoctl-linux.tar.gz | \
-  tar xvfz - --directory $install_dir ccoctl
 
 # Install crane
 github_download_latest_asset google/go-containerregistry "go-containerregistry_Linux_x86_64.tar.gz" | \

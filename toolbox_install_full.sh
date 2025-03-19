@@ -11,7 +11,10 @@ if type dnf > /dev/null 2>&1; then
     --setopt install_weak_deps=False \
     ansible \
     awscli \
+    buildah \
+    crun \
     kcat \
+    podman \
     python3-kubernetes \
     python3-openshift \
   dnf clean all
@@ -50,10 +53,21 @@ github_download_latest_asset fortio/fortio "fortio-linux_amd64-.*.tgz" | \
 github_download_latest_asset wagoodman/dive "dive_.*_linux_amd64.tar.gz" | \
   tar xvfz - --directory $install_dir dive
 
+# Install oc-mirror plugin
+curl --location --no-progress-meter \
+  https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/oc-mirror.tar.gz | \
+  tar xvfz - --directory $install_dir && \
+  chmod 755 $install_dir/oc-mirror
+
 # Install mirror-registry
 curl --location --no-progress-meter \
   https://mirror.openshift.com/pub/cgw/mirror-registry/latest/mirror-registry-amd64.tar.gz | \
   tar xvfz - --directory $install_dir
+
+# Install kustomize
+github_download_latest_asset kubernetes-sigs/kustomize "kustomize_.*_linux_amd64.tar.gz" | \
+  tar xvfz - --directory $install_dir && \
+  chmod 755 $install_dir/kustomize
 
 # Install tilt
 github_download_latest_asset tilt-dev/tilt "tilt..*.linux.x86_64.tar.gz" | \
@@ -64,11 +78,35 @@ github_download_latest_asset GoogleContainerTools/skaffold "skaffold-linux-amd64
   > $install_dir/skaffold && \
   chmod 755 $install_dir/skaffold
 
+# Install argocd
+github_download_latest_asset argoproj/argo-cd "argocd-linux-amd64" \
+  > $install_dir/argocd && \
+  chmod 755 $install_dir/argocd
+
+# Install argo rollouts client
+github_download_latest_asset argoproj/argo-rollouts "kubectl-argo-rollouts-linux-amd64" \
+  > $install_dir/kubectl-argo-rollouts && \
+  chmod 755 $install_dir/kubectl-argo-rollouts
+
 # Install install butane
 curl --location --no-progress-meter \
   --output $install_dir/butane \
   https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/butane/latest/butane-amd64 && \
   chmod 755 $install_dir/butane
+
+# Install rosa CLI
+github_download_latest_asset openshift/rosa "rosa_Linux_x86_64.tar.gz" | \
+  tar xvfz - --directory $install_dir rosa
+
+# Install ocm CLI
+github_download_latest_asset openshift-online/ocm-cli "ocm-linux-amd64" \
+  > $install_dir/ocm && \
+  chmod 755 $install_dir/ocm
+
+# Install Cloud Credential Operator CLI utility
+curl --location --no-progress-meter \
+  https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/ccoctl-linux.tar.gz | \
+  tar xvfz - --directory $install_dir ccoctl
 
 # Install RHOAS (Red Hat OpenShift Application Services) CLI
 github_download_latest_asset redhat-developer/app-services-cli "rhoas_.*_linux_amd64.tar.gz" | \
