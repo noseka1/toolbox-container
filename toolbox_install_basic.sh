@@ -5,20 +5,6 @@ set -euo pipefail
 script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 . $script_dir/toolbox_install_common.sh
 
-# Create toolbox user
-adduser toolbox --groups wheel
-chgrp 0 ~toolbox
-chmod 775 ~toolbox
-
-# Allow adding user with arbitrary uid on container start
-for f in /etc/passwd /etc/group; do
-  chgrp 0 $f
-  chmod g+w $f
-done
-
-# Allow sudo without password
-echo '%wheel ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers.d/10_wheel_nopasswd
-
 dnf install \
   --assumeyes \
   --setopt install_weak_deps=False \
@@ -75,15 +61,32 @@ dnf install \
 
 dnf clean all
 
+# Create toolbox user
+adduser toolbox --gid root --groups wheel
+chgrp root ~toolbox
+chmod 775 ~toolbox
+
+# Allow adding user with arbitrary uid on container start
+for f in /etc/passwd /etc/group; do
+  chgrp root $f
+  chmod g+w $f
+done
+
+# Allow sudo without password
+echo '%wheel ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers.d/10_wheel_nopasswd
+
+# Enable SSH login
+
 # Disable SELinux ssh module to allow ssh clients to log in
 sed -i '/selinux/d' /etc/pam.d/sshd
 # Disable checking of file ownership/mode in the user's home dir
 sed -i 's/^#StrictModes yes/StrictModes no/' /etc/ssh/sshd_config
 # Create an empty authorized_keys file for user toolbox
 mkdir ~toolbox/.ssh
-chown toolbox:toolbox ~toolbox/.ssh
 > ~toolbox/.ssh/authorized_keys
-chown toolbox:toolbox ~toolbox/.ssh/authorized_keys
+
+# All files in toolbox's home directory should be owned by toolbox
+chown -R toolbox:root ~toolbox
 
 # Install termshark
 github_download_latest_asset gcla/termshark "termshark_.*_linux_x64.tar.gz" | \
