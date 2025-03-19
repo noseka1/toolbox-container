@@ -7,6 +7,7 @@ Before the image can be used, it must be built. Refer to [Building Toolbox Conta
 For more information on how to use the image, refer to sections:
 
  * [Using Toolbox Container for development](#using-toolbox-container-for-development)
+ * [Using Toolbox Container in Web Terminal](#using-toolbox-container-in-web-terminal)
  * [Using Toolbox Container for troubleshooting cluster nodes](#using-toolbox-container-for-troubleshooting-cluster-nodes)
  * [Using Toolbox Container for troubleshooting pods](#using-toolbox-container-for-troubleshooting-pods)
  * [Deploying Toolbox Container to OpenShift cluster](#deploying-toolbox-container-to-openshift-cluster)
@@ -178,6 +179,10 @@ $ podman run \
 ```
 
 Note that when you delete and recreate the container, you will need to issue the `adduser ...` command again. The user information is stored in the `/etc` directory which is not backed by a volume.
+
+## Using Toolbox Container in Web Terminal
+
+You can use the Toolbox Container image with [Web Terminal Operator](https://github.com/redhat-developer/web-terminal-operator).
 
 ## Using Toolbox Container for troubleshooting cluster nodes
 
