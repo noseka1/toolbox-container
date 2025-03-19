@@ -21,7 +21,7 @@ Export GITHUB_TOKEN variable. Replace the <githubtoken> placeholder with your Gi
 $ export GITHUB_TOKEN=<githubtoken>
 ```
 
-Build the basic container image:
+Build a basic container image:
 
 ```
 $ podman build \
@@ -32,7 +32,18 @@ $ podman build \
   .
 ```
 
-Alternatively, build the full version of the container image:
+Alternatively, build a medium container image:
+
+```
+$ podman build \
+  --secret id=GITHUB_TOKEN \
+  --build-arg TOOLBOX_CONTAINER_COMMIT=$(git rev-parse HEAD) \
+  --target medium \
+  --tag toolbox-container:medium \
+  .
+```
+
+Alternatively, build a full version of the container image:
 
 ```
 $ podman build \
@@ -43,7 +54,7 @@ $ podman build \
   .
 ```
 
-Upload the built image to a container registry (replace the target regitry with your location):
+Upload the built image to a container registry (replace the target regitry with your location), for example:
 
 ```
 $ podman push toolbox-container:basic quay.io/noseka1/toolbox-container:basic
@@ -135,6 +146,8 @@ $ podman start toolbox
 ```
 
 ### Updating Toolbox Container image
+
+In this section, we are updating the toolbox container image while keeping the volume with the user data intact.
 
 Stop the toolbox container if it is running:
 
@@ -408,14 +421,6 @@ Check that the exports are available:
 $ showmount -e
 Export list for toolbox-container-7c7dc58758-pwkfw:
 /home/toolbox *
-```
-
-### Run hey
-
-Load test a service:
-
-```
-$ hey -c 50 -z 10s <service_url>
 ```
 
 ### MinIO S3 client
