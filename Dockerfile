@@ -32,18 +32,28 @@ WORKDIR /home/toolbox
 CMD [ "/usr/local/bin/toolbox_start.sh" ]
 
 #########################
-#      STAGE FULL       #
+#     STAGE MEDIUM      #
 #########################
 
-FROM basic as full
+FROM basic as medium
 
-COPY toolbox_install_full.sh /usr/local/bin
-COPY bvn13-kcat-fedora.repo /etc/yum.repos.d
-RUN --mount=type=secret,id=GITHUB_TOKEN /usr/local/bin/toolbox_install_full.sh
+COPY toolbox_install_medium.sh /usr/local/bin
+RUN --mount=type=secret,id=GITHUB_TOKEN /usr/local/bin/toolbox_install_medium.sh
 
 COPY toolbox_install_user.sh /usr/local/bin
 RUN --mount=type=secret,id=GITHUB_TOKEN \
   GITHUB_TOKEN=$(cat /run/secrets/GITHUB_TOKEN) \
   runuser \
     --whitelist-environment GITHUB_TOKEN \
-    --login toolbox /usr/local/bin/toolbox_install_user.sh
+    --login toolbox \
+    /usr/local/bin/toolbox_install_user.sh
+
+#########################
+#      STAGE FULL       #
+#########################
+
+FROM medium as full
+
+COPY toolbox_install_full.sh /usr/local/bin
+COPY bvn13-kcat-fedora.repo /etc/yum.repos.d
+RUN --mount=type=secret,id=GITHUB_TOKEN /usr/local/bin/toolbox_install_full.sh
