@@ -43,10 +43,6 @@ github_download_latest_asset netobserv/network-observability-cli "netobserv-cli.
 github_download_latest_asset kopia/kopia "kopia-.*-linux-x64.tar.gz" | \
   tar xvfz - --directory $install_dir --strip-components=1 --wildcards kopia-*-linux-x64/kopia
 
-# Install kube-capacity
-github_download_latest_asset robscott/kube-capacity kube-capacity_.*_linux_x86_64.tar.gz | \
-  tar xvfz - --directory $install_dir kube-capacity
-
 # Install oras client
 github_download_latest_asset oras-project/oras "oras_.*_linux_amd64.tar.gz" | \
   tar xvfz - --directory $install_dir --no-same-owner oras
