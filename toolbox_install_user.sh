@@ -30,12 +30,3 @@ chown -R toolbox:root ~
 
 # Make all files that are writeable by owner also writeable by (root) group
 find ~ -perm -u+w -exec chmod g+w {} +
-
-# Update toolbox user entry in /etc/passwd on first run
-cat > ~/.profile <<EOF
-if ! whoami &> /dev/null; then
-  # Can't use sed -i due to permissions on /etc
-  tmppasswd=\$(sed "s#toolbox:.*#toolbox:x:\$(id -u):0:Toolbox user:/home/toolbox:/bin/zsh#" /etc/passwd)
-  echo "\$tmppasswd" > /etc/passwd
-  unset tmppasswd
-fi
