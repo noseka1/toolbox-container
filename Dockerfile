@@ -14,9 +14,6 @@ RUN --mount=type=secret,id=GITHUB_TOKEN /usr/local/bin/toolbox_install_golang.sh
 
 FROM docker.io/fedora:41 as basic
 
-ARG TOOLBOX_CONTAINER_COMMIT=unspecified
-ENV TOOLBOX_CONTAINER_COMMIT $TOOLBOX_CONTAINER_COMMIT
-
 COPY toolbox_install_common.sh /usr/local/bin
 COPY toolbox_install_basic.sh /usr/local/bin
 RUN --mount=type=secret,id=GITHUB_TOKEN /usr/local/bin/toolbox_install_basic.sh
@@ -28,6 +25,9 @@ COPY toolbox_start.sh /usr/local/bin
 
 ENV HOME=/home/toolbox
 WORKDIR /home/toolbox
+
+ARG TOOLBOX_CONTAINER_COMMIT=unspecified
+ENV TOOLBOX_CONTAINER_COMMIT $TOOLBOX_CONTAINER_COMMIT
 
 CMD [ "/usr/local/bin/toolbox_start.sh" ]
 
