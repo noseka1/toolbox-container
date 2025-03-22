@@ -167,3 +167,10 @@ github_download_latest_asset google/go-containerregistry "go-containerregistry_L
 # Install oras client
 github_download_latest_asset oras-project/oras "oras_.*_linux_amd64.tar.gz" | \
   tar xvfz - --directory $install_dir --no-same-owner oras
+
+# Update toolbox user entry in /etc/passwd on first run
+cat > /etc/profile.d/toolbox_user.sh <<EOF
+if ! whoami &> /dev/null; then
+  sed -i "s#toolbox:.*#toolbox:x:$(id -u):0:Toolbox user:/home/toolbox:/bin/zsh#" /etc/passwd
+fi
+EOF
