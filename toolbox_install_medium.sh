@@ -172,13 +172,3 @@ github_download_latest_asset oras-project/oras "oras_.*_linux_amd64.tar.gz" | \
 github_download_latest_asset hatoo/oha "oha-linux-amd64" \
   > $install_dir/oha && \
   chmod 755 $install_dir/oha
-
-# Update toolbox user entry in /etc/passwd on first run
-cat > /etc/profile.d/toolbox_user.sh <<EOF
-if ! whoami &> /dev/null; then
-  # Can't use sed -i due to permissions on /etc
-  tmppasswd=\$(sed "s#toolbox:.*#toolbox:x:\$(id -u):0:Toolbox user:/home/toolbox:/bin/zsh#" /etc/passwd)
-  echo "\$tmppasswd" > /etc/passwd
-  unset tmppasswd
-fi
-EOF
