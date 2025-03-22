@@ -19,10 +19,11 @@ sed -i 's/^compinit$/compinit -u/' ~/.zshrc.in
 # configuration files can be copied to another user's home directory
 symlinks -rc ~
 
-# Remove files with no group permissions (find . \! -perm /g+rwx)
+# Remove files with no group permissions (find . \! -perm /g+rwx) and temporary files
 rm -rf \
   ~/.cache \
-  ~/.viminfo
+  ~/.viminfo \
+  /tmp/*
 
 # Set owner = toolbox, group = root for all files in toolbox's home directory
 chown -R toolbox:root ~
