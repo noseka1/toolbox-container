@@ -11,7 +11,7 @@ git clone https://github.com/noseka1/rcfiles $rcfiles_dir
 $rcfiles_dir/bin/rcfiles_setup --assumeyes
 
 # Skip compaudit. It doesn't like completion files owned by a different user.
-# This is a problem when using this image for OpenShift web-terminal.
+# This is a problem when using the image for OpenShift web-terminal.
 # See also https://stackoverflow.com/questions/13762280/zsh-compinit-insecure-directories
 sed -i 's/^compinit$/compinit -u/' ~/.zshrc.in
 
