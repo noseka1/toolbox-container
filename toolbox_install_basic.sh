@@ -61,33 +61,6 @@ dnf install \
 
 dnf clean all
 
-# Create toolbox user
-adduser toolbox --gid root --groups wheel
-chgrp root ~toolbox
-chmod 775 ~toolbox
-
-# Allow adding user with arbitrary uid on container start
-for f in /etc/passwd /etc/group; do
-  chgrp root $f
-  chmod g+w $f
-done
-
-# Allow sudo without password
-echo '%wheel ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers.d/10_wheel_nopasswd
-
-# Enable SSH login
-
-# Disable SELinux ssh module to allow ssh clients to log in
-sed -i '/selinux/d' /etc/pam.d/sshd
-# Disable checking of file ownership/mode in the user's home dir
-sed -i 's/^#StrictModes yes/StrictModes no/' /etc/ssh/sshd_config
-# Create an empty authorized_keys file for user toolbox
-mkdir ~toolbox/.ssh
-> ~toolbox/.ssh/authorized_keys
-
-# All files in toolbox's home directory should be owned by toolbox
-chown -R toolbox:root ~toolbox
-
 # Install termshark
 github_download_latest_asset gcla/termshark "termshark_.*_linux_x64.tar.gz" | \
   tar xvfz - --directory $install_dir --strip-components=1 --wildcards termshark_*_linux_x64/termshark
@@ -114,3 +87,35 @@ github_download_latest_asset fullstorydev/grpcurl "grpcurl_.*_linux_x86_64.tar.g
 # Install bandwhich
 github_download_latest_asset imsnif/bandwhich "bandwhich-v.*-x86_64-unknown-linux-gnu.tar.gz" | \
   tar xvfz - --directory $install_dir bandwhich
+
+# Create a toolbox user
+adduser toolbox \
+  --no-create-home \
+  --gid root \
+  --groups wheel
+mkdir /home/toolbox
+
+# Allow adding user with arbitrary uid on container start
+for f in /etc/passwd /etc/group; do
+  chgrp root $f
+  chmod g+w $f
+done
+
+# Allow sudo without password
+echo '%wheel ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers.d/10_wheel_nopasswd
+
+# Enable SSH login
+
+# Disable SELinux ssh module to allow ssh clients to log in
+sed -i '/selinux/d' /etc/pam.d/sshd
+# Disable checking of file ownership/mode in the user's home dir
+sed -i 's/^#StrictModes yes/StrictModes no/' /etc/ssh/sshd_config
+# Create an empty authorized_keys file for user toolbox
+mkdir ~toolbox/.ssh
+> ~toolbox/.ssh/authorized_keys
+
+# Set owner = toolbox, group = root for all files in toolbox's home directory
+chown -R toolbox:root ~toolbox
+
+# Make all files that are writeable by owner also writeable by (root) group
+find ~toolbox -perm -u+w -exec chmod g+w {} +
