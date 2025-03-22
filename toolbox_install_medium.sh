@@ -43,10 +43,6 @@ github_download_latest_asset netobserv/network-observability-cli "netobserv-cli.
 github_download_latest_asset kopia/kopia "kopia-.*-linux-x64.tar.gz" | \
   tar xvfz - --directory $install_dir --strip-components=1 --wildcards kopia-*-linux-x64/kopia
 
-# Install oras client
-github_download_latest_asset oras-project/oras "oras_.*_linux_amd64.tar.gz" | \
-  tar xvfz - --directory $install_dir --no-same-owner oras
-
 # Install cert-manager client
 github_download_latest_asset cert-manager/cmctl "cmctl_linux_amd64" \
   > $install_dir/cmctl && \
@@ -139,11 +135,6 @@ github_download_latest_asset itaysk/kubectl-neat "kubectl-neat_linux_amd64.tar.g
 github_download_latest_asset robscott/kube-capacity "kube-capacity_.*_linux_x86_64.tar.gz" | \
   tar xvfz - --directory $install_dir kube-capacity
 
-# Install oha
-github_download_latest_asset hatoo/oha "oha-linux-amd64" \
-  > $install_dir/oha && \
-  chmod 755 $install_dir/oha
-
 # Install kube-debugpod
 github_download_latest_asset noseka1/kubectl-debugpod "kubectl-debugpod_.*_linux_amd64.tar.gz" | \
   tar xvfz - --directory $install_dir kubectl-debugpod
@@ -151,13 +142,6 @@ github_download_latest_asset noseka1/kubectl-debugpod "kubectl-debugpod_.*_linux
 # Install istioctl
 github_download_latest_asset istio/istio "istioctl-.*-linux-amd64.tar.gz" | \
   tar xvfz - --directory $install_dir
-
-# Install envoy (the same version that Istio is using)
-ver=$(curl --location --no-progress-meter https://archive.tetratelabs.io/envoy/envoy-versions.json | jq --raw-output '.latestVersion')
-download_url=https://archive.tetratelabs.io/envoy/download/v${ver}/envoy-v${ver}-linux-amd64.tar.xz
-curl --location --no-progress-meter \
-  $download_url | \
-  tar xvfJ - --directory $install_dir --strip-components=2 envoy-v${ver}-linux-amd64/bin/envoy
 
 # Install MinIO client (S3 compatible client)
 curl --location --no-progress-meter \
@@ -179,3 +163,7 @@ curl --location --no-progress-meter \
 # Install crane
 github_download_latest_asset google/go-containerregistry "go-containerregistry_Linux_x86_64.tar.gz" | \
   tar xvfz - --directory $install_dir crane
+
+# Install oras client
+github_download_latest_asset oras-project/oras "oras_.*_linux_amd64.tar.gz" | \
+  tar xvfz - --directory $install_dir --no-same-owner oras

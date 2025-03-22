@@ -57,6 +57,11 @@ github_download_latest_asset fortio/fortio "fortio-linux_amd64-.*.tgz" | \
   tar xvfz - --directory $install_dir --strip-components=2 usr/bin/fortio && \
   chmod 755 $install_dir/fortio
 
+# Install oha
+github_download_latest_asset hatoo/oha "oha-linux-amd64" \
+  > $install_dir/oha && \
+  chmod 755 $install_dir/oha
+
 # Install dive
 github_download_latest_asset wagoodman/dive "dive_.*_linux_amd64.tar.gz" | \
   tar xvfz - --directory $install_dir dive
@@ -155,3 +160,10 @@ github_download_latest_asset skupperproject/skupper skupper-cli-.*-linux-amd64.t
 github_download_latest_asset gmeghnag/omc "omc_Linux_x86_64" \
   > $install_dir/omc && \
   chmod 755 $install_dir/omc
+
+# Install envoy (the same version that Istio is using)
+ver=$(curl --location --no-progress-meter https://archive.tetratelabs.io/envoy/envoy-versions.json | jq --raw-output '.latestVersion')
+download_url=https://archive.tetratelabs.io/envoy/download/v${ver}/envoy-v${ver}-linux-amd64.tar.xz
+curl --location --no-progress-meter \
+  $download_url | \
+  tar xvfJ - --directory $install_dir --strip-components=2 envoy-v${ver}-linux-amd64/bin/envoy
