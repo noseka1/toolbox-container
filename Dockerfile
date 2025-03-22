@@ -48,6 +48,8 @@ RUN --mount=type=secret,id=GITHUB_TOKEN \
     --login toolbox \
     /usr/local/bin/toolbox_install_user.sh
 
+COPY toolbox_fix_user.sh /usr/local/bin
+
 #########################
 #      STAGE FULL       #
 #########################
