@@ -26,6 +26,10 @@ if type dnf > /dev/null 2>&1; then
   dnf clean all
 fi
 
+# Install kubectl-mc (multi cluster kubectl client)
+github_download_latest_asset jonnylangefeld/kubectl-mc "kubectl-mc_v.*_linux_amd64.tar.gz" | \
+  tar xvfz - --directory $install_dir kubectl-mc
+
 # Install Loki logcli
 github_download_latest_asset grafana/loki "logcli-linux-amd64.zip" | \
   gunzip > $install_dir/logcli && \
