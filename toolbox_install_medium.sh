@@ -168,6 +168,11 @@ github_download_latest_asset google/go-containerregistry "go-containerregistry_L
 github_download_latest_asset oras-project/oras "oras_.*_linux_amd64.tar.gz" | \
   tar xvfz - --directory $install_dir --no-same-owner oras
 
+# Install oha
+github_download_latest_asset hatoo/oha "oha-linux-amd64" \
+  > $install_dir/oha && \
+  chmod 755 $install_dir/oha
+
 # Update toolbox user entry in /etc/passwd on first run
 cat > /etc/profile.d/toolbox_user.sh <<EOF
 if ! whoami &> /dev/null; then

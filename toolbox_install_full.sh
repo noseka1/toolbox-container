@@ -57,11 +57,6 @@ github_download_latest_asset fortio/fortio "fortio-linux_amd64-.*.tgz" | \
   tar xvfz - --directory $install_dir --strip-components=2 usr/bin/fortio && \
   chmod 755 $install_dir/fortio
 
-# Install oha
-github_download_latest_asset hatoo/oha "oha-linux-amd64" \
-  > $install_dir/oha && \
-  chmod 755 $install_dir/oha
-
 # Install dive
 github_download_latest_asset wagoodman/dive "dive_.*_linux_amd64.tar.gz" | \
   tar xvfz - --directory $install_dir dive
