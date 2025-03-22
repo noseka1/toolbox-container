@@ -97,7 +97,6 @@ mkdir /home/toolbox
 
 # Allow adding user with arbitrary uid on container start
 for f in /etc/passwd /etc/group; do
-  chgrp root $f
   chmod g+w $f
 done
 
