@@ -20,6 +20,14 @@ if type dnf > /dev/null 2>&1; then
   dnf clean all
 fi
 
+# Install govc vSphere CLI
+github_download_latest_asset vmware/govmomi govc_Linux_x86_64.tar.gz | \
+  tar xvfz - --directory $install_dir --no-same-owner govc
+
+# Install noobaa
+github_download_latest_asset noobaa/noobaa-operator "noobaa-operator-.*-linux-amd64.tar.gz" | \
+  tar xvfz - --directory $install_dir ./noobaa-operator
+
 # Install Terraform binary
 ver=1.9.4
 curl --location --no-progress-meter \
@@ -63,6 +71,12 @@ curl --location --no-progress-meter \
 curl --location --no-progress-meter \
   https://mirror.openshift.com/pub/cgw/mirror-registry/latest/mirror-registry-amd64.tar.gz | \
   tar xvfz - --directory $install_dir
+
+# Install helm
+github_get_latest_asset helm/helm ""
+curl --location --no-progress-meter \
+  https://get.helm.sh/helm-${github_asset_tag}-linux-amd64.tar.gz | \
+  tar xvfz - --directory $install_dir --strip-components=1 --no-same-owner linux-amd64/helm
 
 # Install kustomize
 github_download_latest_asset kubernetes-sigs/kustomize "kustomize_.*_linux_amd64.tar.gz" | \
@@ -127,3 +141,17 @@ curl --location --no-progress-meter \
 curl --location --no-progress-meter \
   https://developers.redhat.com/content-gateway/rest/mirror/pub/openshift-v4/clients/crc/latest/crc-linux-amd64.tar.xz | \
   tar xvfJ - --directory $install_dir --strip-components=1 --no-anchored --wildcards crc
+
+# Install cosign
+github_download_latest_asset sigstore/cosign "cosign-linux-amd64" \
+  > $install_dir/cosign && \
+  chmod 755 $install_dir/cosign
+
+# Install skupper client
+github_download_latest_asset skupperproject/skupper skupper-cli-.*-linux-amd64.tgz | \
+  tar xvfz - --directory $install_dir skupper
+
+# Install OpenShift must-gather client (omc)
+github_download_latest_asset gmeghnag/omc "omc_Linux_x86_64" \
+  > $install_dir/omc && \
+  chmod 755 $install_dir/omc
