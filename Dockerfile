@@ -50,6 +50,14 @@ RUN --mount=type=secret,id=GITHUB_TOKEN \
     /usr/local/bin/toolbox_install_user.sh
 
 #########################
+#      STAGE TERM       #
+#########################
+
+FROM medium as term
+
+ENTRYPOINT [ "/usr/local/bin/tini", "--", "/usr/local/bin/toolbox_start.sh" ]
+
+#########################
 #      STAGE FULL       #
 #########################
 
