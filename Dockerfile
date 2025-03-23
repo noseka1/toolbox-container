@@ -30,7 +30,7 @@ WORKDIR /home/toolbox
 ARG TOOLBOX_CONTAINER_COMMIT=unspecified
 ENV TOOLBOX_CONTAINER_COMMIT $TOOLBOX_CONTAINER_COMMIT
 
-CMD [ "/usr/local/bin/toolbox_start.sh" ]
+CMD [ "/usr/local/bin/tini", "--", "/usr/local/bin/toolbox_start.sh" ]
 
 #########################
 #     STAGE MEDIUM      #

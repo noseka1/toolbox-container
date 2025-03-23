@@ -61,6 +61,10 @@ dnf install \
 
 dnf clean all
 
+# Install tini
+github_download_latest_asset krallin/tini "tini" > $install_dir/tini &&
+  chmod 755 $install_dir/tini
+
 # Install termshark
 github_download_latest_asset gcla/termshark "termshark_.*_linux_x64.tar.gz" | \
   tar xvfz - --directory $install_dir --strip-components=1 --wildcards termshark_*_linux_x64/termshark
