@@ -16,7 +16,7 @@ if type dnf > /dev/null 2>&1; then
     kcat \
     podman \
     python3-kubernetes \
-    python3-openshift \
+    python3-openshift
   dnf clean all
 fi
 
