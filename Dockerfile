@@ -20,7 +20,8 @@ RUN --mount=type=secret,id=GITHUB_TOKEN /usr/local/bin/toolbox_install_basic.sh
 
 COPY --from=golang-builder /root/go/bin/dlv /usr/local/bin
 
-# add start script
+# Add start script
+COPY toolbox_fix_user.sh /usr/local/bin
 COPY toolbox_start.sh /usr/local/bin
 
 ENV HOME=/home/toolbox
@@ -47,8 +48,6 @@ RUN --mount=type=secret,id=GITHUB_TOKEN \
     --whitelist-environment GITHUB_TOKEN \
     --login toolbox \
     /usr/local/bin/toolbox_install_user.sh
-
-COPY toolbox_fix_user.sh /usr/local/bin
 
 #########################
 #      STAGE FULL       #
