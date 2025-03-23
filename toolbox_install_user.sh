@@ -10,6 +10,9 @@ rcfiles_dir=~/git/github.com/noseka1/rcfiles
 git clone https://github.com/noseka1/rcfiles $rcfiles_dir
 $rcfiles_dir/bin/rcfiles_setup --assumeyes
 
+# Suppress git detecting dubious ownership in repository at /home/toolbox
+git config --global --add safe.directory ~
+
 # Skip compaudit. It doesn't like completion files owned by a different user.
 # This is a problem when using the image for OpenShift web-terminal.
 # See also https://stackoverflow.com/questions/13762280/zsh-compinit-insecure-directories
