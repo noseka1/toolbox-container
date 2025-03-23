@@ -44,6 +44,17 @@ $ podman build \
   .
 ```
 
+Alternatively, build a term container image:
+
+```
+$ podman build \
+  --secret id=GITHUB_TOKEN \
+  --build-arg TOOLBOX_CONTAINER_COMMIT=$(git rev-parse HEAD) \
+  --target term \
+  --tag toolbox-container:term \
+  .
+```
+
 Alternatively, build a full version of the container image:
 
 ```
