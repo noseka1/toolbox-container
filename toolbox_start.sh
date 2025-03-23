@@ -75,6 +75,7 @@ if [ -r $custom_init ]; then
   fi
 fi
 
+# If custom run script was provided, execute the run script
 custom_run=/toolbox/run.sh
 if [ -r $custom_run ]; then
   echo '
@@ -86,11 +87,14 @@ if [ -r $custom_run ]; then
   exit_code=$?
   echo
   echo Run script completed with exit code $exit_code
+# If script arguments where provided, execute them
+elif [ $# -gt 0 ]; then
+  exec "$@"
+# Else block waiting for signals
 else
   echo
   echo Press Ctrl-C to exit ...
 
-  # block here
   trap : TERM INT
   sleep infinity & wait
 fi
