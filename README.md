@@ -347,7 +347,7 @@ $ apachectl -D FOREGROUND
 ### Run Python SimpleHTTPServer
 
 ```
-$ python3 -m http.server
+$ python3 -m http.server 8080
 ```
 
 ### Run httpbin
