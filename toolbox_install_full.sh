@@ -20,6 +20,10 @@ if type dnf > /dev/null 2>&1; then
   dnf clean all
 fi
 
+# Install submariner CLI
+github_download_latest_asset submariner-io/releases "subctl-v.*-linux-amd64.tar.xz" | \
+  tar xvfJ - --directory $install_dir --strip-components 1 --wildcards "subctl-v*/subctl"
+
 # Install govc vSphere CLI
 github_download_latest_asset vmware/govmomi govc_Linux_x86_64.tar.gz | \
   tar xvfz - --directory $install_dir --no-same-owner govc
