@@ -139,10 +139,6 @@ github_download_latest_asset robscott/kube-capacity "kube-capacity_.*_linux_x86_
 github_download_latest_asset noseka1/kubectl-debugpod "kubectl-debugpod_.*_linux_amd64.tar.gz" | \
   tar xvfz - --directory $install_dir kubectl-debugpod
 
-# Install istioctl
-github_download_latest_asset istio/istio "istioctl-.*-linux-amd64.tar.gz" | \
-  tar xvfz - --directory $install_dir
-
 # Install MinIO client (S3 compatible client)
 curl --location --no-progress-meter \
   --output $install_dir/mcli \

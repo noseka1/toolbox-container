@@ -160,6 +160,10 @@ github_download_latest_asset gmeghnag/omc "omc_Linux_x86_64" \
   > $install_dir/omc && \
   chmod 755 $install_dir/omc
 
+# Install istioctl
+github_download_latest_asset istio/istio "istioctl-.*-linux-amd64.tar.gz" | \
+  tar xvfz - --directory $install_dir
+
 # Install envoy (the same version that Istio is using)
 ver=$(curl --location --no-progress-meter https://archive.tetratelabs.io/envoy/envoy-versions.json | jq --raw-output '.latestVersion')
 download_url=https://archive.tetratelabs.io/envoy/download/v${ver}/envoy-v${ver}-linux-amd64.tar.xz
