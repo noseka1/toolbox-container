@@ -33,3 +33,6 @@ chown -R toolbox:root ~
 
 # Make all files that are writeable by owner also writeable by (root) group
 find ~ -perm -u+w -exec chmod g+w {} +
+
+# Save a copy of home directory content into a tarball (do not include . directory)
+( cd /home/toolbox; find -mindepth 1 -print0 | tar cfJ ../toolbox.tar.xz --null --files-from - )

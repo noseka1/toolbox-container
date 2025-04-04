@@ -99,8 +99,8 @@ adduser toolbox \
   --groups wheel
 mkdir /home/toolbox
 
-# Allow adding user with arbitrary uid on container start
-for f in /etc/passwd /etc/group; do
+# Grant write access to user in group root
+for f in /etc/passwd /etc/group /home; do
   chmod g+w $f
 done
 
