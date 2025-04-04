@@ -1,0 +1,39 @@
+apiVersion: workspace.devfile.io/v1alpha2
+kind: DevWorkspace
+metadata:
+  name: @@DEVWORKSPACE_NAME@@
+  namespace: openshift-terminal
+spec:
+  routingClass: web-terminal
+  started: true
+  template:
+    components:
+    - name: web-terminal-tooling
+      plugin:
+        components:
+        - container:
+            # Set CPU resource request and limit
+            cpuLimit: "4"
+            cpuRequest: "1"
+            # Set memory resource request and limit
+            memoryLimit: 8Gi
+            memoryRequest: 8Gi
+            # Mount persistent volume
+            volumeMounts:
+            - name: home
+              path: /home/toolbox
+            # Container image
+            image: @@IMAGE@@
+          name: web-terminal-tooling
+        kubernetes:
+          name: web-terminal-tooling
+          namespace: openshift-operators
+    - name: web-terminal-exec
+      plugin:
+        kubernetes:
+          name: web-terminal-exec
+          namespace: openshift-operators
+    # Add persistent volume
+    - name: home
+      volume:
+        size: 50Gi

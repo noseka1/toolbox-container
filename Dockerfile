@@ -55,7 +55,7 @@ RUN --mount=type=secret,id=GITHUB_TOKEN \
 
 FROM medium as term
 
-COPY toolbox_webterm_start.sh /usr/local/bin
+COPY toolbox_webterm_start.sh toolbox_webterm_upgrade.sh devworkspace.yaml /usr/local/bin
 ENTRYPOINT [ "/usr/local/bin/tini", "--", "/usr/local/bin/toolbox_webterm_start.sh" ]
 
 #########################
