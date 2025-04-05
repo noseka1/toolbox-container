@@ -20,7 +20,6 @@ if type dnf > /dev/null 2>&1; then
     nginx \
     nmstate \
     skopeo \
-    stress-ng \
     tmux \
     zsh
   dnf clean all

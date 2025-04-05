@@ -51,6 +51,7 @@ dnf install \
   rsync \
   socat \
   strace \
+  stress-ng \
   symlinks \
   sysstat \
   tcpdump \
