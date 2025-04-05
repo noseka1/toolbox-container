@@ -460,3 +460,13 @@ Check port connectivity using Telnet:
 ```
 $ curl -v telnet://api.mycluster.example.com:22
 ```
+
+### Perform a simple benchmark
+
+```
+$ hyperfine \
+    --warmup 1 \
+    --runs 10 \
+    --export-json /dev/stdout \
+    "curl https://google.com"
+```

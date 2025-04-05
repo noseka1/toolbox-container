@@ -26,6 +26,7 @@ dnf install \
   git \
   hostname \
   htop \
+  hyperfine \
   iftop \
   iptables \
   iotop \
