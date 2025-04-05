@@ -15,6 +15,7 @@ if type dnf > /dev/null 2>&1; then
     duf \
     fzf \
     haproxy \
+    hexyl \
     httpd \
     lnav \
     nginx \
