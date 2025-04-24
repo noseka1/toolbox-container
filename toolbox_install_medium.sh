@@ -26,7 +26,11 @@ if type dnf > /dev/null 2>&1; then
   dnf clean all
 fi
 
-# Install kubectl-mc (multi cluster kubectl client)
+# Install auger (Kubernetes etcd analysis tool)
+github_download_latest_asset etcd-io/auger "auger_.*_linux_amd64.tar.gz" | \
+  tar xvfz - --directory $install_dir auger augerctl
+
+# Install kubectl-mc (multi-cluster kubectl client)
 github_download_latest_asset jonnylangefeld/kubectl-mc "kubectl-mc_v.*_linux_amd64.tar.gz" | \
   tar xvfz - --directory $install_dir kubectl-mc
 
