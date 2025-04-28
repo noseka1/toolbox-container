@@ -71,11 +71,6 @@ curl --location --no-progress-meter \
   tar xvfz - --directory $install_dir && \
   chmod 755 $install_dir/oc-mirror
 
-# Install mirror-registry
-curl --location --no-progress-meter \
-  https://mirror.openshift.com/pub/cgw/mirror-registry/latest/mirror-registry-amd64.tar.gz | \
-  tar xvfz - --directory $install_dir
-
 # Install helm
 github_get_latest_asset helm/helm ""
 curl --location --no-progress-meter \
