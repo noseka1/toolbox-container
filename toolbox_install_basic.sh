@@ -16,6 +16,7 @@ dnf install \
   ddrescue \
   diffutils \
   e2fsprogs \
+  ethtool \
   fatrace \
   fd-find \
   file \
@@ -31,11 +32,13 @@ dnf install \
   iptables \
   iotop \
   iperf \
+  iperf3 \
   iproute \
   iputils \
   jq \
   lsof \
   man-db \
+  mtr \
   nmon \
   nmap \
   nmap-ncat \
@@ -55,6 +58,7 @@ dnf install \
   symlinks \
   sysstat \
   tcpdump \
+  traceroute \
   unzip \
   vim \
   wget \
