@@ -1,0 +1,16 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: toolbox-container
+spec:
+  template:
+    spec:
+      containers:
+      - name: toolbox-container
+        volumeDevices:
+        - name: fs
+          devicePath: /home/toolbox/fs
+      volumes:
+      - name: fs
+        persistentVolumeClaim:
+          claimName: toolbox-container-fs

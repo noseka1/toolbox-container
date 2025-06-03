@@ -16,6 +16,7 @@ resources:
 - toolbox-container-sa.yaml
 #- toolbox-container-home-pvc.yaml
 #- toolbox-container-block-pvc.yaml
+#- toolbox-container-fs-pvc.yaml
 #- toolbox-container-scc-role.yaml
 #- toolbox-container-scc-rolebinding.yaml
 #- toolbox-container-cluster-admin-clusterrolebinding.yaml
@@ -30,6 +31,7 @@ patches:
 #- path: toolbox-container-deploy-capabilities.yaml
 #- path: toolbox-container-deploy-home-pvc.yaml
 #- path: toolbox-container-deploy-block-pvc.yaml
+#- path: toolbox-container-deploy-fs-pvc.yaml
 #- path: toolbox-container-deploy-hostPath-host.yaml
 #- path: toolbox-container-deploy-hostPath-dev.yaml
 #- path: toolbox-container-deploy-hostPath-proc.yaml
