@@ -8,9 +8,9 @@ spec:
       containers:
       - name: toolbox-container
         volumeDevices:
-        - name: rbd
-          devicePath: /home/toolbox/rbd
+        - name: block
+          devicePath: /home/toolbox/block
       volumes:
-      - name: rbd
+      - name: block
         persistentVolumeClaim:
-          claimName: toolbox-container-rbd
+          claimName: toolbox-container-block

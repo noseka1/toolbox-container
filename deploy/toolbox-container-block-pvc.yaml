@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: toolbox-container-rbd
+  name: toolbox-container-block
 spec:
   accessModes:
   - ReadWriteMany
@@ -9,4 +9,5 @@ spec:
     requests:
       storage: 50Gi
   storageClassName: ocs-storagecluster-ceph-rbd-virtualization
+  #storageClassName: iscsi-target
   volumeMode: Block
