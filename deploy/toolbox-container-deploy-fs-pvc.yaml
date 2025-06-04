@@ -7,9 +7,9 @@ spec:
     spec:
       containers:
       - name: toolbox-container
-        volumeDevices:
+        volumeMounts:
         - name: fs
-          devicePath: /home/toolbox/fs
+          mountPath: /home/toolbox/fs
       volumes:
       - name: fs
         persistentVolumeClaim:
