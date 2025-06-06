@@ -27,12 +27,12 @@ spec:
           name: web-terminal-tooling
         kubernetes:
           name: web-terminal-tooling
-          namespace: openshift-operators
+          namespace: @@SUBSCRIPTION_NAMESPACE@@
     - name: web-terminal-exec
       plugin:
         kubernetes:
           name: web-terminal-exec
-          namespace: openshift-operators
+          namespace: @@SUBSCRIPTION_NAMESPACE@@
     # Add persistent volume
     - name: home
       volume:

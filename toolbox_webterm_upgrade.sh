@@ -39,8 +39,14 @@ do
  shift
 done
 
+subscription_namespace=$(\
+  oc get subscriptions.operators.coreos.com --all-namespaces --output json |
+    jq --raw-output '.items[] | select(.spec.name=="web-terminal") | .metadata.namespace'
+  )
+
 sed \
   -e "s/@@DEVWORKSPACE_NAME@@/$DEVWORKSPACE_NAME/g" \
   -e "s#@@IMAGE@@#$image#g" \
+  -e "s#@@SUBSCRIPTION_NAMESPACE@@#$subscription_namespace#g" \
   "$script_dir/devworkspace.yaml" | \
   oc apply -f -
