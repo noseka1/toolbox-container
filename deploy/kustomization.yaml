@@ -44,3 +44,5 @@ patches:
 #- path: toolbox-container-deploy-tolerations.yaml
 #- path: toolbox-container-deploy-resources.yaml
 #- path: toolbox-container-deploy-sleep.yaml
+#- path: toolbox-container-deploy-livenessprobe.yaml
+#- path: toolbox-container-deploy-readinessprobe.yaml
