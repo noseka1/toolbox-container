@@ -4,12 +4,16 @@ metadata:
   name: toolbox-container-block
 spec:
   accessModes:
-  #- ReadWriteOnce
-  - ReadWriteMany
+  - ReadWriteOnce
+  #- ReadWriteMany
   resources:
     requests:
       storage: 50Gi
-  storageClassName: ocs-storagecluster-ceph-rbd-virtualization
   #storageClassName: iscsi-target
+  #storageClassName: lvms-loop1-vg
+  #storageClassName: ocs-storagecluster-ceph-rbd
+  #storageClassName: ocs-storagecluster-ceph-rbd-virtualization
   #storageClassName: openebs-lvm
+  #storageClassName: rook-ceph-block
+  #storageClassName: rook-ceph-block-virtualization
   volumeMode: Block

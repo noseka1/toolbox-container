@@ -4,9 +4,17 @@ metadata:
   name: toolbox-container-fs
 spec:
   accessModes:
-  - ReadWriteMany
+  - ReadWriteOnce
+  #- ReadWriteMany
   resources:
     requests:
       storage: 50Gi
-  storageClassName: nfs-csi
+  #storageClassName: iscsi-target
+  #storageClassName: lvms-loop1-vg
+  #storageClassName: nfs-csi
+  #storageClassName: ocs-storagecluster-ceph-rbd
+  #storageClassName: ocs-storagecluster-ceph-rbd-virtualization
+  #storageClassName: openebs-lvm
+  #storageClassName: rook-ceph-block
+  #storageClassName: rook-ceph-block-virtualization
   volumeMode: Filesystem
