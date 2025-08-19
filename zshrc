@@ -3,7 +3,9 @@
 
 bindkey -M emacs "^?" backward-delete-char
 bindkey -M emacs "^[[1~" beginning-of-line
+bindkey -M emacs "^[[H" beginning-of-line
 bindkey -M emacs "^[[4~" end-of-line
+bindkey -M emacs "^[[F" end-of-line
 bindkey -M emacs "^[[2~" overwrite-mode
 bindkey -M emacs "^[[3~" delete-char
 bindkey -M emacs "^[[A" up-line-or-history
