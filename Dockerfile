@@ -41,7 +41,7 @@ FROM basic as medium
 COPY toolbox_install_medium.sh /usr/local/bin
 RUN --mount=type=secret,id=GITHUB_TOKEN \
   /usr/local/bin/toolbox_install_medium.sh
-RUN --mount=type=bind,source=zshrc,target=/tmp/zshrc \
+RUN --mount=type=bind,source=zshrc,target=/tmp/zshrc,relabel=shared \
   cat /tmp/zshrc >> /etc/zshrc
 
 COPY toolbox_install_user.sh /usr/local/bin
