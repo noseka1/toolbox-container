@@ -102,7 +102,7 @@ github_download_latest_asset danielfoehrKn/kubeswitch "switcher_linux_amd64" \
   chmod 755 $install_dir/switcher
 
 # Install lazygit
-github_download_latest_asset jesseduffield/lazygit "lazygit_.*_Linux_x86_64.tar.gz" | \
+github_download_latest_asset jesseduffield/lazygit "lazygit_.*_linux_x86_64.tar.gz" | \
   tar xvfz - --directory $install_dir lazygit && \
   chmod 755 $install_dir/lazygit
 
