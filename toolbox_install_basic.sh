@@ -82,8 +82,8 @@ curl --location --no-progress-meter \
   tar xvfz - --directory $install_dir
 
 # Install zenith
-github_download_latest_asset bvaisvil/zenith "zenith.x86_64-unknown-linux-musl.tgz" | \
-  tar xvfz - --directory $install_dir
+github_download_latest_asset bvaisvil/zenith "zenith-Linux-musl-x86_64.tar.gz" | \
+  tar xvfz - --directory $install_dir zenith
 
 # Install yq
 github_download_latest_asset mikefarah/yq yq_linux_amd64 \
