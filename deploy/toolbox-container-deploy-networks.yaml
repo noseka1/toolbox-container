@@ -7,7 +7,7 @@ spec:
     metadata:
       annotations:
         k8s.v1.cni.cncf.io/networks: '[{
-          "name":"vlan131",
+          "name":"udn-example-localnet",
           "namespace":"default",
           "interface":"net1"
         }]'
