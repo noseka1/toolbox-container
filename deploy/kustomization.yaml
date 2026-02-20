@@ -10,6 +10,9 @@ configMapGenerator:
 - name: toolbox-container-init
   files:
   - init.sh
+#- name: toolbox-container-run
+#  files:
+#  - run.sh
 
 resources:
 - toolbox-container-deploy.yaml

@@ -20,9 +20,18 @@ spec:
         name: toolbox-container
         volumeMounts:
         - name: init
-          mountPath: /toolbox
+          mountPath: /toolbox/init.sh
+          subPath: init.sh
+        - name: run
+          mountPath: /toolbox/run.sh
+          subPath: run.sh
       serviceAccountName: toolbox-container
       volumes:
       - name: init
         configMap:
           name: toolbox-container-init
+          optional: true
+      - name: run
+        configMap:
+          name: toolbox-container-run
+          optional: true
