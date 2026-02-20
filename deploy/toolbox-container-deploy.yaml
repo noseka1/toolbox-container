@@ -19,19 +19,10 @@ spec:
         imagePullPolicy: Always
         name: toolbox-container
         volumeMounts:
-        - name: init
-          mountPath: /toolbox/init.sh
-          subPath: init.sh
-        - name: run
-          mountPath: /toolbox/run.sh
-          subPath: run.sh
+        - name: scripts
+          mountPath: /toolbox
       serviceAccountName: toolbox-container
       volumes:
-      - name: init
+      - name: scripts
         configMap:
-          name: toolbox-container-init
-          optional: true
-      - name: run
-        configMap:
-          name: toolbox-container-run
-          optional: true
+          name: toolbox-container-scripts

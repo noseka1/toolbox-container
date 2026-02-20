@@ -7,12 +7,10 @@ images:
   newTag: basic
 
 configMapGenerator:
-- name: toolbox-container-init
+- name: toolbox-container-scripts
   files:
   - init.sh
-#- name: toolbox-container-run
-#  files:
-#  - run.sh
+  - run.sh
 
 resources:
 - toolbox-container-deploy.yaml
