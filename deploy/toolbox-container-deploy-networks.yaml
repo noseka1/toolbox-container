@@ -1,0 +1,13 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: toolbox-container
+spec:
+  template:
+    metadata:
+      annotations:
+        k8s.v1.cni.cncf.io/networks: '[{
+          "name":"vlan131",
+          "namespace":"default",
+          "interface":"net1"
+        }]'
