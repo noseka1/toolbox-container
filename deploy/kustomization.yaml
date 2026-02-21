@@ -23,6 +23,7 @@ resources:
 #- toolbox-container-cluster-admin-clusterrolebinding.yaml
 #- toolbox-container-svc.yaml
 #- toolbox-container-route.yaml
+#- toolbox-container-netpol.yaml
 
 patches:
 #- path: toolbox-container-deploy-hostNetwork.yaml
