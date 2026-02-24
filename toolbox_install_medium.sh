@@ -154,6 +154,11 @@ github_download_latest_asset kubevirt/kubevirt "virtctl-.*-linux-amd64" \
   > $install_dir/virtctl && \
   chmod 755 $install_dir/virtctl
 
+# Install mtv cli
+github_download_latest_asset yaacov/kubectl-mtv "kubectl-mtv-.*-linux-amd64.tar.gz" | \
+  tar xvfz - --directory $install_dir kubectl-mtv-linux-amd64 &&
+  mv $install_dir/kubectl-mtv-linux-amd64 $install_dir/kubectl-mtv
+
 # Install roxctl
 curl --location --no-progress-meter \
   --output $install_dir/roxctl \
