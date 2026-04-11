@@ -1,0 +1,10 @@
+apiVersion: snapshot.storage.k8s.io/v1
+kind: VolumeSnapshot
+metadata:
+  name: toolbox-container-fs
+spec:
+  source:
+    persistentVolumeClaimName: toolbox-container-fs
+#  volumeSnapshotClassName: csi-cephfsplugin-snapclass
+#  volumeSnapshotClassName: csi-nfsplugin-snapclass
+#  volumeSnapshotClassName: nfs-csi
