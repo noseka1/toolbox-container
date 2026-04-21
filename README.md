@@ -202,6 +202,29 @@ You can use the Toolbox Container image in the `oc debug` command like this:
 ```
 $ oc debug node/<node> --image quay.io/noseka1/toolbox-container:basic
 ```
+
+You can start Toolbox Container on the OpenShift cluster node (similar to the `toolbox` command):
+
+```
+$ sudo podman run \
+    --rm \
+    --name toolbox \
+    --privileged \
+    --net host \
+    --pid host \
+    --ipc host \
+    --tty \
+    --interactive \
+    --security-opt label=disable \
+    --volume /run:/run \
+    --volume /var/log:/var/log \
+    --volume /etc/machine-id:/etc/machine-id \
+    --volume /etc/localtime:/etc/localtime \
+    --volume /:/host \
+    quay.io/noseka1/toolbox-container:basic \
+    /bin/sh
+```
+
 ## Using Toolbox Container for troubleshooting pods
 
 You can use the Toolbox Container image in conjuction with the [kubectl-debugpod](https://github.com/noseka1/kubectl-debugpod) utility to attach to any pod running on the cluster.
