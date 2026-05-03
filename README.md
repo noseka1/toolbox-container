@@ -220,6 +220,7 @@ $ sudo podman run \
     --volume /var/log:/var/log \
     --volume /etc/machine-id:/etc/machine-id \
     --volume /etc/localtime:/etc/localtime \
+    --volume /lib/modules:/lib/modules \
     --volume /:/host \
     quay.io/noseka1/toolbox-container:basic \
     /bin/sh
