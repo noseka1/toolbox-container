@@ -24,6 +24,7 @@ dnf install \
   fio \
   fio-engine-libaio \
   gdb \
+  gdb-gdbserver \
   git \
   hostname \
   htop \
