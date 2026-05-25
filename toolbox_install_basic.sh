@@ -59,6 +59,7 @@ dnf install \
   symlinks \
   sysstat \
   tcpdump \
+  trace-cmd \
   traceroute \
   unzip \
   vim \
